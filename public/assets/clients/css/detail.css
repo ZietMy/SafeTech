@@ -1,0 +1,222 @@
+.fas {
+    color: red;
+}
+
+.heart {
+    cursor: pointer;
+}
+
+.pulse {
+    animation: pulse 0.5s;
+}
+
+.cart {
+    outline: none;
+    border: 0;
+    background: #416aa6;
+    padding: 15px;
+    color: #fff;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    transition: 0.5s width;
+}
+
+.crtdiv {
+    border: 1px solid #7d86c7;
+    width: max-content;
+    border-radius: 4px;
+    position: relative;
+    background: #eee;
+    /* margin-left: 100%; */
+}
+.crtdiv1 {
+    border: 1px solid #db4444;
+    width: max-content;
+    border-radius: 4px;
+    position: relative;
+    background: #db4444;
+    /* margin-left: 100%; */
+}
+.cart1 {
+    outline: none;
+    border: 0;
+    background: #db4444;
+    padding: 15px;
+    color: #fff;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    transition: 0.5s width;
+}
+.fa {
+    font-size: 16px;
+}
+.cart .fa {
+    font-size: 26px;
+    position: relative;
+    padding: 0 5px 0 0;
+}
+button:focus,
+input:focus {
+    outline: none;
+    box-shadow: none;
+}
+a,
+a:hover {
+    text-decoration: none;
+}
+
+/*--------------------------*/
+.qty-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.qty-container .input-qty {
+    text-align: center;
+    padding: 6px 10px;
+    border: 1px solid #d4d4d4;
+    max-width: 80px;
+}
+.qty-container .qty-btn-minus,
+.qty-container .qty-btn-plus {
+    border: 1px solid #d4d4d4;
+    padding: 10px 13px;
+    font-size: 10px;
+    height: 38px;
+    width: 38px;
+    transition: 0.3s;
+}
+.qty-container .qty-btn-plus {
+    margin-left: -1px;
+}
+.qty-container .qty-btn-minus {
+    margin-right: -1px;
+}
+
+/*---------------------------*/
+.btn-cornered,
+.input-cornered {
+    border-radius: 4px;
+}
+.btn-rounded {
+    border-radius: 50%;
+}
+.input-rounded {
+    border-radius: 50px;
+}
+.button-48 {
+    appearance: none;
+    background-color: #ffffff;
+    border-width: 0;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Clarkson, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+    letter-spacing: 0;
+    line-height: 1em;
+    margin: 0;
+    opacity: 1;
+    outline: 0;
+    padding: 1em 1.5em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-rendering: geometricprecision;
+    text-transform: uppercase;
+    transition: opacity 300ms cubic-bezier(0.694, 0, 0.335, 1),
+        background-color 100ms cubic-bezier(0.694, 0, 0.335, 1),
+        color 100ms cubic-bezier(0.694, 0, 0.335, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+.button-48:before {
+    animation: opacityFallbackOut 0.5s step-end forwards;
+    backface-visibility: hidden;
+    background-color: #db4444;
+    clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateZ(0);
+    transition: clip-path 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+        -webkit-clip-path 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    width: 100%;
+}
+
+.button-48:hover:before {
+    color: #fff;
+    animation: opacityFallbackIn 0s step-start forwards;
+    clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+}
+
+.button-48:after {
+    background-color: #ffffff;
+}
+
+.button-48 span {
+    z-index: 1;
+    position: relative;
+}
+.heart-container {
+    position: relative;
+    .add-to-wishlist {
+        color: #b91337;
+        width: 30px;
+        height: auto;
+        cursor: pointer;
+        fill: #fff;
+        transition: all 0.3s 0s ease-in-out;
+        &.fill-heart {
+            fill: #b91337;
+        }
+    }
+    .sub-hearts {
+        width: 30px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 2;
+    }
+}
+.heart-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    padding: 20px;
+}
+
+.add-to-wishlist {
+    width: 30px; /* Điều chỉnh kích thước của hình trái tim */
+    height: auto; /* Điều chỉnh kích thước của hình trái tim */
+    fill: #fff; /* Điều chỉnh màu sắc của hình trái tim */
+}
+
+.card {
+    position: relative;
+    display: inline-block;
+}
+.discount {
+    position: absolute;
+    /* top: 10;
+  right: 10; */
+    z-index: 1;
+    padding: 10px;
+    background-color: #db4444;
+    color: #fff;
+}

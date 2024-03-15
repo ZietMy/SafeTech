@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\User\HomePageController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[HomePageController::class,'index']);
+Route::get('/',[HomeController::class,'index']);
+Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('clients.detail');
+
