@@ -5,9 +5,10 @@
             <!-- Column 1 -->
             <div class="column">
                 <img
-                    src="./assets/img/logo-white.svg"
-                    alt="Lesson."
+                    src="{{asset('assets/clients/images/logo.png') }}"
+                    alt="SafeTech"
                     class="logo"
+                    style="width:4rem"
                 />
                 <p class="desc">
                     Need to help for your dream Career? trust us. With

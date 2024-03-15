@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DetailsController;
+use App\Http\Controllers\User\HomePageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 /*
@@ -13,4 +15,6 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/',[HomeController::class,'index']);
+Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('clients.detail');
+
