@@ -1,0 +1,17 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+/* Bootstrap Icons */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h2 {
+    margin-bottom: 0; 
+}
+
+.navbar-nav .nav-link {
+    transition: none !important;
+}
+
