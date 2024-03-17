@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\User\HomePageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +19,4 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/',[HomeController::class,'index']);
 Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('clients.detail');
-
+Route::get('/contact',[ContactController::class,'index'])->name('client.contact');
