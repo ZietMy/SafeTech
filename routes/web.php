@@ -20,3 +20,18 @@ use App\Http\Controllers\HomeController;
 Route::get('/',[HomeController::class,'index']);
 Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('clients.detail');
 Route::get('/contact',[ContactController::class,'index'])->name('client.contact');
+Route::get('/admin', function(){
+    return view('admin.layouts.admin');
+})->name('admin');
+Route::get('/admin/user', function(){
+    return view('admin.user');
+})->name('user');
+Route::get('/admin/product', function(){
+    return view('admin.product');
+})->name('product');
+Route::get('/admin/order', function(){
+    return view('admin.order');
+})->name('order');
+Route::get('/admin/catogories', function(){
+    return view('admin.categories');
+})->name('categories');
