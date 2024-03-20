@@ -1,3 +1,8 @@
+
+@extends('layouts.admin')
+
+@section('content')
+
 <div class="row g-6 mb-6">
     <div class="col-xl-3 col-sm-6 col-12">
         <div class="card shadow border-0">
@@ -92,3 +97,4 @@
         </div>
     </div>
 </div>
+@endsection

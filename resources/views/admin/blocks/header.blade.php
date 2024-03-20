@@ -1,4 +1,3 @@
-@extends('admin.layouts.link')
 <header class="bg-surface-primary border-bottom pt-6">
     <div class="container-fluid">
         <div class="mb-npx">

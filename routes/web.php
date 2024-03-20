@@ -22,9 +22,8 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('clients.detail');
 Route::get('/contact',[ContactController::class,'index'])->name('client.contact');
 Route::get('/admin', function(){
-    return view('admin.layouts.admin');
+    return view('admin.blocks.card');
 })->name('admin');
-
 Route::get('/admin/user',[AdminController::class,'index'])->name('user');
 Route::get('/admin/product', function(){
     return view('admin.product');
