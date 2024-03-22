@@ -1,9 +1,17 @@
+@extends('layouts.client')
 @section ('title')
     {{$title}}
 @endsection
-@extends('layouts.client')
+@section('sidebar')
+  @include('clients.blocks.sidebar')
+@endsection
 @section('content')
+@section('css')
 <link rel="stylesheet" href="{{ asset('assets/clients/css/home.css') }}">
+@endsection
+@section('footer')
+    @include('clients.blocks.footer')
+@endsection
 <div class="container">
     <div class="row">
       <div class="col-md-12 col-xs-12">
@@ -179,7 +187,7 @@
   <div class="mt-5"></div>
   <div class="container">
     <div class="row">
-      @foreach($listFlaseSale as $products)
+      @foreach($listFlashSale as $products)
       <div class="col-3 mb-3 ml-3" >
         <a href="{{ route('clients.detail', ['id' => $products->id]) }}" style="text-decoration:none;color:black">
           <div class="card" style="width:18rem;">
@@ -207,8 +215,8 @@
     </div>
   </div>
     @endsection
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  @section('script')
+      
   <script src={{ asset('assets/clients/js/home.js') }}></script>
+  @endsection
 

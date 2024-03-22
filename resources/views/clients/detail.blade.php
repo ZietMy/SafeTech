@@ -7,7 +7,9 @@
 @endsection --}}
 @section('content1')
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+@section('css')
 <link rel="stylesheet" href="{{ asset('assets/clients/css/detail.css') }}">
+@endsection
     <div class="container">
         <div class="row">
             @foreach($detailId as $productId)
