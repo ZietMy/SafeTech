@@ -5,6 +5,7 @@ use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\User\HomePageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +22,9 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('clients.detail');
 Route::get('/contact',[ContactController::class,'index'])->name('client.contact');
 Route::get('/admin', function(){
-    return view('admin.layouts.admin');
+    return view('admin.blocks.card');
 })->name('admin');
-Route::get('/admin/user', function(){
-    return view('admin.user');
-})->name('user');
+Route::get('/admin/user',[AdminController::class,'index'])->name('user');
 Route::get('/admin/product', function(){
     return view('admin.product');
 })->name('product');
