@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Home;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -9,15 +10,20 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     private $products;
+    private $categories;
     public function __construct()
     {
+        
         $this->products = new Product();
+        $this->categories = new Categories();
     }
     public function index(){
         $title = 'Homepage';
        $listProduct = Product::all();
+       $categories = Categories::all();
+    //    dd($categories);
        $listRandomProduct =  $this->products->getRandom();
-       $listFlaseSale=$this->products->getFlaseSale();
-        return view('clients.home',compact('title','listProduct','listRandomProduct','listFlaseSale'));
+       $listFlashSale=$this->products->getFlashSale();
+        return view('clients.home',compact('title','listProduct','listRandomProduct','listFlashSale','categories'));
     }
 }

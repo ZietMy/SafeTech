@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family:"Poppins", sans-serif ;
 }
 
 :root {
@@ -110,7 +111,9 @@ button {
     line-height: 1;
     color: #5e6085;
 }
-
+.header-action__link:hover{
+    color: var(--pink);
+}
 .navbar__link:hover {
     color: var(--pink);
     text-shadow: 1px 0 0 currentColor;
@@ -121,6 +124,29 @@ button {
     
     min-width: 118px;
 }
+.header-action__btn:hover{
+    color: var(--pink)
+}
+.search-bar{
+    position: relative;
+    display: inline-block;
+
+}
+.search-bar__input{
+    /* width:100%; */
+    padding: 5px 1.1rem;
+    border-radius: 1.1rem;
+}
+.search-bar__input:focus{
+    /* width:100%; */
+    box-shadow: var(--pink);
+}
+.search-bar__icon{
+    position:absolute;
+    top:12px;
+    right:4%;
+}
+
 /* FOOtER */
 footer {
     background-color: var(--black);
