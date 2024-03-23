@@ -62,11 +62,11 @@
                         </span>
                     </a>
                     <div class="btn-group ms-2">
-                        <img src="{{asset('assets\clients\images\logo.png')}}" alt="" class="dropdown-toggle "  data-bs-toggle="dropdown" aria-expanded="false" style="width:60px; height:60px">
+                        <img src="{{ Auth::user()->avatar }}" alt="avatar {{ Auth::user()->name }}" class="dropdown-toggle ms-2"  data-bs-toggle="dropdown" aria-expanded="false" style="width:50px; height:50px">
                         
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item disable" href="#">{{ Auth::user()->name }}</a></li>
                             <li><a class="dropdown-item" href="{{route('profile.edit')}}">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Setting</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">

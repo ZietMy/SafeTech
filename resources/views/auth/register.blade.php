@@ -5,8 +5,8 @@
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('username')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
@@ -24,7 +24,9 @@
                             type="password"
                             name="password"
                             required autocomplete="new-password" />
-
+            {{-- <input type="hidden" name="username" value="A">                --}}
+            <input type="hidden" name="role_id" value="1">
+            <input type="hidden" name="status_id" value="1">
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
