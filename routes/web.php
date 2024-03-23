@@ -17,7 +17,7 @@ use App\Http\Controllers\AdminController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [HomeController::class,'index'])->middleware(['auth', 'verified']);
+Route::get('/',  [HomeController::class, 'index'])->middleware(['auth', 'verified']);
 Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('clients.detail');
 Route::get('/contact',[ContactController::class,'index'])->name('client.contact');
 Route::get('/admin', function(){
@@ -27,12 +27,12 @@ Route::get('/admin/user',[AdminController::class,'index'])->name('user')->middle
 Route::get('/admin/product', function(){
     return view('admin.product');
 })->name('product')->middleware(['auth', 'admin']);
-Route::get('/admin/order', function(){
+Route::get('/admin/order', function () {
     return view('admin.order');
-})->name('order')->middleware(['auth', 'admin']);
+})->name('order');
 Route::get('/admin/catogories', function(){
     return view('admin.categories');
-})->name('categories')->middleware(['auth', 'admin']);
+})->name('categories');
 // user login logout
 // Route::get('/', function () {
 //     return view('welcome');
