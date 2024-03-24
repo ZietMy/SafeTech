@@ -16,9 +16,6 @@
 
 <form class="form-horizontal" method="POST" action="{{route('postEdit')}}" >
     @csrf
-
-    
-
     <div class="mb-3 row">
         <label for="name" class="col-sm-3 col-form-label">User Name</label>
         <div class="col-sm-9">
@@ -38,7 +35,19 @@
             @enderror
         </div>
     </div>
-    <input type="hidden" class="form-control" id="status" name="status_id"value="1">
+    <div class="mb-3 row">
+        <label for="name" class="col-sm-3 col-form-label">Status_id</label>
+        <div class="col-sm-9">
+            <select class="form-select" id="status" name="status_id">
+                <option value="1" {{ old('status_id') == '1' ? 'selected' : '' }}>1</option>
+                <option value="2" {{ old('status_id') == '2' ? 'selected' : '' }}>2</option>
+            </select>
+            @error('status_id')
+            <span style="color:red">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
+    
     {{-- <div class="mb-3 row">
         <label for="name" class="col-sm-3 col-form-label">Role</label>
         <div class="col-sm-9">
@@ -65,7 +74,7 @@
     <div class="mb-3 row">
         <label for="password" class="col-sm-3 col-form-label">Password</label>
         <div class="col-sm-9">
-            <input type="password" class="form-control" id="password" name="password" value="{{old('password')?? $userDetail->password}}">
+            <input type="password" class="form-control" id="password" name="password" value="{{old('password')?? $userDetail->password}}" readonly>
             @error('password')
             <span style="color:red">{{ $message }}</span>
             @enderror
