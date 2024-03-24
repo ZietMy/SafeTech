@@ -28,7 +28,9 @@ class AdminController extends Controller
     {
         $validatedData = $request->validate([
             'username' => 'required|string|max:255',
+            'name'=>'required|string|max:255',
             'role' => 'required|in:1,2',
+            'status_id'=>'required',
             'password' => 'required|string|min:8',
             'address' => 'required|string|max:255',
             'gender' => 'required|in:male,female,other',
@@ -56,11 +58,12 @@ class AdminController extends Controller
             'email.max' => 'Email không được vượt quá 255 ký tự.',
         ]);
 
-        $roleName = $request->role == 1 ? 'Admin' : 'User';
+        // $roleName = $request->role == 1 ? 'Admin' : 'User';
         $dataInsert = [
             'username' => $request->username,
             'role_id' => $request->role,
-            'name' => $roleName,
+            'status_id'=>$request->status_id,
+            'name' => $request->name,
             'password' => Hash::make($request->password),
             'address' => $request->address,
             'gender' => $request->gender,
@@ -124,13 +127,14 @@ class AdminController extends Controller
         ]);
     
         // Lấy tên của vai trò dựa trên giá trị được chọn từ biểu mẫu
-        $roleName = $request->role == 1 ? 'Admin' : 'User';
+        // $roleName = $request->role == 1 ? 'Admin' : 'User';
     
         // Chèn dữ liệu vào cơ sở dữ liệu
         $dataInsert = [
             'username' => $request->username,
-            'role_id' => $request->role, // Sử dụng role_id từ biểu mẫu
-            'name' => $roleName, // Sử dụng tên vai trò tương ứng
+            'role_id' => $request->role,
+            'status_id'=>$request->status_id,
+            'name' => $request->name,
             'password' => Hash::make($request->password),
             'address' => $request->address,
             'gender' => $request->gender,

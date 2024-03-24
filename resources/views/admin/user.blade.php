@@ -64,7 +64,7 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    {{ $item->phonenumber }}
+                                                    {{ $item->phone_number }}
                                                 </td>
                                                 <td>
                                                     {{ $item->email }}

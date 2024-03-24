@@ -18,13 +18,13 @@ class Users extends Model
     }
     public function addUser($data)
     {
-        DB::insert('INSERT INTO users (username,role_id, name, password, address, gender, phonenumber, email) VALUES (?,?, ?, ?, ?, ?, ?, ?)', array_values($data));
+        DB::insert('INSERT INTO users (username,role_id,status_id, name, password, address, gender, phone_number, email) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)', array_values($data));
     }
     public function getDetail($id){
         return DB::select('select * from '.$this->table.' where id = ?', [$id]);
     }
     public function updateUser($data, $id){
-        $query = 'update ' . $this->table . ' set username=?,role_id=?, name=?, password=?, address=?, gender=?, phonenumber=?, email=? where id = ?';
+        $query = 'update ' . $this->table . ' set username=?,role_id=?,status_id=?, name=?, password=?, address=?, gender=?, phone_number=?, email=? where id = ?';
         return DB::update($query, array_values($data + [$id]));
     }
     public function deleteUser($id)

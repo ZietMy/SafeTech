@@ -25,13 +25,22 @@
             @enderror
         </div>
     </div>
-
+    <div class="mb-3 row">
+        <label for="name" class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
+            @error('name')
+            <span style="color:red">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
+    <input type="hidden" class="form-control" id="status" name="status_id"value="1">
     <div class="mb-3 row">
         <label for="role" class="col-sm-3 col-form-label">Role</label>
         <div class="col-sm-9">
             <select class="form-select" id="role" name="role">
-                <option value="1" {{ old('role') == '1' ? 'selected' : '' }}>Admin</option>
-                <option value="2" {{ old('role') == '2' ? 'selected' : '' }}>User</option>
+                <option value="1" {{ old('role') == '1' ? 'selected' : '' }}>User</option>
+                <option value="2" {{ old('role') == '2' ? 'selected' : '' }}>Admin</option>
             </select>
             @error('role')
             <span style="color:red">{{ $message }}</span>
