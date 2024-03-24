@@ -18,7 +18,7 @@ use App\Http\Controllers\CategoriesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/',  [HomeController::class, 'index']);
+Route::get('/',  [HomeController::class, 'index'])->name('home');
 Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('clients.detail');
 Route::get('/contact',[ContactController::class,'index'])->name('client.contact');
 Route::get('/admin', function(){
