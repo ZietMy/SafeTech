@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ProductController;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +41,5 @@ Route::get('/admin/categories/create', [CategoriesController::class, 'getCategor
 Route::post('/admin/categories/create', [CategoriesController::class, 'postCategories'])->name('post-add');
 Route::get('/admin/categories/edit/{id}', [CategoriesController::class, 'editCategories'])->name('categories.edit');
 Route::post('/admin/categories/edit', [CategoriesController::class, 'postEditCategories'])->name('post-edit');
+
+Route::get('/products',[ProductController::class,'index'])->name('product');
