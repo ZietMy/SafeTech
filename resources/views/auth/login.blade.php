@@ -77,7 +77,7 @@
 
             <p class="auth__text ">
                 Don’t have an account yet?
-                <a href="./sign-up.html" class="auth__link auth__text-link">Sign Up</a>
+                <a href="{{ route('register') }}" class="auth__link auth__text-link">Sign Up</a>
             </p>
         </div>
     </div>
