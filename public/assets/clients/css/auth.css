@@ -194,7 +194,8 @@ select {
     display: none;
   }
   .form__input::placeholder {
-    opacity: 0.5; /* Thiết lập độ mờ của placeholder */
+    font-size: smaller;
+    opacity: 0.5;
 }
   .form__text-area, .form__text-input {
     display: flex;
@@ -204,7 +205,7 @@ select {
     border: 1px solid #d2d1d6;
   }
    .form__text-input:focus-within {
-    border-color: var(--pink);
+    border-color:rgb(73, 197, 197);
   }
   .form__text-area {
     height: 100px;
