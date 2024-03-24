@@ -19,7 +19,7 @@ class Product extends Model
         $products = Product::inRandomOrder()->limit(4)->get();
         return $products;
     }
-    public function getFlaseSale()
+    public function getFlashSale()
     {
         $products = DB::table('products')
             ->where('discount', '>', 10)

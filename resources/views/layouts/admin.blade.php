@@ -14,9 +14,7 @@
 <body>
     <!-- Dashboard -->
     <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
-        @section('header-sidebar')
-            @include('admin.blocks.sidebar')
-        @show
+        @include('admin.blocks.sidebar')
         <!-- Main content -->
         <div class="h-screen flex-grow-1 overflow-y-lg-auto">
             <!-- Header -->
