@@ -27,7 +27,7 @@ id="navbarVertical">
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('product')}}">
+                <a class="nav-link" href="{{route('admin-product')}}">
                     <i class="fa fa-list-ul" aria-hidden="true"></i> Management Product
                 </a>
             </li>
@@ -56,9 +56,12 @@ id="navbarVertical">
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="bi bi-box-arrow-left"></i> Logout
-                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="dropdown-item nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    this.closest('form').submit();"> <i class="bi bi-box-arrow-left"></i>Logout</a>
+                </form>
+                
             </li>
         </ul>
     </div>
