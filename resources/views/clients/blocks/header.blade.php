@@ -11,7 +11,7 @@
                         <a href="/" class="navbar__link">Home</a>
                     </li>
                     <li class="navbar__item">
-                        <a href="Products" class="navbar__link">Products</a>
+                        <a href="{{route('product')}}" class="navbar__link">Products</a>
                     </li>
                     <li class="navbar__item">
                         <a href="{{route('client.contact')}}"  class="navbar__link">Contact</a>

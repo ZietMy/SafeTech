@@ -7,7 +7,9 @@ use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\User\HomePageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;  
-use App\Http\Controllers\CategoriesController; 
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,7 +39,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
 Route::get('/admin/product', function(){
     return view('admin.product');
-})->name('product')->middleware(['auth', 'admin']);
+})->name('admin-product')->middleware(['auth', 'admin']);
 Route::get('/admin/order', function () {
     return view('admin.order');
 })->name('order');
@@ -47,10 +49,8 @@ Route::get('/admin/categories/create', [CategoriesController::class, 'getCategor
 Route::post('/admin/categories/create', [CategoriesController::class, 'postCategories'])->name('post-add');
 Route::get('/admin/categories/edit/{id}', [CategoriesController::class, 'editCategories'])->name('categories.edit');
 Route::post('/admin/categories/edit', [CategoriesController::class, 'postEditCategories'])->name('post-edit');
-// user login logout
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+Route::get('/product',[ProductController::class,'index'])->name('product');
 
 
 
