@@ -23,6 +23,13 @@ body {
 a {
     text-decoration: none !important;
 }
+input{
+    padding: 0;
+  font-family: inherit;
+  color: inherit;
+  outline: none;
+  border: none;
+}
 ul {
     list-style: none;
 }
@@ -128,14 +135,17 @@ button {
     color: var(--pink)
 }
 .search-bar{
+    border:1px solid #d2d1d6;
+    border-radius: 1.1rem;
     position: relative;
     display: inline-block;
 
 }
 .search-bar__input{
-    /* width:100%; */
+    background: transparent;
     padding: 5px 1.1rem;
-    border-radius: 1.1rem;
+    /* border: #000000; */
+    
 }
 .search-bar__input:focus{
     /* width:100%; */

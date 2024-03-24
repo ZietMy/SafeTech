@@ -79,9 +79,9 @@
                     </div>
                     @else
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="header-action__link">Sign in</a>
+                            <a href="{{ route('register') }}" class="header-action__link">Sign up</a>
                         @endif
-                        <a href="{{ route('login') }}" class="btn-btn header-action__btn">Sign up</a>
+                        <a href="{{ route('login') }}" class="btn-btn header-action__btn">Sign in</a>
                     @endauth
                 @endif  
                 
