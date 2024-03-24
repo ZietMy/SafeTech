@@ -22,13 +22,17 @@ Route::get('/',  [HomeController::class, 'index'])->name('home');
 Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('clients.detail');
 Route::get('/contact',[ContactController::class,'index'])->name('client.contact');
 
-Route::get('/admin', [AdminController::class,'index'])->name('admin');
-Route::get('/admin/user',[AdminController::class,'index'])->name('user')->middleware(['auth', 'admin']);
-Route::get('/admin/user/create',[AdminController::class,'add'])->name('add');
-Route::post('/admin/user/create',[AdminController::class,'postAdd'])->name('postAdd');
-Route::get('/admin/user/edit/{id}', [AdminController::class, 'getEdit'])->name('edit');
-Route::post('/admin/user/update', [AdminController::class, 'postEdit'])->name('postEdit');
-Route::get('/admin/user/delete{id}',[AdminController::class, 'delete'])->name('delete');
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/user', [AdminController::class, 'index'])->name('user');
+    Route::get('/user/create', [AdminController::class, 'add'])->name('add');
+    Route::post('/user/create', [AdminController::class, 'postAdd'])->name('postAdd');
+    Route::get('/user/edit/{id}', [AdminController::class, 'getEdit'])->name('edit');
+    Route::post('/user/update', [AdminController::class, 'postEdit'])->name('postEdit');
+    Route::get('/user/delete/{id}', [AdminController::class, 'delete'])->name('delete');
+});
+
+
 
 
 Route::get('/admin/product', function(){

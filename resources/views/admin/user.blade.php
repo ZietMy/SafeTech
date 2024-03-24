@@ -26,6 +26,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Role ID</th>
                                         <th scope="col">Username</th>
+                                        <th scope="col">ID_status</th>
                                         <th scope="col">Address</th>
                                         <th scope="col">Gender</th>
                                         <th scope="col">Phone</th>
@@ -56,8 +57,12 @@
                                                     </a>
                                                 </td>
                                                 <td>
+                                                    {{ $item->status_id }}
+                                                </td>
+                                                <td>
                                                     {{ $item->address }}
                                                 </td>
+                                                
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
                                                         {{ $item->gender }}
