@@ -21,10 +21,16 @@ use App\Http\Controllers\CategoriesController;
 Route::get('/',  [HomeController::class, 'index'])->name('home');
 Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('clients.detail');
 Route::get('/contact',[ContactController::class,'index'])->name('client.contact');
-Route::get('/admin', function(){
-    return view('admin.blocks.card');
-})->name('admin');
+
+Route::get('/admin', [AdminController::class,'index'])->name('admin');
 Route::get('/admin/user',[AdminController::class,'index'])->name('user')->middleware(['auth', 'admin']);
+Route::get('/admin/user/create',[AdminController::class,'add'])->name('add');
+Route::post('/admin/user/create',[AdminController::class,'postAdd'])->name('postAdd');
+Route::get('/admin/user/edit/{id}', [AdminController::class, 'getEdit'])->name('edit');
+Route::post('/admin/user/update', [AdminController::class, 'postEdit'])->name('postEdit');
+Route::get('/admin/user/delete{id}',[AdminController::class, 'delete'])->name('delete');
+
+
 Route::get('/admin/product', function(){
     return view('admin.product');
 })->name('product')->middleware(['auth', 'admin']);
