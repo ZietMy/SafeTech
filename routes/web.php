@@ -6,7 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\User\HomePageController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminController;  
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishListController;
@@ -21,9 +21,10 @@ use App\Http\Controllers\WishListController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/',  [HomeController::class, 'index'])->name('home');
 Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('clients.detail');
-Route::get('/contact',[ContactController::class,'index'])->name('client.contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('client.contact');
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
@@ -38,7 +39,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
 
 
-Route::get('/admin/product', function(){
+Route::get('/admin/product', function () {
     return view('admin.product');
 })->name('admin-product')->middleware(['auth', 'admin']);
 Route::get('/admin/order', function () {
@@ -51,15 +52,18 @@ Route::post('/admin/categories/create', [CategoriesController::class, 'postCateg
 Route::get('/admin/categories/edit/{id}', [CategoriesController::class, 'editCategories'])->name('categories.edit');
 Route::post('/admin/categories/edit', [CategoriesController::class, 'postEditCategories'])->name('post-edit');
 
-Route::get('/product',[ProductController::class,'index'])->name('product');
-Route::get('/wishlist',[WishListController::class,'wishList'])->name('wishlist');
-Route::post('/wishlist/add',[WishListController::class,'addWishList'])->name('add-wish-list');
-Route::get('/wishlist/delete/{id}',[WishListController::class,'deleteWishList'])->name('delete-wish-list');
+Route::get('/product', [ProductController::class, 'index'])->name('product');
+Route::get('/wishlist', [WishListController::class, 'wishList'])->name('wishlist');
+Route::post('/wishlist/add', [WishListController::class, 'addWishList'])->name('add-wish-list');
+Route::get('/wishlist/delete/{id}', [WishListController::class, 'deleteWishList'])->name('delete-wish-list');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-require __DIR__.'/auth.php';
+Route::get('/admin/contact',[ContactController::class,'adminContacs'])->name('contact-admin');
+Route::get('/admin/contact/edit/{id}',[ContactController::class,'getContactId'])->name('update-contact');
+Route::post('/admin/contact/update',[ContactController::class,'postUpdate'])->name('update');
+Route::post('/contact/post', [ContactController::class, 'getForm'])->name('post-message');
+require __DIR__ . '/auth.php';
