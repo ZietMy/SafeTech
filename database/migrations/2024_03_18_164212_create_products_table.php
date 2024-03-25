@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('price', 10, 3);
             $table->integer('quantity')->default(0);
-            $table->string('details')->nullable();
+            $table->text('details')->nullable();
             $table->string('image')->nullable();
             $table->string('image1')->nullable();
             $table->string('image2')->nullable();
-            $table->foreignId('category_id')->constrained('categories');
-            $table->float('discount')->default(0);
-            $table->float('discounted_price');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->decimal('discount',3,1)->default(0);
+            $table->decimal('discounted_price',10, 3);
         });
         DB::unprepared('
         CREATE TRIGGER update_discounted_price_after_update
@@ -34,7 +34,7 @@ return new class extends Migration
             IF NEW.discount = 0 THEN
                 SET NEW.discounted_price = NEW.price;
             ELSE
-                SET NEW.discounted_price = (NEW.price * NEW.discount) / 100;
+             SET NEW.discounted_price = NEW.price - ((NEW.price * NEW.discount) / 100);
             END IF;
         END;');
         DB::unprepared('
@@ -45,7 +45,7 @@ return new class extends Migration
             IF NEW.discount = 0 THEN
                 SET NEW.discounted_price = NEW.price;
             ELSE
-                SET NEW.discounted_price = (NEW.price * NEW.discount) / 100;
+            SET NEW.discounted_price = NEW.price - ((NEW.price * NEW.discount) / 100);
             END IF;
         END;');
     }

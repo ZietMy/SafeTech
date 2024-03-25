@@ -9,7 +9,7 @@ class Categories extends Model
 {
     use HasFactory;
     public function getAllCategories(){
-        $categories = DB::table('SELECT * FROM categories');
+        $categories = DB::table('categories')->get();
         return $categories;
     }
     public function postCategories($data){
