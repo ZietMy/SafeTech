@@ -14,7 +14,7 @@
     <div class="alert alert-danger">Vui lòng nhập lại</div>
 @endif
 
-<form class="form-horizontal" method="POST" action="{{route('postEdit')}}" >
+<form class="form-horizontal" method="POST" action="{{route('postEdit_user')}}" >
     @csrf
     <div class="mb-3 row">
         <label for="name" class="col-sm-3 col-form-label">User Name</label>
