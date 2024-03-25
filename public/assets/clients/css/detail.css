@@ -9,7 +9,17 @@
 .pulse {
     animation: pulse 0.5s;
 }
-
+.mt {
+    margin-top: 20px;
+}
+.mt1 {
+    margin-top: 75px;
+}
+.image-with-border {
+    border: 2px solid #fad2d2; 
+    padding: 5px; 
+    border-radius: 5px;
+}
 .cart {
     outline: none;
     border: 0;
@@ -77,7 +87,7 @@ a:hover {
 }
 .qty-container .input-qty {
     text-align: center;
-    padding: 6px 10px;
+    padding: 4px 9px;
     border: 1px solid #d4d4d4;
     max-width: 80px;
 }
@@ -202,8 +212,8 @@ a:hover {
 }
 
 .add-to-wishlist {
-    width: 30px; /* Điều chỉnh kích thước của hình trái tim */
-    height: auto; /* Điều chỉnh kích thước của hình trái tim */
+    width: 30px;
+    height: auto; 
     fill: #fff; /* Điều chỉnh màu sắc của hình trái tim */
 }
 
