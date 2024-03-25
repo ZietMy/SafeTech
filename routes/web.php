@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;  
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WishListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,8 +52,9 @@ Route::get('/admin/categories/edit/{id}', [CategoriesController::class, 'editCat
 Route::post('/admin/categories/edit', [CategoriesController::class, 'postEditCategories'])->name('post-edit');
 
 Route::get('/product',[ProductController::class,'index'])->name('product');
-
-
+Route::get('/wishlist',[WishListController::class,'wishList'])->name('wishlist');
+Route::post('/wishlist/add',[WishListController::class,'addWishList'])->name('add-wish-list');
+Route::get('/wishlist/delete/{id}',[WishListController::class,'deleteWishList'])->name('delete-wish-list');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
