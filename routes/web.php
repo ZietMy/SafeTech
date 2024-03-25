@@ -27,11 +27,11 @@ Route::get('/contact',[ContactController::class,'index'])->name('client.contact'
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/user', [AdminController::class, 'index'])->name('user');
-    Route::get('/user/create', [AdminController::class, 'add'])->name('add');
-    Route::post('/user/create', [AdminController::class, 'postAdd'])->name('postAdd');
-    Route::get('/user/edit/{id}', [AdminController::class, 'getEdit'])->name('edit');
-    Route::post('/user/update', [AdminController::class, 'postEdit'])->name('postEdit');
-    Route::get('/user/delete/{id}', [AdminController::class, 'delete'])->name('delete');
+    Route::get('/user/create', [AdminController::class, 'add'])->name('add_user');
+    Route::post('/user/create', [AdminController::class, 'postAdd'])->name('postAdd_user');
+    Route::get('/user/edit/{id}', [AdminController::class, 'getEdit'])->name('edit_user');
+    Route::post('/user/update', [AdminController::class, 'postEdit'])->name('postEdit_user');
+    Route::get('/user/delete/{id}', [AdminController::class, 'delete'])->name('delete_user');
 });
 
 

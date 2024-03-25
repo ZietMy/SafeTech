@@ -9,7 +9,7 @@
                             <h2 class="mt-0">User</h2>
                             <div class=" text-sm-end">
                                 <div class="mx-n1">
-                                    <a href="{{route('add')}}" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                                    <a href="{{route('add_user')}}" class="btn d-inline-flex btn-sm btn-primary mx-1">
                                         <span class=" pe-2">
                                             <i class="bi bi-plus"></i>
                                         </span>
@@ -78,8 +78,8 @@
                                         1
                                     </td> --}}
                                                 <td class="text-end">
-                                                    <a href="{{route('edit',['id'=>$item->id])}}" class="btn btn-sm btn-neutral">Edit</a>
-                                                    <a onclick="return confirm('Bạn có chắc muốn xóa')" href="{{ route('delete', ['id' => $item->id]) }}">
+                                                    <a href="{{route('edit_user',['id'=>$item->id])}}" class="btn btn-sm btn-neutral">Edit</a>
+                                                    <a onclick="return confirm('Bạn có chắc muốn xóa')" href="{{ route('delete_user', ['id' => $item->id]) }}">
                                                         <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                                             <i class="bi bi-trash"></i>
                                                         </button>
