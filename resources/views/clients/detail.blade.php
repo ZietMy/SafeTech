@@ -25,7 +25,13 @@
                 <p>{{$productId->details}}</p>
                 <span style="display: flex"><p style="font-weight:bold;color:#db4444">{{$productId->price}}VNĐ</p></span>
                 <div class="d-flex">
-                    <i class="far fa-heart js-heart heart" style="font-size: xx-large;"></i>
+                    <form action="{{ route('add-wish-list') }}" method="POST" id="add-wishlist-form">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $productId->id }}">
+                        <button type="submit" style="border: none; background-color: transparent;">
+                            <i class="far fa-heart js-heart heart" style="font-size: xx-large;" name="addList"></i>
+                        </button>
+                    </form>                    
                     <div class="qty-container d-flex justify-content-end" style="margin-left: 40%">
                         <button class="qty-btn-minus btn-light" type="button"><i class="fa fa-minus"></i></button>
                         <input type="text" name="qty" value="0" class="input-qty"/>
