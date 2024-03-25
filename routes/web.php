@@ -9,6 +9,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoriesController; 
 use App\Http\Controllers\Admin\AdminProductsController; 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WishListController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,11 +32,11 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
     ]);
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/user', [AdminController::class, 'index'])->name('user');
-    Route::get('/user/create', [AdminController::class, 'add'])->name('add');
-    Route::post('/user/create', [AdminController::class, 'postAdd'])->name('postAdd');
-    Route::get('/user/edit/{id}', [AdminController::class, 'getEdit'])->name('edit');
-    Route::post('/user/update', [AdminController::class, 'postEdit'])->name('postEdit');
-    Route::get('/user/delete/{id}', [AdminController::class, 'delete'])->name('delete');
+    Route::get('/user/create', [AdminController::class, 'add'])->name('add_user');
+    Route::post('/user/create', [AdminController::class, 'postAdd'])->name('postAdd_user');
+    Route::get('/user/edit/{id}', [AdminController::class, 'getEdit'])->name('edit_user');
+    Route::post('/user/update', [AdminController::class, 'postEdit'])->name('postEdit_user');
+    Route::get('/user/delete/{id}', [AdminController::class, 'delete'])->name('delete_user');
 });
 Route::get('/admin/order', function () {
     return view('admin.order');
@@ -47,8 +49,9 @@ Route::get('/admin/categories/edit/{id}', [CategoriesController::class, 'editCat
 Route::post('/admin/categories/edit', [CategoriesController::class, 'postEditCategories'])->name('post-edit');
 
 Route::get('/product',[ProductController::class,'index'])->name('product');
-
-
+Route::get('/wishlist',[WishListController::class,'wishList'])->name('wishlist');
+Route::post('/wishlist/add',[WishListController::class,'addWishList'])->name('add-wish-list');
+Route::get('/wishlist/delete/{id}',[WishListController::class,'deleteWishList'])->name('delete-wish-list');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

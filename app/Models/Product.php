@@ -61,7 +61,6 @@ class Product extends Model
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->select('products.*', 'categories.name as category_name')
             ->orderBy('products.category_id')
-            // ->groupBy('products.category_id')
             ->get();
 
         return $products;
