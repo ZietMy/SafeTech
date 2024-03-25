@@ -88,7 +88,7 @@ class AdminController extends Controller
         } else {
             return redirect()->route('admin')->with('msg', 'Liên kết');
         }
-        return view('admin.users.edit', compact('userDetail'));
+        return view('admin.users.edit', );
     }
     public function postEdit(Request $request)
     {
