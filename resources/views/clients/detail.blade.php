@@ -15,11 +15,12 @@
     <div class="row">
         @foreach ($detailId as $productId)
             <div class="col-2 mt-4">
-                <img src="{{ $productId->image }}" alt="ảnh" style="width:110%;padding-bottom:20px" class="mg-fluid image-with-border">
+                <img src="{{ $productId->image }}" alt="ảnh" style="width:110%;padding-bottom:20px"
+                    class="mg-fluid image-with-border">
                 <img src="{{ $productId->image }}" alt="ảnh" style="width:110%" class="mg-fluid image-with-border">
             </div>
             <div class="col-4 mt-4">
-                <img src="{{ $productId->image }}" alt="ảnh" style="width:110%"  class="mg-fluid image-with-border">
+                <img src="{{ $productId->image }}" alt="ảnh" style="width:110%" class="mg-fluid image-with-border">
             </div>
             <div class="col-1"></div>
             <div class="col-4">
@@ -29,12 +30,13 @@
                 </span>
                 <p>{{ $productId->details }}</p>
                 <div class="d-flex mt1">
-                    <i class="far fa-heart js-heart heart" style="font-size: xx-large;"></i>
-                    <div class="qty-container d-flex justify-content-end" style="margin-left: 40%">
-                        <button class="qty-btn-minus btn-light" type="button"><i class="fa fa-minus"></i></button>
-                        <input type="text" name="qty" value="0" class="input-qty" />
-                        <button class="qty-btn-plus btn-light" type="button"><i class="fa fa-plus"></i></button>
-                    </div>
+                    <form action="{{ route('add-wish-list') }}" method="POST" id="add-wishlist-form">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $productId->id }}">
+                        <button type="submit" style="border: none; background-color: transparent;">
+                            <i class="far fa-heart js-heart heart" style="font-size: xx-large;" name="addList"></i>
+                        </button>
+                    </form>  
                 </div>
                 <div class="d-flex mt">
                     <div class="cont">
