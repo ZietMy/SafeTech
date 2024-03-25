@@ -43,34 +43,53 @@
         <div class="col-8">
             <div class="frame-parent">
                     <div class="container form">
-                        <form action="" method="POST">
+                        <form action="{{route('post-message')}}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-4">
                                     <div class="md">
                                         <span><label for="">Your name</label></span>
-                                        <input type="text" name="username" class="form-control">
+                                        <input type="text" name="name" class="form-control">
+                                        @error('name')  
+                                            <span style="color: red;">{{$message}}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="md">
                                         <span><label for="">Your email</label></span>
                                         <input type="text" name="email" class="form-control">
+                                        @error('email')  
+                                            <span style="color: red;">{{$message}}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="md">
                                         <span><label for="">Your phone</label></span>
                                         <input type="text" name="phone" class="form-control">
+                                        @error('phone')  
+                                            <span style="color: red;">{{$message}}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="md message">
                                 <span><label for="">Message</label></span>
                                 <input type="text" name="message" class="form-control">
+                                @error('message')  
+                                    <span style="color: red;">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="button">
                                <button type="submit"><div class="view-all-products">Send Massage</div></button>
                             </div>
+                            <div class="mt-3"></div>
+                            @if(session('msg'))
+                            <div class="alert alert-success">
+                                Thông tin của bạn đã được gửi đi
+                            </div>
+                        @endif
                         </form>
                     </div>
             </div>

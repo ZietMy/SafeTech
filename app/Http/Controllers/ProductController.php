@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function index()
     {
         $title = "Product";
-        $categories = Categories::all();
+        $categories = Categories::all();    
         $products =  $this->products->getAllProductByCategories();
         return view('clients.product', compact('title', 'categories', 'products'));
     }

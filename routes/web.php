@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
-use App\Http\Controllers\User\HomePageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;  
-use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CategoriesController; 
+use App\Http\Controllers\Admin\AdminProductsController; 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishListController;
 
@@ -21,11 +21,16 @@ use App\Http\Controllers\WishListController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/',  [HomeController::class, 'index'])->name('home');
 Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('clients.detail');
-Route::get('/contact',[ContactController::class,'index'])->name('client.contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('client.contact');
 
-Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
+    Route::resources([
+        'products' => AdminProductsController::class,
+       
+    ]);
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/user', [AdminController::class, 'index'])->name('user');
     Route::get('/user/create', [AdminController::class, 'add'])->name('add_user');
@@ -34,13 +39,6 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/user/update', [AdminController::class, 'postEdit'])->name('postEdit_user');
     Route::get('/user/delete/{id}', [AdminController::class, 'delete'])->name('delete_user');
 });
-
-
-
-
-Route::get('/admin/product', function(){
-    return view('admin.product');
-})->name('admin-product')->middleware(['auth', 'admin']);
 Route::get('/admin/order', function () {
     return view('admin.order');
 })->name('order');
@@ -51,15 +49,18 @@ Route::post('/admin/categories/create', [CategoriesController::class, 'postCateg
 Route::get('/admin/categories/edit/{id}', [CategoriesController::class, 'editCategories'])->name('categories.edit');
 Route::post('/admin/categories/edit', [CategoriesController::class, 'postEditCategories'])->name('post-edit');
 
-Route::get('/product',[ProductController::class,'index'])->name('product');
-Route::get('/wishlist',[WishListController::class,'wishList'])->name('wishlist');
-Route::post('/wishlist/add',[WishListController::class,'addWishList'])->name('add-wish-list');
-Route::get('/wishlist/delete/{id}',[WishListController::class,'deleteWishList'])->name('delete-wish-list');
+Route::get('/product', [ProductController::class, 'index'])->name('product');
+Route::get('/wishlist', [WishListController::class, 'wishList'])->name('wishlist');
+Route::post('/wishlist/add', [WishListController::class, 'addWishList'])->name('add-wish-list');
+Route::get('/wishlist/delete/{id}', [WishListController::class, 'deleteWishList'])->name('delete-wish-list');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-require __DIR__.'/auth.php';
+Route::get('/admin/contact',[ContactController::class,'adminContacs'])->name('contact-admin');
+Route::get('/admin/contact/edit/{id}',[ContactController::class,'getContactId'])->name('update-contact');
+Route::post('/admin/contact/update',[ContactController::class,'postUpdate'])->name('update');
+Route::post('/contact/post', [ContactController::class, 'getForm'])->name('post-message');
+require __DIR__ . '/auth.php';

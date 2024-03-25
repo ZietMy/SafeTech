@@ -27,7 +27,7 @@ id="navbarVertical">
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('admin-product')}}">
+                <a class="nav-link" href="{{route('products.index')}}">
                     <i class="fa fa-list-ul" aria-hidden="true"></i> Management Product
                 </a>
             </li>
@@ -39,6 +39,11 @@ id="navbarVertical">
             <li class="nav-item">
                 <a class="nav-link" href="{{route('order')}}">
                     <i class="bi bi-people"></i> Management Orders
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('contact-admin')}}">
+                    <i class="bi bi-people"></i> Management Contacts
                 </a>
             </li>
         </ul>
