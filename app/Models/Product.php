@@ -55,4 +55,41 @@ class Product extends Model
     {
         return $this->belongsTo(Categories::class, 'category_id');
     }
+    public function getAllProductByCategories()
+    {
+        $products = DB::table('products')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->select('products.*', 'categories.name as category_name')
+            ->orderBy('products.category_id')
+            // ->groupBy('products.category_id')
+            ->get();
+
+        return $products;
+    }
+    // create
+    public function create($data){
+        DB::table('products')->insert([
+            'name' => $data['name'],
+            'price' => $data['price'],
+            'quantity' => $data['quantity'],
+            'details' => $data['details'],
+            'category_id' => $data['category']
+        ]);
+    }
+    public function updateProduct($data,$id){
+        DB::table('products')
+        ->where('id', $id)
+        ->update([
+            'name' => $data['name'],
+            'price' => $data['price'],
+            'discount'=>$data['discount'],
+            'quantity' => $data['quantity'],
+            'details' => $data['details'],
+            'category_id' => $data['category']
+        ]);
+    }
+    public function deleteProduct($id)
+    {
+        DB::table('products')->where('id', $id)->delete();
+    }
 }

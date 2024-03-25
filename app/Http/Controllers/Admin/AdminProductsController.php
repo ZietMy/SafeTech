@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Categories;
 class AdminProductsController extends Controller
 {
     private $products;
+    private $categories;
     public function __construct()
     {
         $this->products = new Product();
+        $this->categories= new Categories();
     }
     /**
      * Display a listing of the resource.
@@ -20,6 +23,7 @@ class AdminProductsController extends Controller
     public function index()
     {
         $products = Product::with('category')->get();
+        
         return view('admin.products.lists', compact('products'));
     }
 
@@ -30,8 +34,8 @@ class AdminProductsController extends Controller
      */
     public function create()
     {
-        // $title ='Create user';
-        return view('admin.products.create');
+        $categories= $this->categories->getAllCategories();
+        return view('admin.products.create',compact('categories'));
     }
 
     /**
@@ -43,23 +47,32 @@ class AdminProductsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fullname' => 'required|min:5',
-            'email' => 'required|email|unique:users'
-        ],[
-            'fullname.required' => "Họ và tên bắt buộc nhập",
-            'fullname.min' => "fullname ít nhất 5 kí tự",
-            'email.required' => "bắt buộc",
-            'email.email' =>'không đúng định dạng',
-            'email.unique'=>'email đã tồn tại'
+            'name' => 'required|min:5',
+            'price'=>'required|numeric',
+            'quantity'=>'required|numeric',
+            'details' => 'required|min:20',
+            'category'=>'required'
+        ],[ 
+            'name.required' => "Name bắt buộc nhập",
+            'name.min' => "Name ít nhất 5 kí tự",
+            'price.required' => "Price bắt buộc",
+            'price.numeric' => 'bắt buộc là kiểu số',
+            'quantity.required' => "quantity bắt buộc",
+            'quantity.numeric' => 'bắt buộc là kiểu số',
+            'details.required'=>'bắt buộc',
+            'details.min' => "details ít nhất 20 kí tự",
+            'category.required'=>' category bắt buộc'
         ]);
         // dd($request->all())
         $dataInsert = [
-            $request->fullname,
-            $request->email,
-            date('Y-m-d H:i:s')
+            'name' => $request->name,
+            'price'=>$request->price,
+            'quantity'=>$request->quantity,
+            'details' => $request->details,
+            'category'=>$request->category
         ];
-        $this->products->add( $dataInsert);
-        return redirect() ->route('users.index')->with('msg','Thêm người dùng thành công');
+        $this->products->create( $dataInsert);
+        return redirect() ->route('products.index')->with('msg','Create product success');
     }
 
     /**
@@ -81,7 +94,9 @@ class AdminProductsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.products.edit');
+        $product=$this->products->getDetailId($id)->first();
+        $categories= $this->categories->getAllCategories();
+        return view('admin.products.edit',compact('product','id','categories'));
     }
 
     /**
@@ -93,7 +108,39 @@ class AdminProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:5',
+            'price'=>'required|numeric',
+            'discount'=>'required|numeric|min:0|max:99',
+            'quantity'=>'required|numeric',
+            'details' => 'required|min:20',
+            'category'=>'required'
+        ],[ 
+            'name.required' => "Name bắt buộc nhập",
+            'name.min' => "Name ít nhất 5 kí tự",
+            'price.required' => "Price bắt buộc",
+            'price.numeric' => 'bắt buộc là kiểu số',
+            'discount.required' => "discount bắt buộc",
+            'discount.numeric' => 'bắt buộc là kiểu số',
+            'discount.min'=>'số nhỏ nhất phải lớn hơn hoặc bằng 0',
+            'discount.max'=>'nhỏ hơn 99 và lớn hơn hoặc bằng 0',
+            'quantity.required' => "quantity bắt buộc",
+            'quantity.numeric' => 'bắt buộc là kiểu số',
+            'details.required'=>'bắt buộc',
+            'details.min' => "details ít nhất 20 kí tự",
+            'category.required'=>' category bắt buộc'
+        ]);
+        // dd($request->all())
+        $dataInsert = [
+            'name' => $request->name,
+            'price'=>$request->price,
+            'discount'=>$request->discount,
+            'quantity'=>$request->quantity,
+            'details' => $request->details,
+            'category'=>$request->category
+        ];
+        $this->products->updateProduct( $dataInsert,$id);
+        return redirect() ->route('products.index')->with('msg','Update product success');
     }
 
     /**
@@ -104,6 +151,7 @@ class AdminProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->products->deleteProduct($id);
+        return redirect()->route('products.index');
     }
 }

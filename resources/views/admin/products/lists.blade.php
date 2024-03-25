@@ -20,6 +20,8 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">Discounted_Price</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Details</th>
                     <th scope="col">Category</th>
@@ -36,7 +38,13 @@
                         {{$product->name}}
                     </td>
                     <td>
-                        {{$product->price}} VND
+                        ${{$product->price}}
+                    </td>
+                    <td>
+                        {{$product->discount}}%
+                    </td>
+                    <td>
+                        ${{$product->discounted_price}}
                     </td>
                     <td>
                         {{$product->quantity}}
@@ -47,14 +55,20 @@
                     <td>
                         {{ $product->category->name }}
                     </td>
-                    <td class="text-end">
+                    <td class="text-end d-flex">
                         <a href="{{route('products.edit', ['product' => $product->id])}}" class="btn btn-sm btn-neutral">Edit</a>
-                        <a
+                        <form onclick="return confirm('bạn có chắc chắn muốn xóa')" action="{{ route('products.destroy',['product'=>$product->id]) }}" method="POST" >
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-square btn-neutral text-danger-hover"><i class="bi bi-trash"></i> </button>
+                        </form>
+                        {{-- <a
                         onclick="return confirm('bạn có chắc chắn muốn xóa')" href="{{route('products.destroy',['product'=>$product->id])}}"   
-                        method="POST"        
+                        method="DETELE"
+                          
                             class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </a>
+                            <i class="bi bi-trash"></i>   
+                        </a> --}}
                     </td>
                 </tr>
                     

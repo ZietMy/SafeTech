@@ -22,7 +22,7 @@ class AdminController extends Controller
     }
     public function add()
     {
-        return view('admin.forms.add');
+        return view('admin.users.add');
     }
     public function postAdd(Request $request)
     {
@@ -88,7 +88,7 @@ class AdminController extends Controller
         } else {
             return redirect()->route('admin')->with('msg', 'Liên kết');
         }
-        return view('admin.forms.edit', compact('userDetail'));
+        return view('admin.users.edit', );
     }
     public function postEdit(Request $request)
     {
@@ -98,7 +98,7 @@ class AdminController extends Controller
         }
         $request->validate([
             'username' => 'required|string|max:255',
-            'role' => 'required|in:1,2', // Kiểm tra vai trò chỉ được là 1 hoặc 2
+            'role' => 'required|in:1,2', 
             'password' => 'required|string|min:8',
             'address' => 'required|string|max:255',
             'gender' => 'required|in:male,female,other',
@@ -126,10 +126,8 @@ class AdminController extends Controller
             'email.max' => 'Email không được vượt quá 255 ký tự.',
         ]);
     
-        // Lấy tên của vai trò dựa trên giá trị được chọn từ biểu mẫu
         // $roleName = $request->role == 1 ? 'Admin' : 'User';
-    
-        // Chèn dữ liệu vào cơ sở dữ liệu
+
         $dataInsert = [
             'username' => $request->username,
             'role_id' => $request->role,
@@ -144,7 +142,6 @@ class AdminController extends Controller
     
         // Cập nhật người dùng trong cơ sở dữ liệu
         $this->users->updateUser($dataInsert, $id);
-    
         return redirect()->route('user')->with('msg', 'Cập nhật người dùng thành công');
     }
     public function delete($id = 0)
@@ -166,7 +163,6 @@ class AdminController extends Controller
         } else {
             $msg = 'ID không hợp lệ';
         }
-
         return redirect()->route('admin')->with('msg', $msg);
     }
 }
