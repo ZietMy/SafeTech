@@ -41,6 +41,11 @@ id="navbarVertical">
                     <i class="bi bi-people"></i> Management Orders
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('contact-admin')}}">
+                    <i class="bi bi-people"></i> Management Contacts
+                </a>
+            </li>
         </ul>
         <!-- Divider -->
         <hr class="navbar-divider my-5 opacity-20">
