@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
-use App\Http\Controllers\User\HomePageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;  
 use App\Http\Controllers\CategoriesController; 
+use App\Http\Controllers\Admin\AdminProductsController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,10 +30,19 @@ Route::get('/admin/user/edit/{id}', [AdminController::class, 'getEdit'])->name('
 Route::post('/admin/user/update', [AdminController::class, 'postEdit'])->name('postEdit');
 Route::get('/admin/user/delete{id}',[AdminController::class, 'delete'])->name('delete');
 
+Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
+    Route::resources([
+        'products' => AdminProductsController::class,
+       
+    ]);
 
-Route::get('/admin/product', function(){
-    return view('admin.product');
-})->name('product')->middleware(['auth', 'admin']);
+    // Route::get('/admin/products', 'DashboardController@index')->name('admin.dashboard');
+    // Route::get('/users', 'UserController@index')->name('admin.users.index');
+    // Các route khác cho phía admin
+});
+// Route::get('/admin/product', function(){
+//     return view('admin.product');
+// })->name('product')->middleware(['auth', 'admin']);
 Route::get('/admin/order', function () {
     return view('admin.order');
 })->name('order');

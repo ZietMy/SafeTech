@@ -27,7 +27,7 @@ id="navbarVertical">
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('product')}}">
+                <a class="nav-link" href="{{route('products.index')}}">
                     <i class="fa fa-list-ul" aria-hidden="true"></i> Management Product
                 </a>
             </li>

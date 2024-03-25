@@ -49,4 +49,10 @@ class Product extends Model
 
         return $relatedProducts;
     }
+    protected $fillable = ['category_id', 'other_fields'];
+
+    public function category()
+    {
+        return $this->belongsTo(Categories::class, 'category_id');
+    }
 }
