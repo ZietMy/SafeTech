@@ -9,7 +9,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoriesController; 
 use App\Http\Controllers\Admin\AdminProductsController; 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\WishListController;
+use App\Models\Upload;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,4 +65,11 @@ Route::get('/admin/contact',[ContactController::class,'adminContacs'])->name('co
 Route::get('/admin/contact/edit/{id}',[ContactController::class,'getContactId'])->name('update-contact');
 Route::post('/admin/contact/update',[ContactController::class,'postUpdate'])->name('update');
 Route::post('/contact/post', [ContactController::class, 'getForm'])->name('post-message');
+
+Route::get('/admin/upload',[UploadController::class,'index'])->name('upload');
+Route::get('admin/upload/create',[UploadController::class,'getUpload'])->name('uploadImg');
+Route::post('/admin/upload/create',[UploadController::class,'postUpload'])->name('post-upload');
+Route::get('/admin/upload/edit/{id}',[UploadController::class,'getEditUpload'])-> name('upload-edit');
+Route::post('/admin/upload/edit',[UploadController::class,'postEditUpload'])->name('post-editUpload');
+Route::get('admin/upload/delete/{id}',[UploadController::class,'deleteImg'])->name('delete-upload');
 require __DIR__ . '/auth.php';
