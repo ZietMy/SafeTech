@@ -46,6 +46,11 @@ id="navbarVertical">
                     <i class="bi bi-people"></i> Management Contacts
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('upload')}}">
+                    <i class="fa fa-list-ul" aria-hidden="true"></i> Management Upload 
+                </a>
+            </li>
         </ul>
         <!-- Divider -->
         <hr class="navbar-divider my-5 opacity-20">

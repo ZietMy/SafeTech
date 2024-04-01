@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Upload;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,7 +21,9 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             UserSeeder::class,
             CategoriesSeeder::class,
-            ProductsSeeder::class
+            ProductsSeeder::class,
+            UploadSeeder::class,
+            ContactSeeder::class
         ]);
     }
 }
