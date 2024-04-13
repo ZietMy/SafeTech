@@ -67,4 +67,7 @@ class ContactController extends Controller
             ->update($data);
         return redirect()->route('contact-admin');
     }
+    public function test(){
+        return view('clients.test');
+    }
 }
