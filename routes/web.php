@@ -72,4 +72,5 @@ Route::post('/admin/upload/create',[UploadController::class,'postUpload'])->name
 Route::get('/admin/upload/edit/{id}',[UploadController::class,'getEditUpload'])-> name('upload-edit');
 Route::post('/admin/upload/edit',[UploadController::class,'postEditUpload'])->name('post-editUpload');
 Route::get('admin/upload/delete/{id}',[UploadController::class,'deleteImg'])->name('delete-upload');
+
 require __DIR__ . '/auth.php';
