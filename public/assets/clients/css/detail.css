@@ -13,21 +13,28 @@
     margin-top: 20px;
 }
 .mt1 {
-    margin-top: 75px;
+    margin-top: 25px;
 }
 .image-with-border {
-    border: 2px solid #fad2d2; 
     padding: 5px; 
     border-radius: 5px;
+}
+.container {
+    margin-left: 30px; 
+}
+.text {
+    color: #0a0606;
+    font-weight: bold;
+    font-size: 20px; 
 }
 .cart {
     outline: none;
     border: 0;
+    height:50px;
     background: #416aa6;
     padding: 15px;
     color: #fff;
     width: 100%;
-    position: relative;
     z-index: 2;
     cursor: pointer;
     transition: 0.5s width;
@@ -39,7 +46,6 @@
     border-radius: 4px;
     position: relative;
     background: #eee;
-    /* margin-left: 100%; */
 }
 .crtdiv1 {
     border: 1px solid #db4444;
@@ -47,16 +53,15 @@
     border-radius: 4px;
     position: relative;
     background: #db4444;
-    /* margin-left: 100%; */
 }
 .cart1 {
     outline: none;
     border: 0;
+    height: 50px;
     background: #db4444;
     padding: 15px;
     color: #fff;
     width: 100%;
-    position: relative;
     z-index: 2;
     cursor: pointer;
     transition: 0.5s width;
@@ -214,7 +219,7 @@ a:hover {
 .add-to-wishlist {
     width: 30px;
     height: auto; 
-    fill: #fff; /* Điều chỉnh màu sắc của hình trái tim */
+    fill: #fff;
 }
 
 .card {
@@ -223,10 +228,54 @@ a:hover {
 }
 .discount {
     position: absolute;
-    /* top: 10;
-  right: 10; */
     z-index: 1;
     padding: 10px;
     background-color: #db4444;
     color: #fff;
+}
+.card {
+    position: relative;
+    display: inline-block;
+    width: 150px; 
+}
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 90%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.image-with-border {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
