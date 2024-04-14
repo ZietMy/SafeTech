@@ -7,6 +7,7 @@
 @endsection --}}
 @section('content')
     <link rel="stylesheet" href="{{ asset('assets/clients/css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/clients/css/main.css') }}">
 @section('footer')
     @include('clients.blocks.footer')
 @endsection

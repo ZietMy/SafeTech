@@ -50,14 +50,6 @@ Route::post('admin/order/add',[AdminOrderController::class,'postAddOrder'])->nam
 Route::get('admin/edit/{id}',[AdminOrderController::class,'getEditOrder'])->name('EditOrder');
 Route::post('admin/edit/{id}',[AdminOrderController::class,'postEditOrder'])->name('postEditOrder');
 Route::get('/admin/delete/order/{id}', [AdminOrderController::class, 'deleteOrder'])->name('delete-Order');
-
-
-
-
-
-
-
-
 Route::get('/admin/categories', [CategoriesController::class, 'index'])->name('categories');
 
 Route::get('/admin/categories/create', [CategoriesController::class, 'getCategories'])->name('categories.create');
@@ -75,7 +67,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/admin/contact',[ContactController::class,'adminContacs'])->name('contact-admin');
+Route::get('/admin/contact',[ContactController::class,'adminContact'])->name('contact-admin');
 Route::get('/admin/contact/edit/{id}',[ContactController::class,'getContactId'])->name('update-contact');
 Route::post('/admin/contact/update',[ContactController::class,'postUpdate'])->name('update');
 Route::post('/contact/post', [ContactController::class, 'getForm'])->name('post-message');
@@ -86,5 +78,7 @@ Route::post('/admin/upload/create',[UploadController::class,'postUpload'])->name
 Route::get('/admin/upload/edit/{id}',[UploadController::class,'getEditUpload'])-> name('upload-edit');
 Route::post('/admin/upload/edit',[UploadController::class,'postEditUpload'])->name('post-editUpload');
 Route::get('admin/upload/delete/{id}',[UploadController::class,'deleteImg'])->name('delete-upload');
+
+
 
 require __DIR__ . '/auth.php';
