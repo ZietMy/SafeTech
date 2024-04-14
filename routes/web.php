@@ -12,6 +12,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\WishListController;
 use App\Models\Upload;
+use App\Http\Controllers\Admin\AdminOrderController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +43,21 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
     Route::post('/user/update', [AdminController::class, 'postEdit'])->name('postEdit_user');
     Route::get('/user/delete/{id}', [AdminController::class, 'delete'])->name('delete_user');
 });
-Route::get('/admin/order', function () {
-    return view('admin.order');
-})->name('order');
+
+Route::get('/amdin/order',[AdminOrderController::class,'index'])->name('order');
+Route::get('admin/order/add',[AdminOrderController::class,'addOrder'])->name('addOrder');
+Route::post('admin/order/add',[AdminOrderController::class,'postAddOrder'])->name('postAddOrder');
+Route::get('admin/edit/{id}',[AdminOrderController::class,'getEditOrder'])->name('EditOrder');
+Route::post('admin/edit/{id}',[AdminOrderController::class,'postEditOrder'])->name('postEditOrder');
+Route::get('/admin/delete/order/{id}', [AdminOrderController::class, 'deleteOrder'])->name('delete-Order');
+
+
+
+
+
+
+
+
 Route::get('/admin/categories', [CategoriesController::class, 'index'])->name('categories');
 
 Route::get('/admin/categories/create', [CategoriesController::class, 'getCategories'])->name('categories.create');
