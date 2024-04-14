@@ -14,11 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('order_statuses', function (Blueprint $table) {
-            $table->id('status_id');
+            $table->id(); 
             $table->string('status_name');
             $table->timestamps();
         });
-    
     }
 
     /**
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists();
+        Schema::dropIfExists('order_statuses');
     }
 };

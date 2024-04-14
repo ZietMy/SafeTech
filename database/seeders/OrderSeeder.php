@@ -1,12 +1,15 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Order;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
+use App\Models\Order;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\OrderStatus;
+use Illuminate\Support\Facades\DB;
+
+
 class OrderSeeder extends Seeder
 {
     /**
@@ -16,22 +19,23 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        $user_id = User::pluck('id')->random();
-        $product_id = Product::pluck('id')->random();
-        $status_id = OrderStatus::pluck('id')->random();
+        $user = User::inRandomOrder()->first();
+        $product = Product::inRandomOrder()->first();
+        $status = OrderStatus::inRandomOrder()->first();
 
-        Order::create([
-            'user_id' => $user_id,
-            'product_id' => $product_id,
-            'status_id' => $status_id,
-            'quantity' => 2 
-        ],
-        [
-            'user_id' => $user_id,
-            'product_id' => $product_id,
-            'status_id' => $status_id,
-            'quantity' => 1
-        ]
-    );
+        if ($user && $product && $status) {
+            for ($i = 0; $i < 4; $i++) {
+                Order::create([
+                    'user_id' => $user->id,
+                    'user_name' => $user->name,
+                    'product_id' => $product->id,
+                    'product_name' => $product->name,
+                    'status_id' => $status->id,
+                    'status_name' => $status->status_name,
+                    'quantity' => rand(1, 10), 
+                ]);
+            }
+        } else {
+        }
     }
 }

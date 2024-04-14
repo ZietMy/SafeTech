@@ -14,26 +14,16 @@
                         <div class="card-header">
                             <h2 class="mt-0">Order</h2>
                             <div class=" text-sm-end">
-                                <div class="mx-n1">
-                                    <a href="{{ route('addOrder') }}" class="btn d-inline-flex btn-sm btn-primary mx-1">
-                                        <span class=" pe-2">
-                                            <i class="bi bi-plus"></i>
-                                        </span>
-                                        <span>Create</span>
-                                    </a>
-                                </div>
                             </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-nowrap">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">User_id</th>
-                                        <th scope="col">Product_id</th>
-                                        <th scope="col">Status_id</th>
+                                        <th scope="col">User name</th>
+                                        <th scope="col">Product name</th>
+                                        <th scope="col">Status name</th>
                                         <th scope="col">Quantity</th>
-                                        {{-- <th scope="col">Created_at</th>
-                                        <th scope="col">Update_at</th> --}}
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -43,34 +33,22 @@
                                             <tr>
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->user_id }}
+                                                        {{ $item->user_name }}
                                                     </a>
                                                 </td>
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->product_id }}
+                                                        {{ $item->product_name }}
                                                     </a>
                                                 </td>
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->status_id }}
+                                                        {{ $item->status_name }}
                                                     </a>
                                                 </td>
                                                 <td>
                                                     {{ $item->quantity }}
                                                 </td>
-
-                                                {{-- <td>
-                                                    <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->created_at }}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    {{ $item->updated_at }}
-                                                </td> --}}
-                                                {{-- <td>
-                                        1
-                                    </td> --}}
                                                 <td class="text-end">
                                                     <a href="{{ route('EditOrder', ['id' => $item->id]) }}"
                                                         class="btn btn-sm btn-neutral">Edit</a>
