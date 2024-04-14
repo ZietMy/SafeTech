@@ -15,7 +15,10 @@
 </head>
 <body>
     @include('clients.blocks.header')
-    <main class="py-5">
+    <main class="0">
+        <div class="container-fluid">
+            @yield('container-fluid')
+        </div>
         <div class="container">
             <div class="row">
                 @yield('sidebar')

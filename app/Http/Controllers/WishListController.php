@@ -24,17 +24,23 @@ class WishListController extends Controller
     public function addWishList(Request $request)
     {
         $userId = auth()->id();
-        $productId = $request->input('product_id');
-        $existingWishlistItem = Wishlist::where('user_id', $userId)
-            ->where('product_id', $productId)
-            ->first();
-        if (!$existingWishlistItem && !empty($productId)) {
-            $wishlist = new Wishlist();
-            $wishlist->user_id = $userId;
-            $wishlist->product_id = $productId;
-            $wishlist->save();
+        if(!empty($userId)){
+            $productId = $request->input('product_id');
+            $existingWishlistItem = Wishlist::where('user_id', $userId)
+                ->where('product_id', $productId)
+                ->first();
+            if (!$existingWishlistItem && !empty($productId)) {
+                $wishlist = new Wishlist();
+                $wishlist->user_id = $userId;
+                $wishlist->product_id = $productId;
+                $wishlist->save();
+            }
+            return redirect()->route('wishlist');
         }
-        return redirect()->route('wishlist');
+        else {
+            return view('clients.errors.errorList');
+        }
+
     }
     public function deleteWishList($id = 0)
     {
