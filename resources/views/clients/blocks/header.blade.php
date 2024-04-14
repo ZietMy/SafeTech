@@ -55,10 +55,7 @@
                                     fill="#1A162E" stroke="#1A162E" stroke-width="1.5" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px">
-                            9
-                                <span class="visually-hidden">unread messages</span>
-                            </span>
+                            <x-count-cart/>
                         </span>
                     </a>
                     <div class="btn-group ms-2">
