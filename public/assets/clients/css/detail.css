@@ -13,21 +13,29 @@
     margin-top: 20px;
 }
 .mt1 {
-    margin-top: 75px;
+    margin-top: 25px;
 }
 .image-with-border {
-    border: 2px solid #fad2d2; 
     padding: 5px; 
     border-radius: 5px;
+}
+.container {
+    margin-left: 30px; 
+}
+.text {
+    color: #0a0606;
+    font-weight: bold;
+    font-size: 20px; 
 }
 .cart {
     outline: none;
     border: 0;
+    height:50px;
     background: #416aa6;
     padding: 15px;
     color: #fff;
     width: 100%;
-    position: relative;
+    /* position: relative; */
     z-index: 2;
     cursor: pointer;
     transition: 0.5s width;
@@ -52,11 +60,12 @@
 .cart1 {
     outline: none;
     border: 0;
+    height: 50px;
     background: #db4444;
     padding: 15px;
     color: #fff;
     width: 100%;
-    position: relative;
+    /* position: relative; */
     z-index: 2;
     cursor: pointer;
     transition: 0.5s width;
@@ -229,4 +238,56 @@ a:hover {
     padding: 10px;
     background-color: #db4444;
     color: #fff;
+}
+.card {
+    position: relative;
+    display: inline-block;
+    width: 150px; /* Adjust the width as needed */
+}
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 90%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu đen với độ trong suốt 50% */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.image-with-border {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Thêm shadow mờ */
+}
+
+.image-with-border:hover {
+    transform: scale(1.05); /* Phóng to ảnh khi hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Tăng độ mờ của shadow */
+    opacity: 0.9; /* Làm mờ ảnh khi hover */
 }

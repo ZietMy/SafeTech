@@ -1,153 +1,293 @@
 @extends('layouts.client')
-@section ('title')
-    {{$title}}
+@section('title')
+    {{ $title }}
 @endsection
 @section('css')
-<link rel="stylesheet" href="{{ asset('assets/clients/css/home.css') }}">
-@endsection
+    <link rel="stylesheet" href="{{ asset('assets/clients/css/detail.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/clients/css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/clients/css/slick/demon2.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/clients/css/slick/demo4.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/clients/css/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/clients/css/slick/slick.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </div>
 @section('content1')
-<div class="container">
-    <div class="row">
-        <div class="Frame727" style="width: 1170px; height: 103px; justify-content: flex-start; align-items: flex-end; gap: 470px; display: inline-flex">
-            <div class="Frame725" style="justify-content: flex-start; align-items: flex-end; gap: 87px; display: flex">
-              <div class="Frame626" style="height: 103px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex">
-                <div class="Frame625" style="justify-content: flex-start; align-items: center; gap: 16px; display: inline-flex">
-                  <div class="Rectangle18" style="width: 20px; height: 40px; position: relative">
-                    <div class="Rectangle17" style="width: 20px; height: 40px; left: 0px; top: 0px; position: absolute; background: #DB4444; border-radius: 4px"></div>
-                  </div>
-                  <div class="TodayS" style="color: #DB4444; font-size: 16px; font-family: Poppins; font-weight: 600; line-height: 20px; word-wrap: break-word">Mũ len</div>
+    <div class="container">
+        <div class="row">
+            <div class="Frame727"
+                style="width: 1170px; height: 103px; justify-content: flex-start; align-items: flex-end; gap: 470px; display: inline-flex">
+                <div class="Frame725" style="justify-content: flex-start; align-items: flex-end; gap: 87px; display: flex">
+                    <div class="Frame626"
+                        style="height: 103px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex">
+                        <div class="Frame625"
+                            style="justify-content: flex-start; align-items: center; gap: 16px; display: inline-flex">
+                            <div class="Rectangle18" style="width: 20px; height: 40px; position: relative">
+                                <div class="Rectangle17"
+                                    style="width: 20px; height: 40px; left: 0px; top: 0px; position: absolute; background: #DB4444; border-radius: 4px">
+                                </div>
+                            </div>
+                            <div class="TodayS"
+                                style="color: #DB4444; font-size: 16px; font-family: Poppins; font-weight: 600; line-height: 20px; word-wrap: break-word">
+                                Mũ len</div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-      @foreach($products as $product)
-        @if($product->category_id == 1)
-          <div class="col-3 mb-3 ml-3" >
-            <a href="{{ route('clients.detail', ['id' => $product->id]) }}" style="text-decoration:none;color:black">
-            <div class="card" style="width:18rem;">
-              <div style="position: relative;">
-                  <div class="heart-container">
-                      <svg viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="add-to-wishlist">
-                          <path d="M11.0661 2.81728L11.6026 3.45246L12.1391 2.81728C13.2867 1.45859 15.0479 0.600098 16.8697 0.600098C20.0815 0.600098 22.6051 3.13599 22.6051 6.38807C22.6051 8.38789 21.72 10.2564 20.0229 12.3496C18.3175 14.4529 15.8645 16.6977 12.8407 19.4622L12.826 19.4756L12.8249 19.4766L11.6008 20.6001L10.3798 19.4879L10.3783 19.4866L10.3336 19.4457C10.3336 19.4457 10.3336 19.4457 10.3336 19.4457C7.31862 16.6834 4.87347 14.4409 3.17365 12.3404C1.4821 10.25 0.600098 8.38442 0.600098 6.38807C0.600098 3.13599 3.12361 0.600098 6.33544 0.600098C8.15729 0.600098 9.91845 1.45859 11.0661 2.81728Z" stroke="#333333" stroke-width="1"/>
-                      </svg>
-                  </div>
-                  <div class="discount">
-                    -{{$product->discount}}%
-                  </div>
-                  <img src="{{$product->image}}" alt="ảnh" style="width:100%;">
-              </div>
-              <div class="mt-3"></div>
-              <div class="card-body">
-                  <h5 class="card-title">{{$product->name}}</h5>
-                  <div class="card-text" style="color:#DB4444;font-weight:bold">{{$product->price}} VNĐ</div>
-                  <a href="#"><button class="button-48" role="button"><span class="text">Checkout</span></button></a>
-              </div>
-            </div>   
-            </a>    
-            </div>
-          @endif
-        @endforeach 
-      </div>
-</div>
-<div class="container mt-5">
-  <div class="row">
-      <div class="Frame727" style="width: 1170px; height: 103px; justify-content: flex-start; align-items: flex-end; gap: 470px; display: inline-flex">
-          <div class="Frame725" style="justify-content: flex-start; align-items: flex-end; gap: 87px; display: flex">
-            <div class="Frame626" style="height: 103px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex">
-              <div class="Frame625" style="justify-content: flex-start; align-items: center; gap: 16px; display: inline-flex">
-                <div class="Rectangle18" style="width: 20px; height: 40px; position: relative">
-                  <div class="Rectangle17" style="width: 20px; height: 40px; left: 0px; top: 0px; position: absolute; background: #DB4444; border-radius: 4px"></div>
-                </div>
-                <div class="TodayS" style="color: #DB4444; font-size: 16px; font-family: Poppins; font-weight: 600; line-height: 20px; word-wrap: break-word">Mũ bảo hiểm</div>
-              </div>
-            </div>
-          </div>
-      </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    @foreach($products as $product)
-      @if($product->category_id == 2)
-        <div class="col-3 mb-3 ml-3" >
-          <a href="{{ route('clients.detail', ['id' => $product->id]) }}" style="text-decoration:none;color:black">
-          <div class="card" style="width:18rem;">
-            <div style="position: relative;">
-                <div class="heart-container">
-                    <svg viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="add-to-wishlist">
-                        <path d="M11.0661 2.81728L11.6026 3.45246L12.1391 2.81728C13.2867 1.45859 15.0479 0.600098 16.8697 0.600098C20.0815 0.600098 22.6051 3.13599 22.6051 6.38807C22.6051 8.38789 21.72 10.2564 20.0229 12.3496C18.3175 14.4529 15.8645 16.6977 12.8407 19.4622L12.826 19.4756L12.8249 19.4766L11.6008 20.6001L10.3798 19.4879L10.3783 19.4866L10.3336 19.4457C10.3336 19.4457 10.3336 19.4457 10.3336 19.4457C7.31862 16.6834 4.87347 14.4409 3.17365 12.3404C1.4821 10.25 0.600098 8.38442 0.600098 6.38807C0.600098 3.13599 3.12361 0.600098 6.33544 0.600098C8.15729 0.600098 9.91845 1.45859 11.0661 2.81728Z" stroke="#333333" stroke-width="1"/>
-                    </svg>
-                </div>
-                <div class="discount">
-                  -{{$product->discount}}%
-                </div>
-                <img src="{{$product->image}}" alt="ảnh" style="width:100%;">
-            </div>
-            <div class="mt-3"></div>
-            <div class="card-body">
-                <h5 class="card-title">{{$product->name}}</h5>
-                <div class="card-text" style="color:#DB4444;font-weight:bold">{{$product->price}} VNĐ</div>
-                <a href="#"><button class="button-48" role="button"><span class="text">Checkout</span></button></a>
-            </div>
-          </div>   
-          </a>    
-          </div>
-        @endif
-      @endforeach 
-    </div>
-</div>
-<div class="container mt-5">
-  <div class="row">
-      <div class="Frame727" style="width: 1170px; height: 103px; justify-content: flex-start; align-items: flex-end; gap: 470px; display: inline-flex">
-          <div class="Frame725" style="justify-content: flex-start; align-items: flex-end; gap: 87px; display: flex">
-            <div class="Frame626" style="height: 103px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex">
-              <div class="Frame625" style="justify-content: flex-start; align-items: center; gap: 16px; display: inline-flex">
-                <div class="Rectangle18" style="width: 20px; height: 40px; position: relative">
-                  <div class="Rectangle17" style="width: 20px; height: 40px; left: 0px; top: 0px; position: absolute; background: #DB4444; border-radius: 4px"></div>
-                </div>
-                <div class="TodayS" style="color: #DB4444; font-size: 16px; font-family: Poppins; font-weight: 600; line-height: 20px; word-wrap: break-word">Mũ lưỡi trai</div>
-              </div>
-            </div>
-          </div>
-      </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    @foreach($products as $product)
-      @if($product->category_id == 3)
-        <div class="col-3 mb-3 ml-3" >
-          <a href="{{ route('clients.detail', ['id' => $product->id]) }}" style="text-decoration:none;color:black">
-          <div class="card" style="width:18rem;">
-            <div style="position: relative;">
-                <div class="heart-container">
-                    <svg viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="add-to-wishlist">
-                        <path d="M11.0661 2.81728L11.6026 3.45246L12.1391 2.81728C13.2867 1.45859 15.0479 0.600098 16.8697 0.600098C20.0815 0.600098 22.6051 3.13599 22.6051 6.38807C22.6051 8.38789 21.72 10.2564 20.0229 12.3496C18.3175 14.4529 15.8645 16.6977 12.8407 19.4622L12.826 19.4756L12.8249 19.4766L11.6008 20.6001L10.3798 19.4879L10.3783 19.4866L10.3336 19.4457C10.3336 19.4457 10.3336 19.4457 10.3336 19.4457C7.31862 16.6834 4.87347 14.4409 3.17365 12.3404C1.4821 10.25 0.600098 8.38442 0.600098 6.38807C0.600098 3.13599 3.12361 0.600098 6.33544 0.600098C8.15729 0.600098 9.91845 1.45859 11.0661 2.81728Z" stroke="#333333" stroke-width="1"/>
-                    </svg>
-                </div>
-                <div class="discount">
-                  -{{$product->discount}}%
-                </div>
-                <img src="{{$product->image}}" alt="ảnh" style="width:100%;">
-            </div>
-            <div class="mt-3"></div>
-            <div class="card-body">
-                <h5 class="card-title">{{$product->name}}</h5>
-                <div class="card-text" style="color:#DB4444;font-weight:bold">{{$product->price}} VNĐ</div>
-                <a href="#"><button class="button-48" role="button"><span class="text">Checkout</span></button></a>
-            </div>
-          </div>   
-          </a>    
-          </div>
-        @endif
-      @endforeach 
-    </div>
-</div>
+    <div class="container">
+        <div class="row">
+            @foreach ($products as $product)
+                @if ($product->category_id == 1)
+                    <div class="col-3">
+                        <div class="product-box" style="width:200px" >
+                            <div class="img-wrapper">
+                                <a href="{{ route('clients.detail', ['id' => $product->id]) }}">
+                                    <img src="{{ $product->image }}" class="w-100  blur-up lazyload" alt="">
+                                </a>
+                                <div class="circle-shape"></div>
+                                <span class="background-text">Furniture</span>
+                                <div class="label-block">
+                                    <span class="label label-theme"> -{{ $product->discount }}%</span>
+                                </div>
+                                <div class="cart-wrap">
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:void(0)" class="addtocart-btn">
+                                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href={{ route('clients.detail', ['id' => $product->id]) }}>
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-style-3 product-style-chair">
+                                <div class="product-title d-block mb-0">
+                                    <div class="r-price">
+                                        <div class="theme-color">{{ $product->price }} VNĐ</div>
+                                        <div class="main-price">
+                                            <ul class="rating mb-1 mt-0">
+                                                <li>
+                                                    <i class="fas fa-star theme-color"></i>
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-star theme-color"></i>
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-star"></i>
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-star"></i>
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-star"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <p class="font-light mb-sm-2 mb-0">{{ $product->name }}</p>
+                                    <a href="" class="font-default">
+                                        <h5>{{ $product->details }}</h5>
+                                    </a>
+                                    <div class="pb-5"></div>
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
+                @endif
+            @endforeach
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="Frame727"
+                style="width: 1170px; height: 103px; justify-content: flex-start; align-items: flex-end; gap: 470px; display: inline-flex">
+                <div class="Frame725" style="justify-content: flex-start; align-items: flex-end; gap: 87px; display: flex">
+                    <div class="Frame626"
+                        style="height: 103px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex">
+                        <div class="Frame625"
+                            style="justify-content: flex-start; align-items: center; gap: 16px; display: inline-flex">
+                            <div class="Rectangle18" style="width: 20px; height: 40px; position: relative">
+                                <div class="Rectangle17"
+                                    style="width: 20px; height: 40px; left: 0px; top: 0px; position: absolute; background: #DB4444; border-radius: 4px">
+                                </div>
+                            </div>
+                            <div class="TodayS"
+                                style="color: #DB4444; font-size: 16px; font-family: Poppins; font-weight: 600; line-height: 20px; word-wrap: break-word">
+                                Mũ bảo hiểm</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            @foreach ($products as $product)
+            @if ($product->category_id == 2)
+            <div class="col-3">
+                <div class="product-box" style="width:200px" >
+                    <div class="img-wrapper">
+                        <a href="{{ route('clients.detail', ['id' => $product->id]) }}">
+                            <img src="{{ $product->image }}" class="w-100  blur-up lazyload" alt="">
+                        </a>
+                        <div class="circle-shape"></div>
+                        <span class="background-text">Furniture</span>
+                        <div class="label-block">
+                            <span class="label label-theme"> -{{ $product->discount }}%</span>
+                        </div>
+                        <div class="cart-wrap">
+                            <ul>
+                                <li>
+                                    <a href="javascript:void(0)" class="addtocart-btn">
+                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href={{ route('clients.detail', ['id' => $product->id]) }}>
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="product-style-3 product-style-chair">
+                        <div class="product-title d-block mb-0">
+                            <div class="r-price">
+                                <div class="theme-color">{{ $product->price }} VNĐ</div>
+                                <div class="main-price">
+                                    <ul class="rating mb-1 mt-0">
+                                        <li>
+                                            <i class="fas fa-star theme-color"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-star theme-color"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="font-light mb-sm-2 mb-0">{{ $product->name }}</p>
+                            <a href="" class="font-default">
+                                <h5>{{ $product->details }}</h5>
+                            </a>
+                            <div class="pb-5"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        @endif
+            @endforeach
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="Frame727"
+                style="width: 1170px; height: 103px; justify-content: flex-start; align-items: flex-end; gap: 470px; display: inline-flex">
+                <div class="Frame725"
+                    style="justify-content: flex-start; align-items: flex-end; gap: 87px; display: flex">
+                    <div class="Frame626"
+                        style="height: 103px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex">
+                        <div class="Frame625"
+                            style="justify-content: flex-start; align-items: center; gap: 16px; display: inline-flex">
+                            <div class="Rectangle18" style="width: 20px; height: 40px; position: relative">
+                                <div class="Rectangle17"
+                                    style="width: 20px; height: 40px; left: 0px; top: 0px; position: absolute; background: #DB4444; border-radius: 4px">
+                                </div>
+                            </div>
+                            <div class="TodayS"
+                                style="color: #DB4444; font-size: 16px; font-family: Poppins; font-weight: 600; line-height: 20px; word-wrap: break-word">
+                                Mũ lưỡi trai</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            @foreach ($products as $product)
+            @if ($product->category_id == 3)
+            <div class="col-3">
+                <div class="product-box" style="width:200px" >
+                    <div class="img-wrapper"style="width:220px">
+                        <a href="{{ route('clients.detail', ['id' => $product->id]) }}">
+                            <img src="{{ $product->image }}" class="w-100  blur-up lazyload" alt="" >
+                        </a>
+                        <div class="circle-shape"></div>
+                        <span class="background-text">Furniture</span>
+                        <div class="label-block">
+                            <span class="label label-theme"> -{{ $product->discount }}%</span>
+                        </div>
+                        <div class="cart-wrap">
+                            <ul>
+                                <li>
+                                    <a href="javascript:void(0)" class="addtocart-btn">
+                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href={{ route('clients.detail', ['id' => $product->id]) }}>
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="product-style-3 product-style-chair">
+                        <div class="product-title d-block mb-0">
+                            <div class="r-price">
+                                <div class="theme-color">{{ $product->price }} VNĐ</div>
+                                <div class="main-price">
+                                    <ul class="rating mb-1 mt-0">
+                                        <li>
+                                            <i class="fas fa-star theme-color"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-star theme-color"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="font-light mb-sm-2 mb-0">{{ $product->name }}</p>
+                            <a href="" class="font-default">
+                                <h5>{{ $product->details }}</h5>
+                            </a>
+                            <div class="pb-5"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        @endif
+            @endforeach
+        </div>
+    </div>
 @endsection
 
 
@@ -160,4 +300,28 @@
 
 @section('footer')
     @include('clients.blocks.footer')
+@endsection
+@section('script')
+    <script src={{ asset('assets/clients/js/home.js') }}></script>
+    <script src={{ asset('assets/clients/js/custom_slick.js') }}></script>
+    <script src={{ asset('assets/clients/js/slick/slick-animation.min.js') }}></script>
+    <script src={{ asset('assets/clients/js/slick/slick.min.js') }}></script>
+    <script src={{ asset('assets/clients/js/slick/script.min.js') }}></script>
+    <script src={{ asset('assets/clients/js/feather/cart_modal_resize.js') }}></script>
+    <script src={{ asset('assets/clients/js/feather/feather.min.js') }}></script>
+    <script src={{ asset('assets/clients/js/feather/filter.js') }}></script>
+    <script src={{ asset('assets/clients/js/feather/ion.rangeSlider.min.js') }}></script>
+    <script src={{ asset('assets/clients/js/feather/lazysizes.min.js') }}></script>
+    <script src={{ asset('assets/clients/js/feather/newsletter.js') }}></script>
+    <script src={{ asset('assets/clients/js/feather/price-filter.js') }}></script>
+    <script src={{ asset('assets/clients/js/feather/theme-setting.js') }}></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous">
+    </script>
 @endsection
