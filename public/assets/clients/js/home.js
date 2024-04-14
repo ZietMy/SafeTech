@@ -60,3 +60,5 @@ heartButton()?.addEventListener('click', function (){
 		document.head.insertAdjacentHTML("beforeend", keyframesMove(i))
 	}
 })
+
+

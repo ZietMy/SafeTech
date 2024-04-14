@@ -16,14 +16,19 @@ class Order extends Model
     }
     public function addOrder($data)
     {
-        DB::insert('INSERT INTO orders (user_id,product_id,status_id,quantity) VALUES (?,?, ?, ?)', array_values($data));
-    }
+        $orders = DB::table('orders')->insert($data);
+        return  $orders;
+    }  
     public function getDetailOrder($id){
         return DB::select('select * from '.$this->table.' where id = ?', [$id]);
     }
-    public function updateOrder($data, $id){
-        $query = 'update ' . $this->table . ' set user_id=?, product_id=?, status_id=?, quantity=? where id=?';
-        return DB::update($query, [...array_values($data), $id]);
+    public function updateOrder($data, $id) {
+        DB::table('orders')
+            ->where('id', $id)
+            ->update([
+                'status_id' => $data['status_id'],
+                'status_name' => $data['status_name'], 
+            ]);
     }    
     public function deleteOrders($id)
     {

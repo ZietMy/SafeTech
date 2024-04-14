@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\Home;
 use App\Models\Product;
+use App\Models\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
@@ -21,6 +22,7 @@ class HomeController extends Controller
         $listProduct = Product::all();
         $categories = Categories::all();
      //    dd($categories);
+         $img = Upload::all();
         $listRandomProduct =  $this->products->getRandom();
         $listFlashSale=$this->products->getFlashSale();
         $title = 'Homepage';
@@ -28,13 +30,13 @@ class HomeController extends Controller
             $role_id=Auth()->user()->role_id;
             $status_id=Auth()->user()->status_id;
             if($role_id==1 && $status_id==1){
-                return view('clients.home ',compact('title','listProduct','listRandomProduct','listFlashSale','categories')); 
+                return view('clients.home ',compact('title','listProduct','listRandomProduct','listFlashSale','categories','img')); 
             }
             elseif($role_id==2){
                 return view('admin.blocks.card');
             }
         }else{
-            return view('clients.home ',compact('title','listProduct','listRandomProduct','listFlashSale','categories'));
+            return view('clients.home ',compact('title','listProduct','listRandomProduct','listFlashSale','categories','img'));
         }
     }
 }

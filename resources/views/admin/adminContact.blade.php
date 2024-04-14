@@ -10,7 +10,7 @@
     </div>
     @if(session('msg'))
         <div class="alert alert-success">
-            Nhập dữ liệu thành công
+            {{session('msg')}}
         </div>
     @endif
     <div class="table-responsive">
