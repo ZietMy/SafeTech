@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                <p style="color:#060303; font-size:bold" class="">Màu sắc</p>        
+                <p style="color:#060303; font-size:bold" class="">Màu sắc</p>
                 <div class="d-flex mt1">
                     <form action="{{ route('add-wish-list') }}" method="POST" id="add-wishlist-form">
                         @csrf
@@ -85,8 +85,7 @@
 <div class="container">
     <div class="Frame626"
         style="height: 103px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex">
-        <div class="Frame625"
-            style="justify-content: flex-start; align-items: center; gap: 16px; display: inline-flex">
+        <div class="Frame625" style="justify-content: flex-start; align-items: center; gap: 16px; display: inline-flex">
             <div class="Rectangle18" style="width: 20px; height: 40px; position: relative">
                 <div class="Rectangle17"
                     style="width: 20px; height: 40px; left: 0px; top: 0px; position: absolute; background: #DB4444; border-radius: 4px">
@@ -159,4 +158,3 @@
 
 <script src={{ asset('assets/clients/js/detail.js') }}></script>
 @endsection
-

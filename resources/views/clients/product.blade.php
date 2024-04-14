@@ -119,73 +119,141 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            @foreach ($products as $product)
-            @if ($product->category_id == 2)
-            <div class="col-3">
-                <div class="product-box" style="width:200px" >
-                    <div class="img-wrapper">
-                        <a href="{{ route('clients.detail', ['id' => $product->id]) }}">
-                            <img src="{{ $product->image }}" class="w-100  blur-up lazyload" alt="">
-                        </a>
-                        <div class="circle-shape"></div>
-                        <span class="background-text">Furniture</span>
-                        <div class="label-block">
-                            <span class="label label-theme"> -{{ $product->discount }}%</span>
-                        </div>
-                        <div class="cart-wrap">
-                            <ul>
-                                <li>
-                                    <a href="javascript:void(0)" class="addtocart-btn">
-                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={{ route('clients.detail', ['id' => $product->id]) }}>
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+      <div class="row">
+          @foreach ($products as $product)
+          @if ($product->category_id == 3)
+          <div class="col-3">
+              <div class="product-box" style="width:200px" >
+                  <div class="img-wrapper"style="width:220px">
+                      <a href="{{ route('clients.detail', ['id' => $product->id]) }}">
+                          <img src="{{ $product->image }}" class="w-100  blur-up lazyload" alt="" >
+                      </a>
+                      <div class="circle-shape"></div>
+                      <span class="background-text">Furniture</span>
+                      <div class="label-block">
+                          <span class="label label-theme"> -{{ $product->discount }}%</span>
+                      </div>
+                      <div class="cart-wrap">
+                          <ul>
+                              <li>
+                                  <a href="javascript:void(0)" class="addtocart-btn">
+                                      <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href={{ route('clients.detail', ['id' => $product->id]) }}>
+                                      <i class="fa fa-eye" aria-hidden="true"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="product-style-3 product-style-chair">
+                      <div class="product-title d-block mb-0">
+                          <div class="r-price">
+                              <div class="theme-color">{{ $product->price }} VNĐ</div>
+                              <div class="main-price">
+                                  <ul class="rating mb-1 mt-0">
+                                      <li>
+                                          <i class="fas fa-star theme-color"></i>
+                                      </li>
+                                      <li>
+                                          <i class="fas fa-star theme-color"></i>
+                                      </li>
+                                      <li>
+                                          <i class="fas fa-star"></i>
+                                      </li>
+                                      <li>
+                                          <i class="fas fa-star"></i>
+                                      </li>
+                                      <li>
+                                          <i class="fas fa-star"></i>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                          <p class="font-light mb-sm-2 mb-0">{{ $product->name }}</p>
+                          <a href="" class="font-default">
+                              <h5>{{ $product->details }}</h5>
+                          </a>
+                          <div class="pb-5"></div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      @endif
+          @endforeach
+      </div>
+  </div>
+  <div class="container">
+    <div class="row">
+        @foreach ($products as $product)
+        @if ($product->category_id == 2)
+        <div class="col-3">
+            <div class="product-box" style="width:200px" >
+                <div class="img-wrapper">
+                    <a href="{{ route('clients.detail', ['id' => $product->id]) }}">
+                        <img src="{{ $product->image }}" class="w-100  blur-up lazyload" alt="">
+                    </a>
+                    <div class="circle-shape"></div>
+                    <span class="background-text">Furniture</span>
+                    <div class="label-block">
+                        <span class="label label-theme"> -{{ $product->discount }}%</span>
                     </div>
-                    <div class="product-style-3 product-style-chair">
-                        <div class="product-title d-block mb-0">
-                            <div class="r-price">
-                                <div class="theme-color">{{ $product->price }} VNĐ</div>
-                                <div class="main-price">
-                                    <ul class="rating mb-1 mt-0">
-                                        <li>
-                                            <i class="fas fa-star theme-color"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-star theme-color"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <p class="font-light mb-sm-2 mb-0">{{ $product->name }}</p>
-                            <a href="" class="font-default">
-                                <h5>{{ $product->details }}</h5>
-                            </a>
-                            <div class="pb-5"></div>
-                        </div>
+                    <div class="cart-wrap">
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0)" class="addtocart-btn">
+                                    <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href={{ route('clients.detail', ['id' => $product->id]) }}>
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
+                <div class="product-style-3 product-style-chair">
+                    <div class="product-title d-block mb-0">
+                        <div class="r-price">
+                            <div class="theme-color">{{ $product->price }} VNĐ</div>
+                            <div class="main-price">
+                                <ul class="rating mb-1 mt-0">
+                                    <li>
+                                        <i class="fas fa-star theme-color"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-star theme-color"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="font-light mb-sm-2 mb-0">{{ $product->name }}</p>
+                        <a href="" class="font-default">
+                            <h5>{{ $product->details }}</h5>
+                        </a>
+                        <div class="pb-5"></div>
+                    </div>
+                </div>
             </div>
-        @endif
-            @endforeach
+
         </div>
+    @endif
+        @endforeach
     </div>
+</div>
     <div class="container mt-5">
         <div class="row">
             <div class="Frame727"
@@ -210,74 +278,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            @foreach ($products as $product)
-            @if ($product->category_id == 3)
-            <div class="col-3">
-                <div class="product-box" style="width:200px" >
-                    <div class="img-wrapper"style="width:220px">
-                        <a href="{{ route('clients.detail', ['id' => $product->id]) }}">
-                            <img src="{{ $product->image }}" class="w-100  blur-up lazyload" alt="" >
-                        </a>
-                        <div class="circle-shape"></div>
-                        <span class="background-text">Furniture</span>
-                        <div class="label-block">
-                            <span class="label label-theme"> -{{ $product->discount }}%</span>
-                        </div>
-                        <div class="cart-wrap">
-                            <ul>
-                                <li>
-                                    <a href="javascript:void(0)" class="addtocart-btn">
-                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={{ route('clients.detail', ['id' => $product->id]) }}>
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-style-3 product-style-chair">
-                        <div class="product-title d-block mb-0">
-                            <div class="r-price">
-                                <div class="theme-color">{{ $product->price }} VNĐ</div>
-                                <div class="main-price">
-                                    <ul class="rating mb-1 mt-0">
-                                        <li>
-                                            <i class="fas fa-star theme-color"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-star theme-color"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <p class="font-light mb-sm-2 mb-0">{{ $product->name }}</p>
-                            <a href="" class="font-default">
-                                <h5>{{ $product->details }}</h5>
-                            </a>
-                            <div class="pb-5"></div>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-        @endif
-            @endforeach
-        </div>
-    </div>
 @endsection
 
 
