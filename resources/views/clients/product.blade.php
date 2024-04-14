@@ -2,17 +2,7 @@
 @section('title')
     {{ $title }}
 @endsection
-@section('css')
     <link rel="stylesheet" href="{{ asset('assets/clients/css/detail.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/clients/css/home.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/clients/css/slick/demon2.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/clients/css/slick/demo4.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/clients/css/slick/slick-theme.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/clients/css/slick/slick.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </div>
 @section('content1')
     <div class="container">
         <div class="row">
@@ -301,27 +291,4 @@
 @section('footer')
     @include('clients.blocks.footer')
 @endsection
-@section('script')
-    <script src={{ asset('assets/clients/js/home.js') }}></script>
-    <script src={{ asset('assets/clients/js/custom_slick.js') }}></script>
-    <script src={{ asset('assets/clients/js/slick/slick-animation.min.js') }}></script>
-    <script src={{ asset('assets/clients/js/slick/slick.min.js') }}></script>
-    <script src={{ asset('assets/clients/js/slick/script.min.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/cart_modal_resize.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/feather.min.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/filter.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/ion.rangeSlider.min.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/lazysizes.min.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/newsletter.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/price-filter.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/theme-setting.js') }}></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous">
-    </script>
-@endsection
+

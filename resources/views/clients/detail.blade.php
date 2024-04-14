@@ -1,25 +1,9 @@
+<link rel="stylesheet" href="{{ asset('assets/clients/css/detail.css') }}">
 @section('title')
     {{ $title }}
 @endsection
 @extends('layouts.client')
-{{-- @section('content')
-<h1>Hihdo</h1>
-@endsection --}}
 @section('content1')
-    <div class="container">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-            integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    @section('css')
-        <link rel="stylesheet" href="{{ asset('assets/clients/css/detail.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/clients/css/slick/demon2.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/clients/css/slick/demo4.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/clients/css/slick/slick-theme.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/clients/css/slick/slick.css') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-            integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </div>
-@endsection
 @section('footer')
     @include('clients.blocks.footer')
 @endsection
@@ -36,7 +20,7 @@
                 <img src="{{ $productId->image }}" alt="ảnh" style="width:110%" class="mg-fluid image-with-border">
             </div>
             <div class="col-1"></div>
-            <div class="col-5">
+            <div class="col-4">
                 <h2 style="font-weight:bold;color:#000000" class="mt-4">{{ $productId->name }}</h2>
                 <span style="display: flex">
                     <p style="font-weight:bold;color:#db4444" class="mt-2">{{ $productId->price }}VNĐ</p>
@@ -68,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                <p style="color:#060303; font-size:bold" class="text">Màu sắc</p>
+                <p style="color:#060303; font-size:bold" class="">Màu sắc</p>        
                 <div class="d-flex mt1">
                     <form action="{{ route('add-wish-list') }}" method="POST" id="add-wishlist-form">
                         @csrf
@@ -94,7 +78,7 @@
                 </div>
             </div>
         @endforeach
-        {{-- <div class="col-1"></div> --}}
+        <div class="col-1"></div>
     </div>
 </div>
 <div class="mt-5"></div>
@@ -112,6 +96,7 @@
                 style="color: #DB4444; font-size: 18px; font-family: Poppins, sans-serif; font-weight: 600; line-height: 1.2; word-wrap: break-word; margin-bottom: 10px;">
                 Related
             </div>
+
         </div>
     </div>
     <div class="row">
@@ -174,27 +159,4 @@
 
 <script src={{ asset('assets/clients/js/detail.js') }}></script>
 @endsection
-@section('script')
-<script src={{ asset('assets/clients/js/home.js') }}></script>
-<script src={{ asset('assets/clients/js/custom_slick.js') }}></script>
-<script src={{ asset('assets/clients/js/slick/slick-animation.min.js') }}></script>
-<script src={{ asset('assets/clients/js/slick/slick.min.js') }}></script>
-<script src={{ asset('assets/clients/js/slick/script.min.js') }}></script>
-<script src={{ asset('assets/clients/js/feather/cart_modal_resize.js') }}></script>
-<script src={{ asset('assets/clients/js/feather/feather.min.js') }}></script>
-<script src={{ asset('assets/clients/js/feather/filter.js') }}></script>
-<script src={{ asset('assets/clients/js/feather/ion.rangeSlider.min.js') }}></script>
-<script src={{ asset('assets/clients/js/feather/lazysizes.min.js') }}></script>
-<script src={{ asset('assets/clients/js/feather/newsletter.js') }}></script>
-<script src={{ asset('assets/clients/js/feather/price-filter.js') }}></script>
-<script src={{ asset('assets/clients/js/feather/theme-setting.js') }}></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous">
-</script>
-@endsection
+
