@@ -22,23 +22,23 @@ class AdminController extends Controller
         return view('admin.user', compact('userList'));
     }
 
-public function getEdit(Request $request, $id = 0)
-{
-    if (!empty($id)) {
-        $userDetail = $this->users->getDetail($id);
-        $users = Users::all();
-        $status = Status::all(); 
-        if (!empty($userDetail[0])) {
-            $request->session()->put('id', $id);
-            $userDetail = $userDetail[0];
+    public function getEdit(Request $request, $id = 0)
+    {
+        if (!empty($id)) {
+            $userDetail = $this->users->getDetail($id);
+            $users = Users::all();
+            $status = Status::all();
+            if (!empty($userDetail[0])) {
+                $request->session()->put('id', $id);
+                $userDetail = $userDetail[0];
+            } else {
+                return redirect()->route('admin')->with('msg', 'Người dùng không tồn tại');
+            }
         } else {
-            return redirect()->route('admin')->with('msg', 'Người dùng không tồn tại');
+            return redirect()->route('admin')->with('msg', 'Liên kết');
         }
-    } else {
-        return redirect()->route('admin')->with('msg', 'Liên kết');
+        return view('admin.users.edit', compact('userDetail', 'users', 'status')); // Truyền dữ liệu $status vào view
     }
-    return view('admin.users.edit', compact('userDetail', 'users', 'status')); // Truyền dữ liệu $status vào view
-}
 
     public function postEdit(Request $request)
     {
@@ -76,7 +76,7 @@ public function getEdit(Request $request, $id = 0)
     {
         if ($id !== 0) {
             $userDetail = $this->users->getDetail($id);
-    
+
             if (!empty($userDetail)) {
                 $status_id = $userDetail[0]->status_id;
                 if ($status_id == 2) {
@@ -95,8 +95,6 @@ public function getEdit(Request $request, $id = 0)
         } else {
             $msg = 'ID không hợp lệ';
         }
-        return redirect()->route('admin')->with('msg', $msg);
+        return redirect()->route('user')->with('msg', $msg);
     }
-    
-    
 }

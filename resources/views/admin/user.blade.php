@@ -42,10 +42,10 @@
                                                 </td> --}}
                                                 <td>
                                                     <select name="role_id">
-                                                        <option value="1" @if($item->role_id == 1) selected @endif>
+                                                        <option value="1" @if($item->role_id == 1) selected @endif disabled>
                                                             User
                                                         </option>
-                                                        <option value="2" @if($item->role_id == 2) selected @endif>
+                                                        <option value="2" @if($item->role_id == 2) selected @endif disabled>
                                                            Admin
                                                         </option>
                                                     </select>  
@@ -57,10 +57,10 @@
                                                 </td>
                                                 <td>
                                                     <select name="status">
-                                                        <option value="1" @if($item->status_id == 1) selected @endif>
+                                                        <option value="1" @if($item->status_id == 1) selected @endif disabled>
                                                             Enable
                                                         </option>
-                                                        <option value="2" @if($item->status_id == 2) selected @endif>
+                                                        <option value="2" @if($item->status_id == 2) selected @endif disabled>
                                                             Disable
                                                         </option>
                                                     </select>  
