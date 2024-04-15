@@ -29,4 +29,7 @@ class Categories extends Model
 
     return redirect()->back()->with('msg', 'Cập nhật thành công');
     }
+    public function deleteCategories($id){
+        DB::table('categories')->where('id', $id)->delete();
+    }
 }

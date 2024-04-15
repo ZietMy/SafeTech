@@ -56,6 +56,7 @@ Route::get('/admin/categories/create', [CategoriesController::class, 'getCategor
 Route::post('/admin/categories/create', [CategoriesController::class, 'postCategories'])->name('post-add');
 Route::get('/admin/categories/edit/{id}', [CategoriesController::class, 'editCategories'])->name('categories.edit');
 Route::post('/admin/categories/edit', [CategoriesController::class, 'postEditCategories'])->name('post-edit');
+Route::get('/admin/categories/{id}',[CategoriesController::class, 'deleteCategories'])->name('categories.delete');
 
 Route::get('/product', [ProductController::class, 'index'])->name('product');
 Route::get('/wishlist', [WishListController::class, 'wishList'])->name('wishlist');

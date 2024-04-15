@@ -17,12 +17,12 @@ class UploadSeeder extends Seeder
     {
         $img = [
         [
-            'img' => "images\1tY2wyQBT0ycZBz4JvzrzWF4MIj3Gzb3PJ3sKxO1.jpg"
+            'img' => "images\54c0VXvKF8Fgfo1Qv1Hah45RF35B5fBSoInJ3ovd.jpg"
         ],[
-            'img' => "images\jT0z06F7Tea14aVFGTgtxua8y5iIbyLBfiB04SWv.jpg"
+            'img' => "images\HkxgiT48Scxw9zsJ6HDPkA7LGL49t3uDk4RsuLus.webp"
         ],
         [
-            'img' => 'images\zbo6Q66Z9M8GqFBPZI8jWeIwIahT3RHbPWYxO3ct.png'
+            'img' => 'images\FqnOdtcY46ikQI9i1SoyABxtKhMtFVpbeHLRoUnj.jpg'
         ]
         ];
         DB::table('uploads')->insert($img);

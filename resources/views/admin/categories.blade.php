@@ -36,10 +36,12 @@
                     </td>
                     <td class="text-end">
                         <a href="{{route('categories.edit', ['id' => $item->id])}}" class="btn btn-sm btn-neutral">Edit</a>
-                        <button type="button"
-                            class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
+                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                            <a onclick="return confirm('Bạn có chắc muốn xóa?')" href="{{ route('categories.delete', ['id' => $item->id]) }}">
+                                <i class="bi bi-trash"></i>
+                            </a>
                         </button>
+                        
                     </td>
                 </tr>
                 @endforeach

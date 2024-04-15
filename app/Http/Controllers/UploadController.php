@@ -25,7 +25,7 @@ class UploadController extends Controller
         return view('admin.upload.createUpload', compact('title'));
     }
     public function postUpload(Request $request)
-    {
+    {  
         if ($request->hasFile('img')) {
             $path = $request->file('img')->store('public/images');
             $data = [
