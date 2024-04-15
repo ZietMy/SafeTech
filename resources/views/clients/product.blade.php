@@ -4,6 +4,38 @@
 @endsection
 <link rel="stylesheet" href="{{ asset('assets/clients/css/detail.css') }}">
 @section('content1')
+<section class="breadcrumb-section section-b-space" style="padding-top:20px;padding-bottom:20px;">
+  <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+  </ul>
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <h3>Shop</h3>
+              <nav>
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                          <a href="../index.htm">
+                              <i class="fas fa-home"></i>
+                          </a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                  </ol>
+              </nav>
+          </div>
+      </div>
+  </div>
+</section>
+<div class="pt-5"></div>
     <div class="container">
         <div class="row">
             <div class="Frame727"
@@ -299,13 +331,6 @@
     </div>
 
 @endsection
-
-
-
-
-
-
-
 
 
 @section('footer')

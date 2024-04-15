@@ -7,6 +7,7 @@
 @endsection --}}
 @section('content')
     <link rel="stylesheet" href="{{ asset('assets/clients/css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/clients/css/main.css') }}">
 @section('footer')
     @include('clients.blocks.footer')
 @endsection
@@ -17,7 +18,7 @@
                 <div class="left-side-contain">
                     <div class="banner-left">
                         <h4>Sale <span class="theme-color">35% Off</span></h4>
-                        <h1>New Latest <span>Dresses</span></h1>
+                        <h1>New Latest <span>Helmet</span></h1>
                         <p>BUY ONE GET ONE <span class="theme-color">FREE</span></p>
                         <h2>$79.00 <span class="theme-color"><del>$65.00</del></span></h2>
                         <p class="poster-details mb-0">Safety helmets help everyone have a good experience</p>

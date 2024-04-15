@@ -6,6 +6,6 @@
             <label for="">Upload</label>
             <input type="file" class="custom-file-input" id="inputGroupFile02" name="img">
         </div>
-        <button class="btn btn-primary mt-3" type="submit">Create</button>
+        <button class="btn btn-primary mt-3" type="submit" onclick="uploadImg()">Create</button>
     </form>
 @endsection
