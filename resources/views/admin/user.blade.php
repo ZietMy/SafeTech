@@ -40,12 +40,7 @@
                                                 <td>
                                                     <img alt="..." src="https://img.freepik.com/premium-photo/cute-asian-girl-kawaii-anime-avatar-ai-generative-art_225753-9233.jpg" width="40px" height="30px">
                                                 </td>
-                                                {{-- <td>
-                                                    <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->name }}
-                                                    </a>
-                                                </td> --}}
-                                                </td> --}}
+                                                
                                                 <td>
                                                     <select name="role_id">
                                                         <option value="1" @if($item->role_id == 1) selected @endif disabled>
@@ -77,16 +72,9 @@
                                                         {{ $item->gender }}
                                                     </a>
                                                 </td>
-                                                {{-- <td>
-                                                {{-- <td>
-                                                    {{ $item->phone_number }}
-                                                </td> --}}
                                                 <td>
                                                     {{ $item->email }}
                                                 </td>
-                                                {{-- <td>
-                                        1
-                                    </td> --}}
                                                 <td class="text-end">
                                                     <a href="{{route('edit_user',['id'=>$item->id])}}" class="btn btn-sm btn-neutral">Edit</a>
                                                     <a onclick="return confirm('Bạn có chắc muốn xóa')" href="{{ route('delete_user', ['id' => $item->id]) }}">
