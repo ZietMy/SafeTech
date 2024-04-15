@@ -835,8 +835,6 @@ span {
 /**=====================
      title css start
 ==========================**/
-.title {
-  margin-bottom: calc(20px + (50 - 20) * ((100vw - 320px) / (1920 - 320))); }
   .title.title1 h2 {
     font-size: calc(22px + (35 - 22) * ((100vw - 320px) / (1920 - 320)));
     position: relative;

@@ -69,4 +69,8 @@ class CategoriesController extends Controller
     
         return redirect()->route('categories')->with('msg', 'Cập nhật thành công');
     }
+    public function deleteCategories($id ){
+       $this->categories->deleteCategories($id);
+        return redirect()->route('categories')->with('msg', 'Xóa thành công');
+    }
 }
