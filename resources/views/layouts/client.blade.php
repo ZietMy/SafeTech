@@ -12,7 +12,7 @@
     </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/clients/css/bootstrap.min.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('assets/clients/css/layouts/style.css') }}">
     @yield('css')
@@ -77,6 +77,7 @@
     <script src={{ asset('assets/clients/js/feather/newsletter.js') }}></script>
     <script src={{ asset('assets/clients/js/feather/price-filter.js') }}></script>
     <script src={{ asset('assets/clients/js/feather/theme-setting.js') }}></script>
+    <script src={{ asset('assets/clients/js/detail.js') }}></script>
     @yield('script')
 </body>
 

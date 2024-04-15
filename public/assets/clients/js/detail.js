@@ -43,6 +43,7 @@ $(document).ready(function () {
                 "quantity_purchase": qty,
             },
             success: function(response){
+                // alertify.success(response['message'])
                 console.log(response);
             }
         })

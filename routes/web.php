@@ -39,6 +39,10 @@ Route::get('/wishlist/delete/{id}', [WishListController::class, 'deleteWishList'
 Route::post('/contact/post', [ContactController::class, 'getForm'])->name('post-message');
 Route::get("cart",[CartController::class, 'index'])->name('cart');
 Route::post("cart/store",[CartController::class, 'addToCart'])->name('cart.store');
+Route::post('cart/increment/{cartId}', [CartController::class, 'increment'])->name('cart.increment');
+
+// Định nghĩa tuyến đường cho hàm decrement
+Route::post('cart/decrement/{cartId}', [CartController::class, 'decrement'])->name('cart.decrement');
 });
 Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
     Route::get('/home', [AdminController::class, 'index'])->name('admin');

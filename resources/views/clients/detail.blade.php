@@ -63,23 +63,10 @@
                     </form>
                 </div>
                 <div class="product-buttons">
-                    <button class="btn btn-solid hover-solid btn-animation addToCartBtn" id="MessageAddToCartBtn" value="{{ $productId->id }}">
+                    <button class="btn btn-solid hover-solid btn-animation addToCartBtn" value="{{ $productId->id }}">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Add To Cart</span>
                     </button>
-                    {{-- <a href="javascript:void(0)"                                            
-                        id="cartEffect" class="btn btn-solid hover-solid btn-animation">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span>Add To Cart</span>
-                        <form id="addtocart" method="post"
-                            action="cart.store">
-                            @csrf
-                            <input ype="hidden" name="id" value="1">
-                            <input type="hidden" name="name" value="Autem Repudiandae Accusantium Blanditiis">
-                            <input type="hidden" name="price" value="13">
-                            <input type="hidden" name="quantity" id="qty" value="1">
-                        </form>
-                    </a> --}}
                     <a href="javascript:void(0)" class="btn btn-solid">
                         <i class="fa fa-check fz-16 me-2"></i>
                         <span>Checkout</span>
@@ -142,10 +129,14 @@
                         <div class="cart-wrap">
                             <ul>
                                 <li>
-                                    <a href="javascript:void(0)" class="addtocart-btn" data-bs-toggle="modal"
-                                        data-bs-target="#addtocart">
-                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                    </a>
+                                    <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        <div>
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="quantity_purchase" value="1" min="1">
+                                        </div>
+                                        <button type="submit"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                    </form>
                                 </li>
                                 <li>
                                     <a href="{{ route('clients.detail', ['id' => $product->id]) }}">

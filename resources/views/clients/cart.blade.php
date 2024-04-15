@@ -68,12 +68,32 @@
                                     <a href="{{route('clients.detail', ['id' => $item->product->id])}}">{{$item->product->name}}</a>
                                 </td>
                                 <td>
-                                    <h2>{{$item->product->price}}</h2>
+                                    <h2  class="price-detail">{{$item->product->discounted_price}} <del>{{ $item->product->price }}VND</del></h2>
                                 </td>
                                 <td>
                                     <div class="qty-box">
-                                        <div class="input-group">
-                                            <button 
+                                        <div class="input-group row">
+                                            @if ($item->product->quantity ==0)
+                                                <span class="text-danger">out of stock</span>
+                                            @else
+                                                
+                                            <div class="input-group d-flex ">
+                                                <form action="{{ route('cart.decrement', ['cartId' => $item->id]) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="input-group-text bg-danger decrement-btn col-2">
+                                                        -
+                                                    </button>
+                                                </form>
+                                                <input type="text" style="height:35px;width:35px;" class="form-control text-center bg-white input-qty" disabled min="1" max="{{ $item->quantity_purchase }}" value="{{ $item->quantity_purchase }}">
+                                                <form action="{{ route('cart.increment', ['cartId' => $item->id]) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="input-group-text bg-danger increment-btn col-2">
+                                                        +
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            @endif
+                                            {{-- <button 
                                             wire:click="incrementQty({{$item->id }})" type="button" name="id">
                                                 <i class="fa fa-minus" aria-hidden="true"></i>
                                             </button>
@@ -82,13 +102,13 @@
                                                   class="form-control input-number" min="1" max="{{$item->product->quantity}}" readonly value="{{$item->quantity_purchase}}">
                                               
                                               <button wire:click="decrementQty({{$item->id }})" type="button" name="id">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                              </button>
+                                                <i class="fa fa-plus" aria-hidden="true"></i>   
+                                              </button> --}}
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h2 class="td-color">none</h2>
+                                    <h2 class="td-color">{{$item->total}}</h2>
                                 </td>
                                 <td>
                                     <a href="javascript:void(0)">
@@ -120,25 +140,25 @@
     
                 <div class="cart-checkout-section">
                     <div class="row g-4 justify-content-end">
-                        <div class="col-lg-4 col-sm-6">
+                        {{-- <div class="col-lg-4 col-sm-6">
                             <div class="checkout-button">
                                 <a href="checkout" class="btn btn-solid-default btn fw-bold">
                                     Check Out <i class="fas fa-arrow-right ms-1"></i></a>
                             </div>
                         </div>
-    
+     --}}
                         <div class="col-lg-4">
                             <div class="cart-box">
                                 <div class="cart-box-details">
                                     <div class="total-details">
                                         <div class="top-details">
                                             <h3>Cart Totals</h3>
-                                            <h6>Sub Total <span></span></h6>
+                                            {{-- <h6>Sub Total <span></span></h6> --}}
     
-                                            <h6>Total <span></span></h6>
+                                            <h5>Total <span class="text-danger"><b>{{$total}}.000 VND</b></span></h5>
                                         </div>
                                         <div class="bottom-details">
-                                            <a href="checkout">Process Checkout</a>
+                                            <a href="checkout">Process Checkout <i class="fas fa-arrow-right ms-1"></i></a>
                                         </div>
                                     </div>
                                 </div>
