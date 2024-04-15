@@ -122,14 +122,18 @@
         </div>
     </div>
     <div class="row">
-        <div class="d-flex flex-wrap ">
+        <div class="d-flex flex-wrap">
+            @php $count = 0; @endphp
             @foreach ($getProductRelated as $product)
-                <div class="product-box mr-3 mb-3" style="width: 280px;  margin-right: 20px;">
+                @if ($count % 4 == 0 && $count != 0)
+                    </div>
+                    <div class="d-flex flex-wrap">
+                @endif
+                <div class="product-box mr-3 mb-3" style="width: 280px; margin-right: 20px;">
                     <div class="img-wrapper">
                         <a href="{{ route('clients.detail', ['id' => $product->id]) }}">
                             <img src="{{ $product->image }}" class="w-100 blur-up lazyload" alt="">
                         </a>
-
                         <div class="circle-shape"></div>
                         <span class="background-text">Fashion</span>
                         <div class="label-block">
@@ -151,7 +155,6 @@
                             </ul>
                         </div>
                     </div>
-
                     <div class="product-style-3 product-style-chair">
                         <div class="product-title d-block mb-0">
                             <div class="r-price">
@@ -173,11 +176,12 @@
                         </div>
                     </div>
                 </div>
+                @php $count++; @endphp
             @endforeach
         </div>
     </div>
+    
 </div>
-
 
 @endsection
 @section('script')

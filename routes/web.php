@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
@@ -12,8 +13,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\WishListController;
 use App\Models\Upload;
-use App\Http\Controllers\Admin\AdminOrderController;
-
+use App\Http\Controllers\Admin\HomeAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,17 +31,18 @@ Route::get('/detail/{id}', [DetailsController::class, 'detailId'])->name('client
 Route::get('/contact', [ContactController::class, 'index'])->name('client.contact');
 
 Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
-    Route::resources([
-        'products' => AdminProductsController::class,
-       
-    ]);
-    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/home', [AdminController::class, 'index'])->name('admin');
+    
     Route::get('/user', [AdminController::class, 'index'])->name('user');
     Route::get('/user/create', [AdminController::class, 'add'])->name('add_user');
     Route::post('/user/create', [AdminController::class, 'postAdd'])->name('postAdd_user');
     Route::get('/user/edit/{id}', [AdminController::class, 'getEdit'])->name('edit_user');
     Route::post('/user/update', [AdminController::class, 'postEdit'])->name('postEdit_user');
     Route::get('/user/delete/{id}', [AdminController::class, 'delete'])->name('delete_user');
+    Route::resources([
+        'products' => AdminProductsController::class,
+       
+    ]);
 });
 
 Route::get('/amdin/order',[AdminOrderController::class,'index'])->name('order');

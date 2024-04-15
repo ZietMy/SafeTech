@@ -279,3 +279,12 @@ a:hover {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+@media (min-width: 576px) {
+    .d-flex.flex-wrap .product-box {
+        flex: 0 0 calc(25% - 20px);
+        max-width: calc(25% - 20px);
+    }
+}
+.product-box {
+    box-sizing: border-box;
+}
