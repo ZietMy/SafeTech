@@ -63,7 +63,7 @@
                     </form>
                 </div>
                 <div class="product-buttons">
-                    <button class="btn btn-solid hover-solid btn-animation addToCartBtn">
+                    <button class="btn btn-solid hover-solid btn-animation addToCartBtn" value="{{ $productId->id }}">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Add To Cart</span>
                     </button>

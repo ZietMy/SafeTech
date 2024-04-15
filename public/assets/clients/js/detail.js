@@ -30,7 +30,15 @@ $(document).ready(function () {
         e.preventDefault();
         var qty = $(this).closest(".product-data").find(".input-qty").val();
         var pro_id = $(this).val();
-        alert(pro_id);
+        $.ajax({
+            method: "POST",
+            url: "cart/store",
+            data: {
+                "product_id":pro_id,
+                "quantity_purchase": qty,
+
+            }
+        })
     })
 });
 
