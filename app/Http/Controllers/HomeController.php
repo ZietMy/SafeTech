@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use App\Models\Home;
+use App\Models\Users;
 use App\Models\Product;
+use App\Models\Order;
 use App\Models\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +35,16 @@ class HomeController extends Controller
                 return view('clients.home ',compact('title','listProduct','listRandomProduct','listFlashSale','categories','img')); 
             }
             elseif($role_id==2){
-                return view('admin.blocks.card');
+                $totalUsers = Users::count();
+                // dd($totalUsers);
+                $totalCategories = Categories::count();
+                $totalProducts = Product::count();
+                $totalOrders = Order::count();
+                return view('admin.blocks..card')
+                ->with('totalUsers', $totalUsers)
+                ->with('totalCategories', $totalCategories)
+                ->with('totalProducts', $totalProducts)
+                ->with('totalOrders', $totalOrders);
             }
         }else{
             return view('clients.home ',compact('title','listProduct','listRandomProduct','listFlashSale','categories','img'));
