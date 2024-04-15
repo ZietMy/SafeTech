@@ -17,7 +17,7 @@ id="navbarVertical">
         <!-- Navigation -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{route('admin')}}">
+                <a class="nav-link" href="{{route('home')}}">
                     <i class="bi bi-house"></i> Dashboard
                 </a>
             </li>
