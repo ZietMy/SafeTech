@@ -1,4 +1,39 @@
 //
+$(document).ready(function () {
+    $(".increment-btn").click(function (e) {
+        e.preventDefault();
+
+        var qty = $(this).closest(".product-data").find(".input-qty").val();
+        var availableQty = $(".available-qty").val();
+        var availableQty = parseInt($(".available-qty").text(), 10);
+            availableQty = isNaN(availableQty) ? 0 : availableQty;
+        var value = parseInt(qty, 10);
+        value = isNaN(value) ? 0 : value;
+        if (value <  availableQty) {
+            value++;
+            $(this).closest(".product-data").find(".input-qty").val(value);
+        }
+    });
+
+    $(".decrement-btn").click(function (e) {
+        e.preventDefault();
+
+        var qty = $(this).closest(".product-data").find(".input-qty").val();
+        var value = parseInt(qty, 10);
+        value = isNaN(value) ? 0 : value;
+        if (value > 1) {
+            value--;
+            $(this).closest(".product-data").find(".input-qty").val(value);
+        }
+    });
+    $('.addToCartBtn').click(function(e){
+        e.preventDefault();
+        var qty = $(this).closest(".product-data").find(".input-qty").val();
+        var pro_id = $(this).val();
+        alert(pro_id);
+    })
+});
+
 const heartDOM = document.querySelector(".js-heart");
 let liked = false;
 heartDOM.onclick = (event) => {
@@ -16,19 +51,4 @@ heartDOM.onclick = (event) => {
 
 heartDOM.addEventListener("animationend", (event) => {
     event.currentTarget.classList.remove("pulse");
-});
-$(document).ready(function () {
-    $(document).on("click", ".qty-btn-plus", function () {
-        var $input = $(this).siblings(".input-qty");
-        var newValue = parseInt($input.val()) + 1;
-        $input.val(newValue);
-    });
-
-    $(document).on("click", ".qty-btn-minus", function () {
-        var $input = $(this).siblings(".input-qty");
-        var newValue = parseInt($input.val()) - 1;
-        if (newValue >= 0) {
-            $input.val(newValue);
-        }
-    });
 });

@@ -1,15 +1,32 @@
+@extends('layouts.client')
+@section('css')
+<style>
+    .h-logo {
+        max-width: 185px !important;
+    }
+
+    .f-logo {
+        max-width: 220px !important;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .h-logo {
+            max-width: 110px !important;
+        }
+    }
+</style>
 <link rel="stylesheet" href="{{ asset('assets/clients/css/detail.css') }}">
+@endsection
 @section('title')
     {{ $title }}
 @endsection
-@extends('layouts.client')
-@section('content1')
 @section('footer')
     @include('clients.blocks.footer')
 @endsection
+@section('content1')
 
-<div class="container">
-    <div class="row">
+<div class="container m-0">
+    <div class="row product-data">
         @foreach ($detailId as $productId)
             <div class="col-2 mt-4">
                 <img src="{{ $productId->image }}" alt="ảnh" style="width:110%;padding-bottom:20px"
@@ -21,38 +38,21 @@
             </div>
             <div class="col-1"></div>
             <div class="col-4">
-                <h2 style="font-weight:bold;color:#000000" class="mt-4">{{ $productId->name }}</h2>
-                <span style="display: flex">
-                    <p style="font-weight:bold;color:#db4444" class="mt-2">{{ $productId->price }}VNĐ</p>
-                </span>
+                <div class="details-image-concept">
+                    <h2>{{ $productId->name }}</h2>
+                </div>
+                <h3 class="price-detail">{{ $productId->discounted_price }}VND <del>{{ $productId->price }}VND</del><span>{{ $productId->discount }}% off</span></h3>
                 <p>{{ $productId->details }}</p>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="image-container">
-                            <img src="{{ $productId->image }}" alt="ảnh" class="img-fluid image-with-border">
-                            <div class="overlay">
-                                <div class="overlay-text">Trắng</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="image-container">
-                            <img src="{{ $productId->image }}" alt="ảnh" class="img-fluid image-with-border">
-                            <div class="overlay">
-                                <div class="overlay-text">Đen</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="image-container">
-                            <img src="{{ $productId->image }}" alt="ảnh" class="img-fluid image-with-border">
-                            <div class="overlay">
-                                <div class="overlay-text">Đỏ</div>
-                            </div>
-                        </div>
+                <div class="col-4">
+                    <h6 class="product-title product-title-2 d-block">Quantity</h6>
+                    <div class="input-group">
+                        <button class="input-group-text bg-danger decrement-btn">-</button>
+                        <input type="text" style=" height:35px;"class="form-control text-center bg-white input-qty" disabled value="1">
+                        <button class="input-group-text bg-danger increment-btn">+</button>
                     </div>
                 </div>
-                <p style="color:#060303; font-size:bold" class="">Màu sắc</p>
+                <h6 class="product-title product-title-2 d-block">Available product: <span class="available-qty">{{$productId->quantity}}</span>
+                </h6>
                 <div class="d-flex mt1">
                     <form action="{{ route('add-wish-list') }}" method="POST" id="add-wishlist-form">
                         @csrf
@@ -62,7 +62,30 @@
                         </button>
                     </form>
                 </div>
-                <div class="d-flex mt">
+                <div class="product-buttons">
+                    <button class="btn btn-solid hover-solid btn-animation addToCartBtn">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Add To Cart</span>
+                    </button>
+                    {{-- <a href="javascript:void(0)"                                            
+                        id="cartEffect" class="btn btn-solid hover-solid btn-animation">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Add To Cart</span>
+                        <form id="addtocart" method="post"
+                            action="cart.store">
+                            @csrf
+                            <input ype="hidden" name="id" value="1">
+                            <input type="hidden" name="name" value="Autem Repudiandae Accusantium Blanditiis">
+                            <input type="hidden" name="price" value="13">
+                            <input type="hidden" name="quantity" id="qty" value="1">
+                        </form>
+                    </a> --}}
+                    <a href="javascript:void(0)" class="btn btn-solid">
+                        <i class="fa fa-check fz-16 me-2"></i>
+                        <span>Checkout</span>
+                    </a>
+                </div>
+                {{-- <div class="d-flex mt">
                     <div class="cont">
                         <div class="crtdiv" style="margin-right: 20px">
                             <button id="btn" type="button" class="cart"><i class="fa fa-shopping-cart"
@@ -75,14 +98,14 @@
                                     aria-hidden="true"></i> Go to checkout</button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         @endforeach
         <div class="col-1"></div>
     </div>
 </div>
 <div class="mt-5"></div>
-<div class="container">
+<div class="container m-0" >
     <div class="Frame626"
         style="height: 103px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex">
         <div class="Frame625" style="justify-content: flex-start; align-items: center; gap: 16px; display: inline-flex">
@@ -154,7 +177,9 @@
         </div>
     </div>
 </div>
-<div class="pb-5"></div>
 
+
+@endsection
+@section('script')
 <script src={{ asset('assets/clients/js/detail.js') }}></script>
 @endsection
