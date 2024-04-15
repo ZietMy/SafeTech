@@ -30,16 +30,23 @@ $(document).ready(function () {
         e.preventDefault();
         var qty = $(this).closest(".product-data").find(".input-qty").val();
         var pro_id = $(this).val();
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
             method: "POST",
-            url: "cart/store",
+            url: "http://127.0.0.1:8000/cart/store",
+            headers: {
+                'X-CSRF-TOKEN': CSRF_TOKEN // Thêm CSRF token vào header của request
+            },
             data: {
+                "_token": CSRF_TOKEN,
                 "product_id":pro_id,
                 "quantity_purchase": qty,
-
+            },
+            success: function(response){
+                console.log(response);
             }
         })
-    })
+    });
 });
 
 const heartDOM = document.querySelector(".js-heart");
