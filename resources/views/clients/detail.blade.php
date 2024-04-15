@@ -111,7 +111,6 @@
                         <a href="{{ route('clients.detail', ['id' => $product->id]) }}">
                             <img src="{{ $product->image }}" class="w-100 blur-up lazyload" alt="">
                         </a>
-    
                         <div class="circle-shape"></div>
                         <span class="background-text">Fashion</span>
                         <div class="label-block">
@@ -133,7 +132,6 @@
                             </ul>
                         </div>
                     </div>
-    
                     <div class="product-style-3 product-style-chair">
                         <div class="product-title d-block mb-0">
                             <div class="r-price">
@@ -161,6 +159,8 @@
     </div>
     
 </div>
+<div class="pb-5"></div>
+
 <div class="pb-5"></div>
 
 <script src={{ asset('assets/clients/js/detail.js') }}></script>

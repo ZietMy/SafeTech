@@ -17,7 +17,6 @@ class Users extends Model
         $users = DB::select('select * from users ');
         return $users;
     }
-
     public function getDetail($id){
         return DB::select('select * from '.$this->table.' where id = ?', [$id]);
     }

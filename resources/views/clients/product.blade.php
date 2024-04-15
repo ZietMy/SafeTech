@@ -292,3 +292,4 @@
 @section('footer')
     @include('clients.blocks.footer')
 @endsection
+
