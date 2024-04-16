@@ -37,7 +37,17 @@
       </div>
   </div>
 </section>
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 <!-- Cart Section Start -->
 <section class="cart-section section-b-space">
     <div class="container">
@@ -77,33 +87,22 @@
                                                 <span class="text-danger">out of stock</span>
                                             @else
                                                 
-                                            <div class="input-group d-flex ">
+                                            <div class="input-group d-flex  align-items-center gap-2 ">
                                                 <form action="{{ route('cart.decrement', ['cartId' => $item->id]) }}" method="POST">
                                                     @csrf
-                                                    <button type="submit" class="input-group-text bg-danger decrement-btn col-2">
+                                                    <button type="submit" class="input-group-text bg-danger decrement-btn col-2 pe-4 fs-4 text-center fw-bold">
                                                         -
                                                     </button>
                                                 </form>
                                                 <input type="text" style="height:35px;width:35px;" class="form-control text-center bg-white input-qty" disabled min="1" max="{{ $item->quantity_purchase }}" value="{{ $item->quantity_purchase }}">
                                                 <form action="{{ route('cart.increment', ['cartId' => $item->id]) }}" method="POST">
                                                     @csrf
-                                                    <button type="submit" class="input-group-text bg-danger increment-btn col-2">
+                                                    <button type="submit" class="input-group-text bg-danger increment-btn col-2 pe-4 text-center fs-4 fw-bold">
                                                         +
                                                     </button>
                                                 </form>
                                             </div>
                                             @endif
-                                            {{-- <button 
-                                            wire:click="incrementQty({{$item->id }})" type="button" name="id">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                              <input type="number" name="quantity"
-                                                  data-rowid="ba02b0dddb000b25445168300c65386d"
-                                                  class="form-control input-number" min="1" max="{{$item->product->quantity}}" readonly value="{{$item->quantity_purchase}}">
-                                              
-                                              <button wire:click="decrementQty({{$item->id }})" type="button" name="id">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>   
-                                              </button> --}}
                                         </div>
                                     </div>
                                 </td>
@@ -111,7 +110,7 @@
                                     <h2 class="td-color">{{$item->total}}</h2>
                                 </td>
                                 <td>
-                                    <a href="javascript:void(0)">
+                                    <a href="{{ route('cart.delete', ['cartId' => $item->id]) }}">
                                         <i class="fas fa-times"></i>
                                     </a>
                                 </td>
@@ -124,7 +123,7 @@
                     <div class="row">
                         <div class="col-sm-7 col-5 order-1">
                             <div class="left-side-button text-end d-flex d-block justify-content-end">
-                                <a href="javascript:void(0)"
+                                <a href="{{ route('cart.deleteAll')}}"
                                     class="text-decoration-underline theme-color d-block text-capitalize">clear
                                     all items</a>
                             </div>
@@ -137,24 +136,14 @@
                         </div>
                     </div>
                 </div>
-    
                 <div class="cart-checkout-section">
                     <div class="row g-4 justify-content-end">
-                        {{-- <div class="col-lg-4 col-sm-6">
-                            <div class="checkout-button">
-                                <a href="checkout" class="btn btn-solid-default btn fw-bold">
-                                    Check Out <i class="fas fa-arrow-right ms-1"></i></a>
-                            </div>
-                        </div>
-     --}}
                         <div class="col-lg-4">
                             <div class="cart-box">
                                 <div class="cart-box-details">
                                     <div class="total-details">
                                         <div class="top-details">
                                             <h3>Cart Totals</h3>
-                                            {{-- <h6>Sub Total <span></span></h6> --}}
-    
                                             <h5>Total <span class="text-danger"><b>{{$total}}.000 VND</b></span></h5>
                                         </div>
                                         <div class="bottom-details">

@@ -34,16 +34,16 @@ Route::get('/contact', [ContactController::class, 'index'])->name('client.contac
 Route::get('/product', [ProductController::class, 'index'])->name('product');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/wishlist', [WishListController::class, 'wishList'])->name('wishlist');
-    Route::post('/wishlist/add', [WishListController::class, 'addWishList'])->name('add-wish-list');
-    Route::get('/wishlist/delete/{id}', [WishListController::class, 'deleteWishList'])->name('delete-wish-list');
-    Route::post('/contact/post', [ContactController::class, 'getForm'])->name('post-message');
-    Route::get("cart", [CartController::class, 'index'])->name('cart');
-    Route::post("cart/store", [CartController::class, 'addToCart'])->name('cart.store');
-    Route::post('cart/increment/{cartId}', [CartController::class, 'increment'])->name('cart.increment');
-
-    // Định nghĩa tuyến đường cho hàm decrement
-    Route::post('cart/decrement/{cartId}', [CartController::class, 'decrement'])->name('cart.decrement');
+Route::get('/wishlist', [WishListController::class, 'wishList'])->name('wishlist');
+Route::post('/wishlist/add', [WishListController::class, 'addWishList'])->name('add-wish-list');
+Route::get('/wishlist/delete/{id}', [WishListController::class, 'deleteWishList'])->name('delete-wish-list');
+Route::post('/contact/post', [ContactController::class, 'getForm'])->name('post-message');
+Route::get("cart",[CartController::class, 'index'])->name('cart');
+Route::post("cart/store",[CartController::class, 'addToCart'])->name('cart.store');
+Route::post('cart/increment/{cartId}', [CartController::class, 'increment'])->name('cart.increment');
+Route::post('cart/decrement/{cartId}', [CartController::class, 'decrement'])->name('cart.decrement');
+Route::get('/delete-cart/{cartId}', [CartController::class, 'deleteCart'])->name('cart.delete');
+Route::get('/delete-all-cart', [CartController::class, 'deleteAllCart'])->name('cart.deleteAll');
 });
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/home', [AdminController::class, 'index'])->name('admin');

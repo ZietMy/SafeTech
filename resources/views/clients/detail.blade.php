@@ -23,9 +23,15 @@
 @section('footer')
     @include('clients.blocks.footer')
 @endsection
+
 @section('content1')
 
 <div class="container m-0">
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
     <div class="row product-data">
         @foreach ($detailId as $productId)
             <div class="col-2 mt-4">
@@ -63,10 +69,11 @@
                     </form>
                 </div>
                 <div class="product-buttons">
-                    <button class="btn btn-solid hover-solid btn-animation addToCartBtn" value="{{ $productId->id }}">
+                    <button class="btn btn-solid hover-solid btn-animation addToCartBtn" id="liveToastBtn" value="{{ $productId->id }}">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Add To Cart</span>
                     </button>
+                    
                     <a href="{{route('checkout')}}" class="btn btn-solid">
                         <i class="fa fa-check fz-16 me-2"></i>
                         <span>Checkout</span>
@@ -74,7 +81,20 @@
                 </div>
             </div>
         @endforeach
-        <div class="col-1"></div>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                {{-- <img src="..." class="rounded me-2" alt="..."> --}}
+                <strong class="me-auto">Notice</strong>
+                <small>Just now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Added To cart successfully
+              </div>
+            </div>
+        </div>
+        {{-- <div class="col-1"></div> --}}
     </div>
 </div>
 <div class="mt-5"></div>
