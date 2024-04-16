@@ -95,14 +95,6 @@ public function getEdit(Request $request, $id = 0)
         } else {
             $msg = 'ID không hợp lệ';
         }
-<<<<<<< HEAD
-        return redirect()->route('admin')->with('msg', $msg);
-    }
-    
-    
-}
-=======
         return redirect()->route('user')->with('msg', $msg);
     }   
 }
->>>>>>> e38408b5214d4ca175a87268cafdb9f3c5de1dd1

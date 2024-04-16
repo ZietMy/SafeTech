@@ -25,6 +25,7 @@
                                         <th scope="col">Product name</th>
                                         <th scope="col">Status name</th>
                                         <th scope="col">Quantity</th>
+                                        <th scope="col">Total Price</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -50,7 +51,13 @@
                                                 <td>
                                                     {{ $item->quantity }}
                                                 </td>
+                                                <td>
+                                                    <a class="text-heading font-semibold" href="#">
+                                                        {{ $item->price }}
+                                                    </a>
+                                                </td>
                                                 <td class="text-end">
+                                                    <a href="{{ route('viewOrderDetail', ['id' => $item->id]) }}" class="btn btn-sm btn-neutral">View</a>
                                                     <a href="{{ route('EditOrder', ['id' => $item->id]) }}"
                                                         class="btn btn-sm btn-neutral">Edit</a>
                                                     <a onclick="return confirm('Bạn có chắc muốn xóa')"

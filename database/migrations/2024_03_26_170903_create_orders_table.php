@@ -22,6 +22,7 @@ return new class extends Migration
         $table->foreignId('status_id')->constrained('order_statuses');
         $table->string('status_name')->nullable();
         $table->integer('quantity');
+        $table->float('price');
         $table->timestamps();
     });
 

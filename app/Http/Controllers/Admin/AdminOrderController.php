@@ -23,6 +23,11 @@ class AdminOrderController extends Controller
         $orderList = Order::with('orderStatus','products','users')->get();
         return view('admin.order', compact('orderList'));
     }
+    public function viewOrder($id)
+    {
+        $order = Order::find($id);
+        return view('admin.orders.viewOrder', compact('order'));
+    }
     public function getEditOrder(Request $request, $id = 0)
     {
         $users = Users::all();

@@ -28,7 +28,8 @@ class OrderSeeder extends Seeder
                 "product_name" => "Mũ len đẹp",
                 "status_id" => 1,
                 "status_name" => "Đơn hàng mới",
-                "quantity" => 3
+                "quantity" => 3,
+                "price"=>120000
             ],
             [
                 "user_id" => 4,
@@ -37,7 +38,8 @@ class OrderSeeder extends Seeder
                 "product_name" => "Mũ len đẹp",
                 "status_id" => 1,
                 "status_name" => "Đơn hàng mới",
-                "quantity" => 3
+                "quantity" => 3,
+                "price"=>120000
             ],
             [
 
@@ -47,7 +49,8 @@ class OrderSeeder extends Seeder
                 "product_name" => "Mũ len đẹp",
                 "status_id" => 1,
                 "status_name" => "Đơn hàng mới",
-                "quantity" => 3
+                "quantity" => 3,
+                "price"=>120000
             ]
 
         ];
