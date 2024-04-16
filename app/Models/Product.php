@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 class Product extends Model
 {
     use HasFactory;
+    public function order()
+    {
+        return $this->hasMany(Order::class,'product_id');
+    }
     public function getAllProduct()
     {
         $product = DB::table('SELECT * FROM products ');

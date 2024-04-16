@@ -22,8 +22,8 @@
             <div class="col-sm-9">
                 <select class="form-select" id="status_id" name="status_id">
                     <option value="">Chọn Status</option>
-                    @foreach($orderDetail as $order)
-                        <option value="{{ $order->status_id }}" selected>{{ $order->status_name }}</option>
+                    @foreach ($orderDetail as $order)
+                        <option value="{{ $order->status_id }}" selected>{{ $order->status_name}}</option>
                     @endforeach
                     @foreach ($statuses as $status)
                         <option value="{{ $status->id }}" {{ old('status_id') == $status->id ? 'selected' : '' }}>

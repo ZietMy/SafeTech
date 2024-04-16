@@ -9,6 +9,19 @@ class Order extends Model
 {
     protected $table = 'orders';
     use HasFactory;
+    public function orderStatus()
+    {
+        return $this->belongsTo(OrderStatus::class,'status_id');
+    }
+    public function products()
+    {
+        return $this->belongsTo(Product::class,'product_id');
+    }
+    public function users()
+    {
+        return $this->belongsTo(Users::class,'user_id');
+    }
+
     public function getAllOrder()
     {
         $orders = DB::select('select * from orders ');

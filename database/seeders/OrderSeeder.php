@@ -17,25 +17,40 @@ class OrderSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
-        $user = User::inRandomOrder()->first();
-        $product = Product::inRandomOrder()->first();
-        $status = OrderStatus::inRandomOrder()->first();
+        $orders = [
+            [
+                "user_id" => 3,
+                "user_name" => "Phạm Hỉ",
+                "product_id" => 4,
+                "product_name" => "Mũ len đẹp",
+                "status_id" => 1,
+                "status_name" => "Đơn hàng mới",
+                "quantity" => 3
+            ],
+            [
+                "user_id" => 4,
+                "user_name" => "Vân Thư",
+                "product_id" => 4,
+                "product_name" => "Mũ len đẹp",
+                "status_id" => 1,
+                "status_name" => "Đơn hàng mới",
+                "quantity" => 3
+            ],
+            [
 
-        if ($user && $product && $status) {
-            for ($i = 0; $i < 4; $i++) {
-                Order::create([
-                    'user_id' => $user->id,
-                    'user_name' => $user->name,
-                    'product_id' => $product->id,
-                    'product_name' => $product->name,
-                    'status_id' => $status->id,
-                    'status_name' => $status->status_name,
-                    'quantity' => rand(1, 10), 
-                ]);
-            }
-        } else {
-        }
+                "user_id" => 2,
+                "user_name" => "Việt Mỹ",
+                "product_id" => 5,
+                "product_name" => "Mũ len đẹp",
+                "status_id" => 1,
+                "status_name" => "Đơn hàng mới",
+                "quantity" => 3
+            ]
+
+        ];
+        DB::table('orders')->insert($orders);
     }
 }

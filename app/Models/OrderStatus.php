@@ -10,10 +10,15 @@ class OrderStatus extends Model
 {
     use HasFactory;
     protected $table = 'order_statuses';
-    use HasFactory;
-    public function getAllOrderStatus()
+    protected $fillable=['status_name'];
+    public function order()
     {
-        $orderStatus = DB::select('select * from order_statuses ');
-        return $orderStatus;
+        return $this->hasOne(Order::class,'status_id');
     }
+    // public function getAllOrderStatus()
+    // {
+    //     $orderStatus = DB::select('select * from order_statuses ');
+    //     return $orderStatus;
+    // }
 }
+

@@ -20,7 +20,7 @@ class AdminOrderController extends Controller
     }
     public function index()
     {
-        $orderList = $this->orders->getAllOrder();
+        $orderList = Order::with('orderStatus','products','users')->get();
         return view('admin.order', compact('orderList'));
     }
     public function getEditOrder(Request $request, $id = 0)

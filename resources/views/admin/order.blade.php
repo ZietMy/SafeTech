@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-@if(session()->has('msg'))
-    <script>
-        alert("{{ session()->get('msg') }}");
-    </script>
-@endif
+    @if (session()->has('msg'))
+        <script>
+            alert("{{ session()->get('msg') }}");
+        </script>
+    @endif
     <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
         <div class="h-screen flex-grow-1 overflow-y-lg-auto">
             <main class="py-6 bg-surface-secondary">
@@ -33,17 +33,17 @@
                                             <tr>
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->user_name }}
+                                                        {{ $item->users->name }}
                                                     </a>
                                                 </td>
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->product_name }}
+                                                        {{ $item->products->name }}
                                                     </a>
                                                 </td>
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->status_name }}
+                                                        {{ $item->orderStatus->status_name }}
                                                     </a>
                                                 </td>
                                                 <td>
