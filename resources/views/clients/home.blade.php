@@ -180,10 +180,14 @@
                         <div class="cart-wrap">
                             <ul>
                                 <li>
-                                    <a href="javascript:void(0)" class="addtocart-btn" data-bs-toggle="modal"
-                                        data-bs-target="#addtocart">
-                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                    </a>
+                                    <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        <div>
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="quantity_purchase" value="1" min="1">
+                                        </div>
+                                        <button type="submit"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                    </form>
                                 </li>
                                 <li>
                                     <a href="{{ route('clients.detail', ['id' => $products->id]) }}">

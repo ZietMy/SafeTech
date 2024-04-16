@@ -38,7 +38,7 @@
                         </svg>
                         </span>
                     </a>
-                    <a href="#!" class="ms-2">
+                    <a href="{{route('cart')}}" class="ms-2">
                         <span class="position-relative">
                             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
