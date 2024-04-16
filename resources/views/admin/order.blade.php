@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
+
 @section('content')
     @if (session()->has('msg'))
         <script>

@@ -34,7 +34,7 @@ class CategoriesController extends Controller
             'name' => $request->name,
         ];
         $this->categories->postCategories($data);
-        return redirect()->route('categories')->with('msg','Thêm người dùng thành công');
+        return redirect()->route('categories')->with('msg','Thêm dữ liệu thành công');
     }
     public function editCategories(Request $request, $id = 0)
     {
@@ -68,5 +68,9 @@ class CategoriesController extends Controller
         $this->categories->postEdit($data, $id);
     
         return redirect()->route('categories')->with('msg', 'Cập nhật thành công');
+    }
+    public function deleteCategories($id ){
+       $this->categories->deleteCategories($id);
+        return redirect()->route('categories')->with('msg', 'Xóa thành công');
     }
 }

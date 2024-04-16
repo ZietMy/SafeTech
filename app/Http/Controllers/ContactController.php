@@ -45,7 +45,7 @@ class ContactController extends Controller
         $this->contact->postForm($data);
         return redirect()->route('client.contact')->with('msg', 'Đã gửi dữ liệu');
     }
-    public function adminContacs()
+    public function adminContact()
     {
         $contactAd = Contact::all();
         $value = null;

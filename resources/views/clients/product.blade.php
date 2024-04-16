@@ -4,6 +4,38 @@
 @endsection
 <link rel="stylesheet" href="{{ asset('assets/clients/css/detail.css') }}">
 @section('content1')
+<section class="breadcrumb-section section-b-space" style="padding-top:20px;padding-bottom:20px;">
+  <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+  </ul>
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <h3>Shop</h3>
+              <nav>
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                          <a href="../index.htm">
+                              <i class="fas fa-home"></i>
+                          </a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                  </ol>
+              </nav>
+          </div>
+      </div>
+  </div>
+</section>
+<div class="pt-5"></div>
     <div class="container">
         <div class="row">
             <div class="Frame727"
@@ -45,9 +77,15 @@
                                 <div class="cart-wrap">
                                     <ul>
                                         <li>
-                                            <a href="javascript:void(0)" class="addtocart-btn">
-                                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                            </a>
+                                            <form action="{{ route('cart.store') }}" method="POST">
+                                                @csrf
+                                                <div>
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="quantity_purchase" value="1" min="1">
+                                                </div>
+                                                <button type="submit"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                            </form>
+                                            
                                         </li>
                                         <li>
                                             <a href={{ route('clients.detail', ['id' => $product->id]) }}>
@@ -60,7 +98,7 @@
                             <div class="product-style-3 product-style-chair">
                                 <div class="product-title d-block mb-0">
                                     <div class="r-price">
-                                        <div class="theme-color">{{ $product->price }} VNĐ</div>
+                                        <div class="theme-color ">{{ $product->discounted_price }} VNĐ <del class="fw-light text-body-tertiary fs-6">{{ $product->price }}VND</del></div>
                                         <div class="main-price">
                                             <ul class="rating mb-1 mt-0">
                                                 <li>
@@ -136,9 +174,14 @@
                                 <div class="cart-wrap">
                                     <ul>
                                         <li>
-                                            <a href="javascript:void(0)" class="addtocart-btn">
-                                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                            </a>
+                                            <form action="{{ route('cart.store') }}" method="POST">
+                                                @csrf
+                                                <div>
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="quantity_purchase" value="1" min="1">
+                                                </div>
+                                                <button type="submit"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                            </form>
                                         </li>
                                         <li>
                                             <a href={{ route('clients.detail', ['id' => $product->id]) }}>
@@ -151,7 +194,7 @@
                             <div class="product-style-3 product-style-chair">
                                 <div class="product-title d-block mb-0">
                                     <div class="r-price">
-                                        <div class="theme-color">{{ $product->price }} VNĐ</div>
+                                        <div class="theme-color ">{{ $product->discounted_price }} VNĐ <del class="fw-light text-body-tertiary fs-6">{{ $product->price }}VND</del></div>
                                         <div class="main-price">
                                             <ul class="rating mb-1 mt-0">
                                                 <li>
@@ -228,9 +271,14 @@
                                 <div class="cart-wrap">
                                     <ul>
                                         <li>
-                                            <a href="javascript:void(0)" class="addtocart-btn">
-                                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                            </a>
+                                            <form action="{{ route('cart.store') }}" method="POST">
+                                                @csrf
+                                                <div>
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="quantity_purchase" value="1" min="1">
+                                                </div>
+                                                <button type="submit"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                            </form>
                                         </li>
                                         <li>
                                             <a href={{ route('clients.detail', ['id' => $product->id]) }}>
@@ -243,7 +291,7 @@
                             <div class="product-style-3 product-style-chair">
                                 <div class="product-title d-block mb-0">
                                     <div class="r-price">
-                                        <div class="theme-color">{{ $product->price }} VNĐ</div>
+                                        <div class="theme-color ">{{ $product->discounted_price }} VNĐ <del class="fw-light text-body-tertiary fs-6">{{ $product->price }}VND</del></div>
                                         <div class="main-price">
                                             <ul class="rating mb-1 mt-0">
                                                 <li>
@@ -282,13 +330,7 @@
 @endsection
 
 
-
-
-
-
-
-
-
 @section('footer')
     @include('clients.blocks.footer')
 @endsection
+

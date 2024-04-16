@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Role; // Import model Role
 use App\Models\Status;
+use App\Models\Status;
 
 class AdminController extends Controller
 {
@@ -21,6 +22,25 @@ class AdminController extends Controller
         $userList = $this->users->getAllUser();
         return view('admin.user', compact('userList'));
     }
+
+public function getEdit(Request $request, $id = 0)
+{
+    if (!empty($id)) {
+        $userDetail = $this->users->getDetail($id);
+        $users = Users::all();
+        $status = Status::all(); 
+        if (!empty($userDetail[0])) {
+            $request->session()->put('id', $id);
+            $userDetail = $userDetail[0];
+        } else {
+            return redirect()->route('admin')->with('msg', 'Người dùng không tồn tại');
+        }
+    } else {
+        return redirect()->route('admin')->with('msg', 'Liên kết');
+    }
+    return view('admin.users.edit', compact('userDetail', 'users', 'status')); // Truyền dữ liệu $status vào view
+}
+
 
 public function getEdit(Request $request, $id = 0)
 {
