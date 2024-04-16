@@ -68,3 +68,4 @@ heartDOM.onclick = (event) => {
 heartDOM.addEventListener("animationend", (event) => {
     event.currentTarget.classList.remove("pulse");
 });
+
