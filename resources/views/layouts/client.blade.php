@@ -59,19 +59,9 @@
     </script>
     <script src="{{ asset('assets/clients/js/custom.js') }}"></script>
     <script src={{ asset('assets/clients/js/home.js') }}></script>
-    <script src={{ asset('assets/clients/js/custom_slick.js') }}></script>
-    <script src={{ asset('assets/clients/js/slick/slick-animation.min.js') }}></script>
-    <script src={{ asset('assets/clients/js/slick/slick.min.js') }}></script>
-    <script src={{ asset('assets/clients/js/slick/script.min.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/cart_modal_resize.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/feather.min.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/filter.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/ion.rangeSlider.min.js') }}></script>
     <script src={{ asset('assets/clients/js/feather/lazysizes.min.js') }}></script>
     <script src={{ asset('assets/clients/js/feather/newsletter.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/price-filter.js') }}></script>
-    <script src={{ asset('assets/clients/js/feather/theme-setting.js') }}></script>
-    <script src={{ asset('assets/clients/js/detail.js') }}></script>
+
     @yield('script')
 </body>
 
