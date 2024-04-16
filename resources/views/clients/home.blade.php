@@ -96,9 +96,14 @@
                         <div class="cart-wrap">
                             <ul>
                                 <li>
-                                    <a href="javascript:void(0)" class="addtocart-btn">
-                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                    </a>
+                                    <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        <div>
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="quantity_purchase" value="1" min="1">
+                                        </div>
+                                        <button type="submit"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                    </form>
                                 </li>
                                 <li>
                                     <a href={{ route('clients.detail', ['id' => $product->id]) }}>
@@ -111,7 +116,7 @@
                     <div class="product-style-3 product-style-chair">
                         <div class="product-title d-block mb-0">
                             <div class="r-price">
-                                <div class="theme-color">{{ $product->price }} VNĐ</div>
+                                <div class="theme-color ">{{ $product->discounted_price }} VNĐ <del class="fw-light text-body-tertiary fs-6">{{ $product->price }}VND</del></div>
                                 <div class="main-price">
                                     <ul class="rating mb-1 mt-0">
                                         <li>
@@ -200,7 +205,7 @@
                     <div class="product-style-3 product-style-chair">
                         <div class="product-title d-block mb-0">
                             <div class="r-price">
-                                <div class="theme-color">{{ $products->price }} VNĐ</div>
+                                <div class="theme-color ">{{ $products->discounted_price }} VNĐ <del class="fw-light text-body-tertiary">{{ $products->price }}VND</del></div>
                                 <div class="main-price">
                                     <ul class="rating mb-1 mt-0">
                                         <li>
@@ -284,10 +289,14 @@
                         <div class="cart-wrap">
                             <ul>
                                 <li>
-                                    <a href="javascript:void(0)" class="addtocart-btn" data-bs-toggle="modal"
-                                        data-bs-target="#addtocart">
-                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                    </a>
+                                    <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        <div>
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="quantity_purchase" value="1" min="1">
+                                        </div>
+                                        <button type="submit"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                    </form>
                                 </li>
                                 <li>
                                     <a href="{{ route('clients.detail', ['id' => $products->id]) }}">
@@ -300,7 +309,7 @@
                     <div class="product-style-3 product-style-chair">
                         <div class="product-title d-block mb-0">
                             <div class="r-price">
-                                <div class="theme-color">{{ $products->price }} VNĐ</div>
+                                <div class="theme-color ">{{ $products->discounted_price }}.000 VNĐ <del class="fw-light text-body-tertiary ">{{ $products->price }}VND</del></div>
                                 <div class="main-price">
                                     <ul class="rating mb-1 mt-0">
                                         <li>
@@ -336,5 +345,6 @@
 <div class="p-5"></div>
 @endsection
 @section('script')
+    <script src={{ asset('assets/clients/js/detail.js') }}></script>
 <script src={{ asset('assets/clients/js/home.js') }}></script>
 @endsection

@@ -77,17 +77,14 @@
                                 <div class="cart-wrap">
                                     <ul>
                                         <li>
-                                            
-                                           
-                                                
-                                                <form action="{{ route('cart.store') }}" method="POST">
-                                                    @csrf
-                                                    <div>
-                                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                                        <input type="hidden" name="quantity_purchase" value="1" min="1">
-                                                    </div>
-                                                    <button type="submit"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
-                                                </form>
+                                            <form action="{{ route('cart.store') }}" method="POST">
+                                                @csrf
+                                                <div>
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="quantity_purchase" value="1" min="1">
+                                                </div>
+                                                <button type="submit"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                            </form>
                                             
                                         </li>
                                         <li>
@@ -101,7 +98,7 @@
                             <div class="product-style-3 product-style-chair">
                                 <div class="product-title d-block mb-0">
                                     <div class="r-price">
-                                        <div class="theme-color">{{ $product->price }} VNĐ</div>
+                                        <div class="theme-color ">{{ $product->discounted_price }} VNĐ <del class="fw-light text-body-tertiary fs-6">{{ $product->price }}VND</del></div>
                                         <div class="main-price">
                                             <ul class="rating mb-1 mt-0">
                                                 <li>
@@ -197,7 +194,7 @@
                             <div class="product-style-3 product-style-chair">
                                 <div class="product-title d-block mb-0">
                                     <div class="r-price">
-                                        <div class="theme-color">{{ $product->price }} VNĐ</div>
+                                        <div class="theme-color ">{{ $product->discounted_price }} VNĐ <del class="fw-light text-body-tertiary fs-6">{{ $product->price }}VND</del></div>
                                         <div class="main-price">
                                             <ul class="rating mb-1 mt-0">
                                                 <li>
@@ -294,7 +291,7 @@
                             <div class="product-style-3 product-style-chair">
                                 <div class="product-title d-block mb-0">
                                     <div class="r-price">
-                                        <div class="theme-color">{{ $product->price }} VNĐ</div>
+                                        <div class="theme-color ">{{ $product->discounted_price }} VNĐ <del class="fw-light text-body-tertiary fs-6">{{ $product->price }}VND</del></div>
                                         <div class="main-price">
                                             <ul class="rating mb-1 mt-0">
                                                 <li>

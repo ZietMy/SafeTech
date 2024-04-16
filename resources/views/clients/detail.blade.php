@@ -67,25 +67,11 @@
                         <i class="fa fa-shopping-cart"></i>
                         <span>Add To Cart</span>
                     </button>
-                    <a href="javascript:void(0)" class="btn btn-solid">
+                    <a href="{{route('checkout')}}" class="btn btn-solid">
                         <i class="fa fa-check fz-16 me-2"></i>
                         <span>Checkout</span>
                     </a>
                 </div>
-                {{-- <div class="d-flex mt">
-                    <div class="cont">
-                        <div class="crtdiv" style="margin-right: 20px">
-                            <button id="btn" type="button" class="cart"><i class="fa fa-shopping-cart"
-                                    aria-hidden="true"></i> Add to cart</button>
-                        </div>
-                    </div>
-                    <div class="cont">
-                        <div class="crtdiv1">
-                            <button id="btn" type="button" class="cart1"><i class="fa fa-check"
-                                    aria-hidden="true"></i> Go to checkout</button>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         @endforeach
         <div class="col-1"></div>

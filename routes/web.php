@@ -15,6 +15,7 @@ use App\Http\Controllers\WishListController;
 use App\Models\Upload;
 use App\Http\Controllers\Admin\HomeAdminController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +65,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
     Route::post('edit/{id}',[AdminOrderController::class,'postEditOrder'])->name('postEditOrder');
     Route::get('delete/order/{id}', [AdminOrderController::class, 'deleteOrder'])->name('delete-Order');
 
-    Route::get('contact',[ContactController::class,'adminContacs'])->name('contact-admin');
+    Route::get('contact',[ContactController::class,'adminContact'])->name('contact-admin');
     Route::get('contact/edit/{id}',[ContactController::class,'getContactId'])->name('update-contact');
     Route::post('contact/update',[ContactController::class,'postUpdate'])->name('update');
 
@@ -80,6 +81,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
     Route::post('categories/create', [CategoriesController::class, 'postCategories'])->name('post-add');
     Route::get('categories/edit/{id}', [CategoriesController::class, 'editCategories'])->name('categories.edit');
     Route::post('categories/edit', [CategoriesController::class, 'postEditCategories'])->name('post-edit');
+    Route::get('admin/categories/delete/{id}',[CategoriesController::class,'deleteCategories'])->name('categories.delete');
 });
 
 Route::middleware('auth')->group(function () {
@@ -89,6 +91,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
+Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout');
 
 require __DIR__ . '/auth.php';
