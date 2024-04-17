@@ -11,6 +11,10 @@ class Users extends Model
 {
     protected $table = 'users';
     use HasFactory;
+    public function order()
+    {
+        return $this->hasMany(Order::class,'user_id');
+    }
     
     public function getAllUser()
     {

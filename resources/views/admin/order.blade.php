@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-@if(session()->has('msg'))
-    <script>
-        alert("{{ session()->get('msg') }}");
-    </script>
-@endif
+    @if (session()->has('msg'))
+        <script>
+            alert("{{ session()->get('msg') }}");
+        </script>
+    @endif
     <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
         <div class="h-screen flex-grow-1 overflow-y-lg-auto">
             <main class="py-6 bg-surface-secondary">
@@ -20,10 +20,11 @@
                             <table class="table table-hover table-nowrap">
                                 <thead class="thead-light">
                                     <tr>
+                                        <th scope="col">Order ID</th>
                                         <th scope="col">User name</th>
-                                        <th scope="col">Product name</th>
                                         <th scope="col">Status name</th>
                                         <th scope="col">Quantity</th>
+                                        <th scope="col">Total Price</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -33,50 +34,50 @@
                                             <tr>
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->user_name }}
+                                                        {{ $item->id }}
                                                     </a>
                                                 </td>
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->product_name }}
+                                                        {{ $item->users->name }}
                                                     </a>
                                                 </td>
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->status_name }}
+                                                        {{ $item->orderStatus->status_name }}
                                                     </a>
                                                 </td>
                                                 <td>
                                                     {{ $item->quantity }}
                                                 </td>
+                                                <td>
+                                                    <a class="text-heading font-semibold" href="#">
+                                                        {{ $item->price }}
+                                                    </a>
+                                                </td>
+                                                
                                                 <td class="text-end">
-                                                    <a href="{{ route('EditOrder', ['id' => $item->id]) }}"
-                                                        class="btn btn-sm btn-neutral">Edit</a>
-                                                    <a onclick="return confirm('Bạn có chắc muốn xóa')"
-                                                        href="{{ route('delete-Order', ['id' => $item->id]) }}">
-                                                        <button type="button"
-                                                            class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                                    <a href="{{ route('viewOrderDetail', ['id' => $item->id]) }}" class="btn btn-sm btn-neutral">View</a>
+                                                    <a href="{{ route('EditOrder', ['id' => $item->id]) }}" class="btn btn-sm btn-neutral">Edit</a>
+                                                    <a onclick="return confirm('Bạn có chắc muốn xóa')" href="{{ route('delete-Order', ['id' => $item->id]) }}">
+                                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                                             <i class="bi bi-trash"></i>
                                                         </button>
                                                     </a>
-
                                                 </td>
                                             </tr>
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td>Không có người dùng</td>
+                                            <td colspan="7">Không có đơn hàng</td>
                                         </tr>
                                     @endif
                                 </tbody>
-
                             </table>
-
                         </div>
                     </div>
                 </div>
             </main>
         </div>
     </div>
-
 @endsection

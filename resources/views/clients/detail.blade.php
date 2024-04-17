@@ -26,7 +26,7 @@
 
 @section('content1')
 
-<div class="container m-0">
+<div class="container m-0z">
     @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}

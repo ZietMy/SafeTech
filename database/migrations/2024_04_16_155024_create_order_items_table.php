@@ -12,16 +12,18 @@ return new class extends Migration
      * @return void
      */
     public function up()
-{
-        Schema::create('orders', function (Blueprint $table) {
+    {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('status_id')->constrained('order_statuses');
+            $table->foreignId('order_id')->constrained();
+            $table->foreignId('product_id')->constrained();
             $table->integer('quantity');
-            $table->float('price')->default(0.00);
+            $table->float('price');
             $table->timestamps();
         });
-}  
+              
+    }
+
     /**
      * Reverse the migrations.
      *
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('order_items');
     }
 };
