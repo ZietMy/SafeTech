@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 class Product extends Model
 {
     use HasFactory;
+    
+    
     public function order()
     {
         return $this->belongsTo(Order::class, 'order_id'); 

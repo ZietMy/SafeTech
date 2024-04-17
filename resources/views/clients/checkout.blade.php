@@ -45,63 +45,74 @@
 <div class="wrapper">
     <div class="row">
         <form method="post">
+            @csrf
             <div class="col-5 col pt-5">
-                <div class="width50 padright">
-                    <label for="fname">Full name</label>
-                    <input type="text" name="name" id="name" required disabled>
+                <div class="width padright">
+                    <label for="fname">Name</label>
+                    <input type="text" name="name" id="name" required disabled value="{{Auth::user()->name}}">
                 </div>
                 <div class="width50 padright">
-                    <label for="tel">User name</label>
-                    <input type="text" name="username" id="tel" required disabled>
-                </div>
-                <div class="width50 padright">
-                    <label for="tel">Phone numer</label>
-                    <input type="text" name="tel" id="tel" required disabled>
+                    <label for="tel">Phone number</label>
+                    <input type="text" name="tel" id="tel" required disabled value="{{Auth::user()->phone_number}}">
                 </div>
                 <div class="width50 padright">
                     <label for="email">Email Address</label>
-                    <input type="text" name="email" id="email" required disabled>
+                    <input type="text" name="email" id="email" required disabled value="{{Auth::user()->email}}">
                 </div>
                 <div class="padright">
                     <label for="email">Address</label>
-                    <input type="text" name="address" id="address" required disabled>
+                    <input type="text" name="address" id="address" required disabled value="{{Auth::user()->address}}">
                 </div>
-                <label for="notes" class="notes">Order Notes</label>
-                <textarea name="notes" id="notes" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                
+                {{-- <div class="left-side-button float-start">
+                    <a href="{{route('profile.getEdit')}}" class="btn btn-solid-default btn fw-bold mb-0 ms-0">
+                        <i class="fas fa-arrow-right"></i>update infor</a>
+                </div> --}}
             </div>
             <div class="col-7 col order">
-                <h3 class="topborder"><span>Your Order</span></h3>
                 <div class="row">
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col" style="text-align: left; margin-right: 10px;">Product</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col" >Total</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td scope="row" class="text-center">
-                                <span style=""><img src="{{asset('assets\clients\images\ảnh.png') }}" alt="" width="100px" height="100px"></span>
-                                <span style="">Mũ Len Đẹp</span>
-                            </td>
-                            <td class="text-center" style="text-align: center;">
-                                <span class="fs-5 fw-semibold">125.000 VND</span>
-                                <p class="text-decoration-line-through fw-light">100.000 VND</p>
-                            </td>
-                            <td class="text-align-center">2</td>
-                            <td class="fw-bolder fs-5 text-align-end">200.000VND</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <div style="display: flex; justify-content: space-between;">
-                        <h5 style="text-align: left; margin-right: 10px;">Total</h5>
-                        <span style="text-align: right;"><h5 style="color: #df4246;font-weight:bold" class="fs-3">200.000 vnd</h5></span>
-                    </div>                    
+                    <form action="placeolder" method="post">
+                        <h3 class="topborder"><span>Your Order</span></h3>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col" style="text-align: left; margin-right: 10px;">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col" >Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                                    @foreach ($cartShopping as $item)
+                                    <tr>
+                                        <td scope="row" class="text-center">
+                                            <span style=""><img src="{{$item['image']}}" alt="" width="100px" height="100px"></span>
+                                            <span style="">{{$item['name']}}</span>
+                                        </td>
+                                        <td class="text-center" style="text-align: center;">
+                                            <span class="fs-5 fw-semibold">{{$item['discounted_price']}}VND</span>
+                                            <p class="text-decoration-line-through fw-light">{{$item['price']}}VND</p>
+                                        </td>
+                                        <td class="text-align-center">{{$item['quantity']}}</td>
+                                        <td class="fw-bolder fs-5 text-align-end">{{$item['total']}}.000VND</td>
+                                    </tr>       
+                                    @endforeach
+                            </tbody>
+                        </table>
+                        <div style="display: flex; justify-content: space-between;">
+                            <h5 style="text-align: left; margin-right: 10px;">Total</h5>
+                            <span style="text-align: right;">
+                                <h5 style="color: #df4246;font-weight:bold" class="fs-3">{{$total}}.000 VND</h5>
+                            </span>
+                        </div>   
+
+                        <button type="submit" name="submit"  class="btn btn-danger mt-5">PLACE ORDER</button>
+                                   
+                    </form>
                 </div>
-                <input type="submit" name="submit" value="Place Order" class="redbutton">
+                
 
             </div>
         </form>

@@ -11,18 +11,19 @@ $(document).ready(function () {
         value = isNaN(value) ? 0 : value;
         if (value <  availableQty) {
             value++;
+            $('#quantityBuy').val(value)
             $(this).closest(".product-data").find(".input-qty").val(value);
         }
     });
 
     $(".decrement-btn").click(function (e) {
         e.preventDefault();
-
         var qty = $(this).closest(".product-data").find(".input-qty").val();
         var value = parseInt(qty, 10);
         value = isNaN(value) ? 0 : value;
         if (value > 1) {
             value--;
+            $('#quantityBuy').val(value);
             $(this).closest(".product-data").find(".input-qty").val(value);
         }
     });
@@ -48,6 +49,7 @@ $(document).ready(function () {
             }
         })
     });
+        
 });
 
 const heartDOM = document.querySelector(".js-heart");

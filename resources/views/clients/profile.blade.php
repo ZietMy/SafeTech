@@ -64,7 +64,7 @@
             </div>
             <div class=" padright">
                 <label for="email">Address</label>
-                <input type="text" name="email" id="address" required disabled value="{{ old('address', $user->address) }}">
+                <input type="text" name="address" id="address" required disabled value="{{ old('address', $user->address) }}">
             </div>
         </div>    
         </div>

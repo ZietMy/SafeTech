@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('image1')->nullable();
             $table->string('image2')->nullable();
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            $table->decimal('discount',3,1)->default(0);
+            $table->decimal('discount',3)->default(0);
             $table->decimal('discounted_price',10, 3);
         });
         DB::unprepared('
