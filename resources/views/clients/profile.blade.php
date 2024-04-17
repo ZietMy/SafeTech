@@ -37,12 +37,12 @@
         </div>
     </div>
 </section>
-@if(session('msg'))
-<div class="alert alert-success">
-    {{session('msg')}}
-</div>
-@endif
 <div class="wrapper">
+    @if(session('msg'))
+        <div class="alert alert-success">
+             {{session('msg')}}
+        </div>
+    @endif
     <div class="row">
         @if($user)
         <div class="col-12 col pt-5">
