@@ -23,37 +23,24 @@ class OrderSeeder extends Seeder
         $orders = [
             [
                 "user_id" => 3,
-                "user_name" => "Phạm Hỉ",
-                "product_id" => 4,
-                "product_name" => "Mũ len đẹp",
-                "status_id" => 1,
-                "status_name" => "Đơn hàng mới",
+                "status_id" => 1, 
                 "quantity" => 3,
-                "price"=>120000
+                "price" => 100000,
+            ],
+            [
+                "user_id" => 2,
+                "status_id" => 1, 
+                "quantity" => 3,
+                "price" => 100000,
             ],
             [
                 "user_id" => 4,
-                "user_name" => "Vân Thư",
-                "product_id" => 4,
-                "product_name" => "Mũ len đẹp",
                 "status_id" => 1,
-                "status_name" => "Đơn hàng mới",
                 "quantity" => 3,
-                "price"=>120000
-            ],
-            [
-
-                "user_id" => 2,
-                "user_name" => "Việt Mỹ",
-                "product_id" => 5,
-                "product_name" => "Mũ len đẹp",
-                "status_id" => 1,
-                "status_name" => "Đơn hàng mới",
-                "quantity" => 3,
-                "price"=>120000
+                "price" => 100000,
             ]
-
         ];
+    
         DB::table('orders')->insert($orders);
     }
 }

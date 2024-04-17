@@ -20,7 +20,7 @@ class AdminOrderController extends Controller
     }
     public function index()
     {
-        $orderList = Order::with('orderStatus','products','users')->get();
+        $orderList = Order::with('orderStatus', 'products', 'users')->get();
         return view('admin.order', compact('orderList'));
     }
     public function viewOrder($id)
@@ -53,12 +53,21 @@ class AdminOrderController extends Controller
         if (empty($id)) {
             return back()->with('msg', 'Liên kết không tồn tại');
         }
+        $orderDetail = $this->orders->getDetailOrder($id);
+        $currentStatusId = $orderDetail[0]->status_id;
+        if (!in_array($currentStatusId, [1, 2])) {
+            return back()->with('msg', 'Không thể chỉnh sửa đơn hàng ở trạng thái này');
+        }
         $request->validate([
             'status_id' => 'required|integer',
         ], [
             'status_id.required' => 'Status name là trường bắt buộc.',
             'status_id.integer' => 'Status ID phải là số nguyên.',
         ]);
+
+        if ($currentStatusId == 2 && $request->status_id == 1) {
+            return back()->with('msg', 'Không thể chuyển đơn hàng đã giao hàng thành đơn hàng mới');
+        }
         $status = OrderStatus::find($request->status_id);
         $status_name = $status ? $status->status_name : '';
         $dataUpdate = [
@@ -68,8 +77,6 @@ class AdminOrderController extends Controller
         $this->orders->updateOrder($dataUpdate, $id);
         return redirect()->route('order')->with('msg', 'Cập nhật đơn hàng thành công');
     }
-
-
     public function deleteOrder($id = 0)
     {
         if ($id !== 0) {

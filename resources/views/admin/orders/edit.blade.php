@@ -4,10 +4,10 @@
 @endsection
 
 @section('content')
-    @if (isset($msg))
-        <div class="alert alert-success">
-            {{ $msg }}
-        </div>
+    @if (session()->has('msg'))
+        <script>
+            alert("{{ session()->get('msg') }}");
+        </script>
     @endif
 
     @if ($errors->any())
@@ -21,7 +21,8 @@
             <div class="col-sm-9">
                 <select class="form-select" id="status_id" name="status_id">
                     @foreach ($orderDetail as $order)
-                        <option value="{{ $order->status_id }}" selected>{{ $order->status_name }}</option>
+                        <option value="{{ $order->orderStatus->id }}" selected>{{ $order->orderStatus->status_name }}
+                        </option>
                     @endforeach
                     @foreach ($statuses as $status)
                         @php

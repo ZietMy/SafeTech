@@ -11,7 +11,7 @@ class Product extends Model
     use HasFactory;
     public function order()
     {
-        return $this->hasMany(Order::class,'product_id');
+        return $this->belongsTo(Order::class, 'order_id'); 
     }
     public function getAllProduct()
     {

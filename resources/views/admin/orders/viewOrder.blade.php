@@ -14,7 +14,11 @@
                     </tr>
                     <tr>
                         <th>Product name</th>
-                        <td>{{ $order->products->name }}</td>
+                        <td>
+                            @foreach ($order->products as $product)
+                                {{ $product->name }} <br>
+                            @endforeach
+                        </td>
                     </tr>
                     <tr>
                         <th>Status order</th>
