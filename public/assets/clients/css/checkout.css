@@ -375,13 +375,6 @@ p
 }
 
 
-/* Heading Top Border Styles End Here */
-
-
-
-
-
-
 a
 {
 	color: #D6544E;
@@ -413,12 +406,12 @@ a:hover
 	margin-top: 28px;
 }
 
-.order div:not(.qty)
+/* .order div:not(.qty)
 {
 	width: 100%;
 	border-bottom: 1px solid #DDDDDD;
 	padding: 20px 0;
-}
+} */
 
 .order a
 {
@@ -581,4 +574,8 @@ a:hover
 .button-48 span {
     z-index: 1;
     position: relative;
+}
+tbody tr td {
+    text-align: center; /* Căn giữa nội dung ngang */
+    vertical-align: middle; /* Căn giữa nội dung dọc */
 }
