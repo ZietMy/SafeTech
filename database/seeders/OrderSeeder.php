@@ -17,25 +17,30 @@ class OrderSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
-        $user = User::inRandomOrder()->first();
-        $product = Product::inRandomOrder()->first();
-        $status = OrderStatus::inRandomOrder()->first();
-
-        if ($user && $product && $status) {
-            for ($i = 0; $i < 4; $i++) {
-                Order::create([
-                    'user_id' => $user->id,
-                    'user_name' => $user->name,
-                    'product_id' => $product->id,
-                    'product_name' => $product->name,
-                    'status_id' => $status->id,
-                    'status_name' => $status->status_name,
-                    'quantity' => rand(1, 10), 
-                ]);
-            }
-        } else {
-        }
+        $orders = [
+            [
+                "user_id" => 3,
+                "status_id" => 1, 
+                "quantity" => 3,
+                "price" => 100000,
+            ],
+            [
+                "user_id" => 2,
+                "status_id" => 1, 
+                "quantity" => 3,
+                "price" => 100000,
+            ],
+            [
+                "user_id" => 4,
+                "status_id" => 1,
+                "quantity" => 3,
+                "price" => 100000,
+            ]
+        ];
+    
+        DB::table('orders')->insert($orders);
     }
 }

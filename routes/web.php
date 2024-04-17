@@ -6,9 +6,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminController;  
-use App\Http\Controllers\CategoriesController; 
-use App\Http\Controllers\Admin\AdminProductsController; 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\Admin\AdminProductsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\WishListController;
@@ -47,9 +47,9 @@ Route::get('/delete-all-cart', [CartController::class, 'deleteAllCart'])->name('
 
 Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout');
 });
-Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/home', [AdminController::class, 'index'])->name('admin');
-    
+
     Route::get('/user', [AdminController::class, 'index'])->name('user');
     Route::get('/user/create', [AdminController::class, 'add'])->name('add_user');
     Route::post('/user/create', [AdminController::class, 'postAdd'])->name('postAdd_user');
@@ -58,32 +58,33 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
     Route::get('/user/delete/{id}', [AdminController::class, 'delete'])->name('delete_user');
     Route::resources([
         'products' => AdminProductsController::class,
-       
+
     ]);
-    Route::get('/order',[AdminOrderController::class,'index'])->name('order');
-    Route::get('order/add',[AdminOrderController::class,'addOrder'])->name('addOrder');
-    Route::post('order/add',[AdminOrderController::class,'postAddOrder'])->name('postAddOrder');
-    Route::get('edit/{id}',[AdminOrderController::class,'getEditOrder'])->name('EditOrder');
-    Route::post('edit/{id}',[AdminOrderController::class,'postEditOrder'])->name('postEditOrder');
+    Route::get('/order', [AdminOrderController::class, 'index'])->name('order');
+    Route::get('/order/{id}/view', [AdminOrderController::class, 'viewOrder'])->name('viewOrderDetail');
+    Route::get('order/add', [AdminOrderController::class, 'addOrder'])->name('addOrder');
+    Route::post('order/add', [AdminOrderController::class, 'postAddOrder'])->name('postAddOrder');
+    Route::get('edit/{id}', [AdminOrderController::class, 'getEditOrder'])->name('EditOrder');
+    Route::post('edit/{id}', [AdminOrderController::class, 'postEditOrder'])->name('postEditOrder');
     Route::get('delete/order/{id}', [AdminOrderController::class, 'deleteOrder'])->name('delete-Order');
 
-    Route::get('contact',[ContactController::class,'adminContact'])->name('contact-admin');
-    Route::get('contact/edit/{id}',[ContactController::class,'getContactId'])->name('update-contact');
-    Route::post('contact/update',[ContactController::class,'postUpdate'])->name('update');
+    Route::get('contact', [ContactController::class, 'adminContact'])->name('contact-admin');
+    Route::get('contact/edit/{id}', [ContactController::class, 'getContactId'])->name('update-contact');
+    Route::post('contact/update', [ContactController::class, 'postUpdate'])->name('update');
 
-    Route::get('upload',[UploadController::class,'index'])->name('upload');
-    Route::get('upload/create',[UploadController::class,'getUpload'])->name('uploadImg');
-    Route::post('upload/create',[UploadController::class,'postUpload'])->name('post-upload');
-    Route::get('upload/edit/{id}',[UploadController::class,'getEditUpload'])-> name('upload-edit');
-    Route::post('upload/edit',[UploadController::class,'postEditUpload'])->name('post-editUpload');
-    Route::get('/upload/delete/{id}',[UploadController::class,'deleteImg'])->name('delete-upload');
+    Route::get('upload', [UploadController::class, 'index'])->name('upload');
+    Route::get('upload/create', [UploadController::class, 'getUpload'])->name('uploadImg');
+    Route::post('upload/create', [UploadController::class, 'postUpload'])->name('post-upload');
+    Route::get('upload/edit/{id}', [UploadController::class, 'getEditUpload'])->name('upload-edit');
+    Route::post('upload/edit', [UploadController::class, 'postEditUpload'])->name('post-editUpload');
+    Route::get('/upload/delete/{id}', [UploadController::class, 'deleteImg'])->name('delete-upload');
 
     Route::get('categories', [CategoriesController::class, 'index'])->name('categories');
     Route::get('categories/create', [CategoriesController::class, 'getCategories'])->name('categories.create');
     Route::post('categories/create', [CategoriesController::class, 'postCategories'])->name('post-add');
     Route::get('categories/edit/{id}', [CategoriesController::class, 'editCategories'])->name('categories.edit');
     Route::post('categories/edit', [CategoriesController::class, 'postEditCategories'])->name('post-edit');
-    Route::get('admin/categories/delete/{id}',[CategoriesController::class,'deleteCategories'])->name('categories.delete');
+    Route::get('admin/categories/delete/{id}', [CategoriesController::class, 'deleteCategories'])->name('categories.delete');
 });
 
 Route::middleware('auth')->group(function () {
