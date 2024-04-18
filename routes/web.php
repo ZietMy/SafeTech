@@ -47,6 +47,9 @@ Route::get('/delete-all-cart', [CartController::class, 'deleteAllCart'])->name('
 
 Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout');
 Route::post('/checkout',[CheckoutController::class,'checkout'])->name('checkout.store');
+Route::get('/checkout-successfully',function(){
+    return view('clients.checkoutSuccessfully');
+})->name('checkout.successfully');
 });
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/home', [AdminController::class, 'index'])->name('admin');

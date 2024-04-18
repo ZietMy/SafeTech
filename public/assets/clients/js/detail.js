@@ -11,7 +11,7 @@ $(document).ready(function () {
         value = isNaN(value) ? 0 : value;
         if (value <  availableQty) {
             value++;
-            $('#quantityBuy').val(value)
+            $('.quantityBuy').val(value)
             $(this).closest(".product-data").find(".input-qty").val(value);
         }
     });
@@ -23,32 +23,32 @@ $(document).ready(function () {
         value = isNaN(value) ? 0 : value;
         if (value > 1) {
             value--;
-            $('#quantityBuy').val(value);
+            $('.quantityBuy').val(value);
             $(this).closest(".product-data").find(".input-qty").val(value);
         }
     });
-    $('.addToCartBtn').click(function(e){
-        e.preventDefault();
-        var qty = $(this).closest(".product-data").find(".input-qty").val();
-        var pro_id = $(this).val();
-        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        $.ajax({
-            method: "POST",
-            url: "http://127.0.0.1:8000/cart/store",
-            headers: {
-                'X-CSRF-TOKEN': CSRF_TOKEN // Thêm CSRF token vào header của request
-            },
-            data: {
-                "_token": CSRF_TOKEN,
-                "product_id":pro_id,
-                "quantity_purchase": qty,
-            },
-            success: function(response){
-                // alertify.success(response['message'])
-                console.log(response);
-            }
-        })
-    });
+    // $('.addToCartBtn').click(function(e){
+    //     e.preventDefault();
+    //     var qty = $(this).closest(".product-data").find(".input-qty").val();
+    //     var pro_id = $(this).val();
+    //     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    //     $.ajax({
+    //         method: "POST",
+    //         url: "http://127.0.0.1:8000/cart/store",
+    //         headers: {
+    //             'X-CSRF-TOKEN': CSRF_TOKEN // Thêm CSRF token vào header của request
+    //         },
+    //         data: {
+    //             "_token": CSRF_TOKEN,
+    //             "product_id":pro_id,
+    //             "quantity_purchase": qty,
+    //         },
+    //         success: function(response){
+    //             // alertify.success(response['message'])
+    //             // console.log(response);
+    //         }
+    //     })
+    // });
         
 });
 

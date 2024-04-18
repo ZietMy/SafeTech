@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,13 +68,40 @@ class CheckoutController extends Controller
                 session()->put('total', $total);
             }
         }
-       
+        // dd(session('total'));
+    //    dd(session('cartShopping'));
         return view('clients.checkout',compact('title','cartShopping','total'));
     }
     public function checkout (Request $request){
-        //lấy lại session
-        // lưu user_id, nơi giao hàng tổng, set trạng thái đơn hàng mới
-        // lưu các product vào order_item
-        
+        $userId= Auth::id();
+        $order = new Order();
+        $orderItem = new OrderItem();
+
+        $sessionTotal=session('total');
+        $sessionCartShopping = session('cartShopping');
+        $order = new Order();
+        $order->user_id = $userId;
+        $order->total_amount = $sessionTotal;
+        $order->status_id = 1; 
+        $order->save();
+
+        foreach ($sessionCartShopping as $item) {
+            $orderItem = new OrderItem();
+            $orderItem->order_id = $order->id; // Gán order_id cho từng sản phẩm
+            $orderItem->product_id = $item['product_id'];
+            $orderItem->price = $item['discounted_price'];
+            $orderItem->quantity = $item['quantity'];
+            $orderItem->total = $item['total'];
+            $orderItem->save();
+            if (!empty($item['cart_id'])){
+                $cart= Cart::find($item['cart_id']);
+                $cart->delete();
+            }
+        }
+
+        session()->forget('total');
+        session()->forget('cartShopping');
+
+        return redirect()->route('checkout.successfully')->with('success', 'Your order has been placed successfully!');
     }
 }
