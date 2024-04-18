@@ -67,7 +67,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::post('order/add', [AdminOrderController::class, 'postAddOrder'])->name('postAddOrder');
     Route::get('edit/{id}', [AdminOrderController::class, 'getEditOrder'])->name('EditOrder');
     Route::post('edit/{id}', [AdminOrderController::class, 'postEditOrder'])->name('postEditOrder');
-    Route::get('delete/order/{id}', [AdminOrderController::class, 'deleteOrder'])->name('delete-Order');
 
     Route::get('contact', [ContactController::class, 'adminContact'])->name('contact-admin');
     Route::get('contact/edit/{id}', [ContactController::class, 'getContactId'])->name('update-contact');

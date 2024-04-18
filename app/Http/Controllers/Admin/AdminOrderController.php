@@ -77,28 +77,4 @@ class AdminOrderController extends Controller
         $this->orders->updateOrder($dataUpdate, $id);
         return redirect()->route('order')->with('msg', 'Cập nhật đơn hàng thành công');
     }
-    public function deleteOrder($id = 0)
-    {
-        if ($id !== 0) {
-            $orderDetail = $this->orders->getDetailOrder($id);
-            if (!empty($orderDetail[0])) {
-                $status_id = $orderDetail[0]->status_id;
-                if ($status_id == 3) {
-                    $deleteStatus = $this->orders->deleteOrders($id);
-                    if ($deleteStatus) {
-                        $msg = 'Xóa đơn hàng thành công';
-                    } else {
-                        $msg = 'Không thể xóa đơn hàng';
-                    }
-                } else {
-                    $msg = 'Không thể xóa đơn hàng với trạng thái không phù hợp';
-                }
-            } else {
-                $msg = 'Đơn hàng không tồn tại';
-            }
-        } else {
-            $msg = 'ID không hợp lệ';
-        }
-        return redirect()->route('order')->with('msg', $msg);
-    }
 }
