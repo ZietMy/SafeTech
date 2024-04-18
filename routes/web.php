@@ -46,6 +46,7 @@ Route::get('/delete-cart/{cartId}', [CartController::class, 'deleteCart'])->name
 Route::get('/delete-all-cart', [CartController::class, 'deleteAllCart'])->name('cart.deleteAll');
 
 Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout');
+Route::post('/checkout',[CheckoutController::class,'checkout'])->name('checkout.store');
 });
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/home', [AdminController::class, 'index'])->name('admin');
@@ -84,7 +85,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::post('categories/create', [CategoriesController::class, 'postCategories'])->name('post-add');
     Route::get('categories/edit/{id}', [CategoriesController::class, 'editCategories'])->name('categories.edit');
     Route::post('categories/edit', [CategoriesController::class, 'postEditCategories'])->name('post-edit');
-    Route::get('admin/categories/delete/{id}', [CategoriesController::class, 'deleteCategories'])->name('categories.delete');
+    Route::get('categories/delete/{id}', [CategoriesController::class, 'deleteCategories'])->name('categories.delete');
 });
 
 Route::middleware('auth')->group(function () {

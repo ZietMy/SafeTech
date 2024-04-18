@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->decimal('total_amount');
             $table->foreignId('status_id')->constrained('order_statuses');
-            $table->string('session_id');
             $table->timestamps();
         });
 }  
