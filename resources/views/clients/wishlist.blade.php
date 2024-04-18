@@ -76,6 +76,9 @@
                                     <a href="{{route('clients.detail', ['id' => $item->product->id])}}">{{$item->product->name}}</a>
                                 </td>
                                 <td>
+                                    <h2 class="price-detail">{{$item->product->discounted_price}}</h2>
+                                </td>
+                                <td>
                                     <form action="{{route('delete-wish-list', ['id' => $item->id])}}" method="get">
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Delete</button>
