@@ -171,34 +171,6 @@ label:not(.notes):after
 
 /* TABLET STARTS HERE */
 
-@media(min-width: 768px)
-{
-	.wrapper
-	{
-		width: 768px;
-	}
-
-	.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11
-	{
-		width: 376px;
-	}
-
-	.col-12
-	{
-		width: 100%;
-	}
-
-	.col-push-1, .col-push-2, .col-push-3, .col-push-4, .col-push-5, .col-push-6, .col-push-7, .col-push-8, .col-push-9, .col-push-10, .col-push-11
-	{
-		margin-left: 392px;
-	}
-
-	.col:nth-child(2n+2)
-	{
-		margin-right: 0;
-	}
-
-}
 
 
 /*DESKTOP STARTS HERE*/
@@ -333,10 +305,8 @@ h1, h2, h3, h4, h5, h6
 {
 	text-transform: uppercase;
 	font-weight: 900;
-	/* padding: 20px 0; */
 	color: #000;
 }
-
 h1
 {
 	font-size: 72px;
