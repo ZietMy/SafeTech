@@ -17,13 +17,19 @@ class OrderItemSeeder extends Seeder
     {
         $orderItems = [
             [
-                'order_id' => 3, 
-                'product_id' => 1, 
+                'order_id' => 1,
+                'product_id' => 1,
                 'quantity' => 2,
                 'price' => 100000,
             ],
             [
                 'order_id' => 1,
+                'product_id' => 2,
+                'quantity' => 1,
+                'price' => 150000,
+            ],
+            [
+                'order_id' => 3,
                 'product_id' => 2,
                 'quantity' => 1,
                 'price' => 150000,

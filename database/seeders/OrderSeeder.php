@@ -18,29 +18,26 @@ class OrderSeeder extends Seeder
      * @return void
      */
 
-    public function run()
-    {
-        $orders = [
-            [
-                "user_id" => 3,
-                "status_id" => 1, 
-                "quantity" => 3,
-                "price" => 100000,
-            ],
-            [
-                "user_id" => 2,
-                "status_id" => 1, 
-                "quantity" => 3,
-                "price" => 100000,
-            ],
-            [
-                "user_id" => 4,
-                "status_id" => 1,
-                "quantity" => 3,
-                "price" => 100000,
-            ]
-        ];
-    
-        DB::table('orders')->insert($orders);
-    }
+     public function run()
+     {
+         $orders = [
+             [
+                 "user_id" => 3,
+                 "total_amount" => 300000, // Calculate total amount
+                 "status_id" => 1,
+             ],
+             [
+                 "user_id" => 2,
+                 "total_amount" => 100000,
+                 "status_id" => 1,
+             ],
+             [
+                 "user_id" => 4,
+                 "total_amount" => 300000,
+                 "status_id" => 1,
+             ]
+         ];
+     
+         DB::table('orders')->insert($orders);
+     } 
 }
