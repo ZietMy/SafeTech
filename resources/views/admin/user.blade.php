@@ -5,11 +5,6 @@
         alert("{{ session()->get('msg') }}");
     </script>
 @endif
-@if(session()->has('msg'))
-    <script>
-        alert("{{ session()->get('msg') }}");
-    </script>
-@endif
     <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
         <div class="h-screen flex-grow-1 overflow-y-lg-auto">
             <main class="py-6 bg-surface-secondary">
