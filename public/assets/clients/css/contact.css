@@ -203,8 +203,6 @@ button {
     letter-spacing: 8px;
     margin-bottom: 20px;
     position: relative;
-  /*   shorthand animation property: name | duration | iteration count */
-  /*   animation: text 4s 1; */
     animation-name: text;
     animation-duration: 10s;
     animation-iteration-count: infinite;
