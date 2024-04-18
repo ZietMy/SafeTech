@@ -8,46 +8,55 @@ use Illuminate\Support\Facades\DB;
 
 class WishListController extends Controller
 {
-    private $wishlist;
-    public function __construct()
-    {
-        $this->wishlist = new Wishlist();
-    }
-    public function wishList()
+    // private $wishlist;
+    // public function __construct()
+    // {
+    //     $this->wishlist = new Wishlist();
+    // }
+    public function getAllWishList()
     {
         $userId = auth()->id();
-        $wishlist =  $this->wishlist->getWishList($userId);
-        $wishlistItems = $this->wishlist::all();
         $title = "Wish list";
-        return view('clients.wishlist', compact('title', 'wishlistItems', 'wishlist'));
+        $wishlists = Wishlist::where('user_id', $userId)->get();
+        return view('clients.wishlist', compact('title','wishlists'));
     }
     public function addWishList(Request $request)
     {
         $userId = auth()->id();
-        if(!empty($userId)){
-            $productId = $request->input('product_id');
-            $existingWishlistItem = Wishlist::where('user_id', $userId)
-                ->where('product_id', $productId)
-                ->first();
-            if (!$existingWishlistItem && !empty($productId)) {
-                $wishlist = new Wishlist();
-                $wishlist->user_id = $userId;
-                $wishlist->product_id = $productId;
-                $wishlist->save();
-            }
-            return redirect()->route('wishlist');
+        $productId = $request->product_id;
+
+        $wishlist = Wishlist::where('user_id', $userId)
+                        ->where('product_id', $productId)
+                        ->first();
+
+        if (!$wishlist) {
+            Wishlist::create([
+                'user_id' => $userId,
+                'product_id' => $productId
+            ]);
+        } else {
+            $wishlist->delete();
         }
-        else {
-            return view('clients.errors.errorList');
+        return redirect()->back();
+    }
+    public function deleteWishList($idWishList)
+    {
+        $wishlist = Wishlist::find($idWishList);
+
+        if ($wishlist) {
+            $wishlist->delete();
+            return redirect()->back();
         }
 
+        return redirect()->back()->with('error','Wishlist not found');
     }
-    public function deleteWishList($id = 0)
+    public function isProductInWishlist($productId)
     {
-        if (!empty($id)) {
-            $this->wishlist->getWishListDetails($id);
-            $this->wishlist->deleteWishList($id);
-            return redirect()->route('wishlist');
-        }
+        $userId = auth()->id();
+        $wishlist = Wishlist::where('user_id', $userId)
+                            ->where('product_id', $productId)
+                            ->first();
+
+        return $wishlist ? true : false;
     }
 }
