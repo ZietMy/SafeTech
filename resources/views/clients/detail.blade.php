@@ -59,7 +59,7 @@
                 </div>
                 <h6 class="product-title product-title-2 d-block">Available product: <span class="available-qty">{{$productId->quantity}}</span>
                 </h6>
-                <div class="d-flex mt1">
+                <div class="d-flex mt-3">
                     <form action="{{ route('add-wish-list') }}" method="POST" id="add-wishlist-form">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $productId->id }}">
@@ -68,32 +68,25 @@
                         </button>
                     </form>
                 </div>
-                <div class="product-buttons">
-                    {{-- <buttonid="liveToastBtn" value="{{ $productId->id }}">
-                        
-                    </buttonid=> --}}
-                    <form action="{{ route('cart.store') }}" method="POST">
+                <div class="product-buttons mt-3">
+                    <form action="{{ route('cart.store') }}" method="POST" class="d-inline-block">
                         @csrf
                         <div>
                             <input type="hidden" name="product_id" value="{{ $productId->id }}">
                             <input type="hidden" name="quantity_purchase" class="quantityBuy" value="1">
                         </div>
-                        <button type="submit"  class="btn btn-solid hover-solid btn-animation addToCartBtn" >
+                        <button type="submit" class="btn btn-solid hover-solid btn-animation addToCartBtn">
                             <i class="fa fa-shopping-cart"></i>
                             <span>Add To Cart</span>
                         </button>
                     </form>
-
-                    <form action="{{route('checkout')}}" method="get" >
+                    <div class="pl-4"></div>
+                    <form action="{{ route('checkout') }}" method="get" class="form-2">
                         @csrf  
                         <input type="hidden" name="product_detail_id" value="{{$productId->id}}">
                         <input type="hidden" name="quantity" class="quantityBuy" value="1">
-                        <button class="btn btn-danger checkoutBtn" >Checkout <i class="fa fa-check fz-16 me-2"></i></button>
-                    </form>  
-                    {{-- <a href="{{route('checkout')}}" class="btn btn-solid">
-                        <i class="fa fa-check fz-16 me-2"></i>
-                        <span>Checkout</span>
-                    </a> --}}
+                        <button class="btn btn-solid hover-solid btn-animation checkoutBtn" >Checkout <i class="fa fa-check fz-16 me-2"></i></button>
+                    </form>
                 </div>
             </div>
         @endforeach
