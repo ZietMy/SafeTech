@@ -20,11 +20,10 @@ return new class extends Migration
             $table->integer('quantity')->default(0);
             $table->text('details')->nullable();
             $table->string('image')->nullable();
-            $table->string('image1')->nullable();
-            $table->string('image2')->nullable();
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->decimal('discount',3,0)->default(0);
             $table->decimal('discounted_price',10, 3);
+            $table->timestamps();
         });
         DB::unprepared('
         CREATE TRIGGER update_discounted_price_after_update
