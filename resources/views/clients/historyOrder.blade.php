@@ -50,12 +50,11 @@
                         <th scope="col">Total Price</th>
                         <th scope="col">Status order</th>
                         <th scope="col" >Created at</th>
-                        <th scope="col"></th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($orders as $order)
-                        {{-- <tr></tr> --}}
                         <tr id="order-{{ $order->id }}">
                             <td>{{ $order->id }}</td>
                             <td>{{ $order->total_amount }}</td>
@@ -78,7 +77,8 @@
                             <td colspan="4" >
                                 <h4>Chi tiết đơn hàng</h4>
                                 <tr>
-                                    <th scope="col">Product</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Name</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Total</th>
@@ -91,6 +91,8 @@
                                     <tr>
                                         <td scope="row" class="text-center">
                                             <span style=""><img src="{{$item->product->image}}" alt="" width="100px" height="100px"></span>
+                                        </td>
+                                        <td scope="row" class="text-center">
                                             <span style="">{{$item->product->name}}</span>
                                         </td>
                                         <td class="text-center" style="text-align: center;">
@@ -109,46 +111,12 @@
                         </tr>
                     @endforeach
                 </tbody>
-                {{-- <thead>
-                <tr>
-                    <th scope="col" style="text-align: left; margin-right: 10px;">Product</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col" >Total</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                        @foreach ($cartShopping as $item)
-                        <tr>
-                            <td scope="row" class="text-center">
-                                <span style=""><img src="{{$item['image']}}" alt="" width="100px" height="100px"></span>
-                                <span style="">{{$item['name']}}</span>
-                            </td>
-                            <td class="text-center" style="text-align: center;">
-                                <span class="fs-5 fw-semibold">{{$item['discounted_price']}}VND</span>
-                                <p class="text-decoration-line-through fw-light">{{$item['price']}}VND</p>
-                            </td>
-                            <td class="text-align-center">{{$item['quantity']}}</td>
-                            <td class="fw-bolder fs-5 text-align-end">{{$item['total']}}.000VND</td>
-                        </tr>       
-                        @endforeach
-                </tbody> --}}
             </table>
-            {{-- <div style="display: flex; justify-content: space-between;">
-                <h5 style="text-align: left; margin-right: 10px;">Total</h5>
-                <span style="text-align: right;">
-                    <h5 style="color: #df4246;font-weight:bold" class="fs-3">{{$total}}.000 VND</h5>
-                </span>
-            </div>    --}}
-
-            {{-- <button type="submit" class="btn btn-danger mt-5">PLACE ORDER</button> --}}
         </div>
         @else 
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h2>Your History Order is empty</h2>
-                    {{-- <h5 class="mt-3">Add items to it now</h5> --}}
                     <a href="{{route('product')}}" class="btn btn-danger mt-5">Buy now</a>
                 </div>
             </div>
