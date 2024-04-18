@@ -16,14 +16,14 @@ class Order extends Model
     {
         return $this->belongsTo(OrderStatus::class, 'status_id');
     }
-    public function items()
+    public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
     }
-    public function products(): HasManyThrough
-    {
-        return $this->hasManyThrough(Product::class, OrderItem::class, 'order_id', 'id', 'id', 'product_id');
-    }
+    // public function products(): HasManyThrough
+    // {
+    //     return $this->hasManyThrough(Product::class, OrderItem::class, 'order_id', 'id', 'id', 'product_id');
+    // }
     public function users()
     {
         return $this->belongsTo(Users::class, 'user_id');

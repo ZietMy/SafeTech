@@ -143,11 +143,19 @@
                                 <div class="cart-box-details">
                                     <div class="total-details">
                                         <div class="top-details">
-                                            <h3>Cart Totals</h3>
-                                            <h5>Total <span class="text-danger"><b>{{$total}}.000 VND</b></span></h5>
+                                            {{-- <h3>Cart Totals</h3> --}}
+                                            <h4>Total <span class="text-danger"><b>{{$total}}.000 VND</b></span></h4>
                                         </div>
                                         <div class="bottom-details">
-                                            <a href="checkout">Process Checkout <i class="fas fa-arrow-right ms-1"></i></a>
+                                            <form action="{{route('checkout')}}" method="get" style="width:100%">
+                                                @csrf
+                                                @foreach ($cartItems as $item)
+                                                    
+                                                <input type="hidden" name="product_cart_id[]" value="{{$item->id}}">
+
+                                                @endforeach
+                                                <button class="btn btn-danger" style="width:100%">Process Checkout <i class="fas fa-arrow-right ms-1"></i></button>
+                                            </form>                                           
                                         </div>
                                     </div>
                                 </div>

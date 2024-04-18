@@ -73,9 +73,11 @@
                 </div>
                 <label for="country">Address</label>
                 <select name="address" id="address" value="{{ old('address', $user->address) }}">
-                    <option value="">Please select a address/option>
+                    <option disabled>Please select a address/option>
                     <option value="Đà Nẵng ">Đà Nẵng</option>
                     <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                    <option value="Đà Nẵng ">Huế</option>
+                    <option value="Hồ Chí Minh">Bình Định</option>
                 </select>
                 @error('address')  
                     <span style="color: red;">{{$message}}</span>

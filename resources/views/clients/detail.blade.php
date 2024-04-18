@@ -64,7 +64,7 @@
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $productId->id }}">
                         <button type="submit" style="border: none; background-color: transparent;">
-                            <i class="far fa-heart js-heart heart" style="font-size: xx-large;" name="addList"></i>
+                            <i class="fas fa-heart js-heart heart" style="font-size: xx-large;" name="addList"></i>
                         </button>
                     </form>
                 </div>
@@ -74,10 +74,16 @@
                         <span>Add To Cart</span>
                     </button>
                     
-                    <a href="{{route('checkout')}}" class="btn btn-solid">
+                    <form action="{{route('checkout')}}" method="get" style="width:100%">
+                        @csrf  
+                        <input type="hidden" name="product_detail_id" value="{{$productId->id}}">
+                        <input type="hidden" name="quantity" id="quantityBuy" value="1">
+                        <button class="btn btn-danger checkoutBtn" style="width:100%">Checkout <i class="fa fa-check fz-16 me-2"></i></button>
+                    </form>  
+                    {{-- <a href="{{route('checkout')}}" class="btn btn-solid">
                         <i class="fa fa-check fz-16 me-2"></i>
                         <span>Checkout</span>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         @endforeach

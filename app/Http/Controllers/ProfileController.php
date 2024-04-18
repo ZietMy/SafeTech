@@ -91,7 +91,7 @@ class ProfileController extends Controller
             'name' => 'required|min:5',
             'username' => 'required|min:5',
             'email' => 'required',
-            'phone_number' => 'required|min:11',
+            'phone_number' => 'required|min:10|max:12',
             'address' => 'required'
         ], [
             'name.required' => 'Tên là trường bắt buộc.',
@@ -101,6 +101,7 @@ class ProfileController extends Controller
             'email.required' => 'Email là trường bắt buộc.',
             'phone_number.required' => 'Số điện thoại là trường bắt buộc.',
             'phone_number.min' => 'Số điện thoại phải có ít nhất 10 ký tự.',
+            'phone_number.max' => 'Số điện thoại phải có ít nhất 12 ký tự.',
             'address.required' => 'Địa chỉ là trường bắt buộc.'
         ]);
     
