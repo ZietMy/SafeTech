@@ -285,6 +285,12 @@ a:hover {
         max-width: calc(25% - 20px);
     }
 }
-.product-box {
+/* .product-box {
     box-sizing: border-box;
+} */
+.form-2 {
+    margin-left: 10px;
 }
+li form button{
+    border: none;
+  }
