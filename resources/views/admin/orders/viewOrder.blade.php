@@ -10,7 +10,7 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>Name User</th>
-                        <td>{{ $order->users->name }}</td>
+                        <td>{{ $order->users->username }}</td>
                     </tr>
                     <tr>
                         <th>Product name</th>
