@@ -63,8 +63,12 @@
                     <form action="{{ route('add-wish-list') }}" method="POST" id="add-wishlist-form">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $productId->id }}">
-                        <button type="submit" style="border: none; background-color: transparent;">
-                            <i class="fas fa-heart js-heart heart" style="font-size: xx-large;" name="addList"></i>
+                        <button type="submit"name="addList" style="border: none; background-color: transparent;">
+                            @if(auth()->check())
+                            <i class="{{ in_array($productId->id, $wishLists) ? 'fas' : 'far' }} fa-heart js-heart heart" style="font-size: xx-large;" ></i>
+                            @else
+                            <i class="far fa-heart js-heart heart" style="font-size: xx-large;"></i>
+                            @endif
                         </button>
                     </form>
                 </div>

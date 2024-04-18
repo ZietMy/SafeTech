@@ -35,7 +35,7 @@ Route::get('/product', [ProductController::class, 'index'])->name('product');
 Route::post('/contact/post', [ContactController::class, 'getForm'])->name('post-message');
 
 Route::middleware('auth')->group(function () {
-Route::get('/wishlist', [WishListController::class, 'wishList'])->name('wishlist');
+Route::get('/wishlist', [WishListController::class, 'getAllWishList'])->name('wishlist');
 Route::post('/wishlist/add', [WishListController::class, 'addWishList'])->name('add-wish-list');
 Route::get('/wishlist/delete/{id}', [WishListController::class, 'deleteWishList'])->name('delete-wish-list');
 Route::get("cart",[CartController::class, 'index'])->name('cart');
