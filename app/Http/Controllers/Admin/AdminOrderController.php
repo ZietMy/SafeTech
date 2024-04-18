@@ -8,14 +8,13 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Product;
 use App\Models\OrderStatus;
+use App\Models\OrderItem;
 
 class AdminOrderController extends Controller
 {
     private $orders;
-
     public function __construct()
     {
-
         $this->orders = new Order();
     }
     public function index()
@@ -33,7 +32,6 @@ class AdminOrderController extends Controller
         $users = Users::all();
         $products = Product::all();
         $statuses = OrderStatus::all();
-        // dd($statuses);
         if (!empty($id)) {
             $orderDetail = $this->orders->getDetailOrder($id);
             // dd($orderDetail);
@@ -53,28 +51,48 @@ class AdminOrderController extends Controller
         if (empty($id)) {
             return back()->with('msg', 'Liên kết không tồn tại');
         }
-        $orderDetail = $this->orders->getDetailOrder($id);
-        $currentStatusId = $orderDetail[0]->status_id;
-        if (!in_array($currentStatusId, [1, 2])) {
-            return back()->with('msg', 'Không thể chỉnh sửa đơn hàng ở trạng thái này');
+        $orderDetail = Order::find($id);
+        if (!$orderDetail) {
+            return back()->with('msg', 'Đơn hàng không tồn tại');
         }
-        $request->validate([
-            'status_id' => 'required|integer',
-        ], [
-            'status_id.required' => 'Status name là trường bắt buộc.',
-            'status_id.integer' => 'Status ID phải là số nguyên.',
-        ]);
-
-        if ($currentStatusId == 2 && $request->status_id == 1) {
-            return back()->with('msg', 'Không thể chuyển đơn hàng đã giao hàng thành đơn hàng mới');
+        $currentStatusId = $orderDetail->status_id;
+        if ($currentStatusId == 4) {
+            return back()->with('msg', 'Đơn hàng đã được hủy trước đó');
         }
-        $status = OrderStatus::find($request->status_id);
-        $status_name = $status ? $status->status_name : '';
-        $dataUpdate = [
-            'status_id' => $request->status_id,
-            'status_name' => $status_name,
-        ];
-        $this->orders->updateOrder($dataUpdate, $id);
+        if ($request->status_id == 4) {
+            $orderItems = OrderItem::where('order_id', $id)->get();
+            foreach ($orderItems as $item) {
+                $product = $item->product;
+                $product->quantity += $item->quantity;
+                $product->save();
+            }
+        }
+        $orderDetail->status_id = $request->status_id;
+        $orderDetail->save();
         return redirect()->route('order')->with('msg', 'Cập nhật đơn hàng thành công');
+    }
+    public function deleteOrder($id = 0)
+    {
+        if ($id !== 0) {
+            $orderDetail = $this->orders->getDetailOrder($id);
+            if (!empty($orderDetail[0])) {
+                $status_id = $orderDetail[0]->status_id;
+                if ($status_id == 3) {
+                    $deleteStatus = $this->orders->deleteOrders($id);
+                    if ($deleteStatus) {
+                        $msg = 'Xóa đơn hàng thành công';
+                    } else {
+                        $msg = 'Không thể xóa đơn hàng';
+                    }
+                } else {
+                    $msg = 'Không thể xóa đơn hàng với trạng thái không phù hợp';
+                }
+            } else {
+                $msg = 'Đơn hàng không tồn tại';
+            }
+        } else {
+            $msg = 'ID không hợp lệ';
+        }
+        return redirect()->route('order')->with('msg', $msg);
     }
 }

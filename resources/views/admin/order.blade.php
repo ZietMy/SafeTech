@@ -39,7 +39,7 @@
                                                 </td>
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->users->name }}
+                                                        {{ $item->users->username }}
                                                     </a>
                                                 </td>
                                                 <td>
