@@ -74,8 +74,9 @@ class CheckoutController extends Controller
     }
     public function checkout (Request $request){
         $userId= Auth::id();
+
         $order = new Order();
-        $orderItem = new OrderItem();
+        $product = new Product();
 
         $sessionTotal=session('total');
         $sessionCartShopping = session('cartShopping');
@@ -89,6 +90,11 @@ class CheckoutController extends Controller
             $orderItem = new OrderItem();
             $orderItem->order_id = $order->id; // Gán order_id cho từng sản phẩm
             $orderItem->product_id = $item['product_id'];
+            if (!empty($item['product_id'])){
+                $product= Product::find($item['product_id']);
+                $product->quantity =  $product->quantity - $item['quantity'];
+                $product->save();
+            }
             $orderItem->price = $item['discounted_price'];
             $orderItem->quantity = $item['quantity'];
             $orderItem->total = $item['total'];
@@ -102,6 +108,9 @@ class CheckoutController extends Controller
         session()->forget('total');
         session()->forget('cartShopping');
 
-        return redirect()->route('checkout.successfully')->with('success', 'Your order has been placed successfully!');
+        return redirect()->route('checkout.successfully')->with([
+            'success' => 'Your order has been placed successfully!',
+            'orderId' => $order->id, 
+        ]);
     }
 }

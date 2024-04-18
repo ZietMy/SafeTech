@@ -50,6 +50,9 @@ Route::post('/checkout',[CheckoutController::class,'checkout'])->name('checkout.
 Route::get('/checkout-successfully',function(){
     return view('clients.checkoutSuccessfully');
 })->name('checkout.successfully');
+// Show order
+Route::get('/history/order',[ProfileController::class,'showHistoryOrder'])->name('history.order');
+Route::post('/order-cancel/{id}',[ProfileController::class,'cancelOrder'])->name('cancel-order');
 });
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/home', [AdminController::class, 'index'])->name('admin');
