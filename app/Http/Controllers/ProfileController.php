@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
@@ -117,8 +119,33 @@ class ProfileController extends Controller
         return redirect()->route('profile.user')->with('msg', 'Cập nhật thành công');
     }
     // get history order 
-    public function historyOrder(){
-        $id = Auth::id();
-        
+    public function showHistoryOrder(){
+        $userId = Auth::id();
+        $orders = Order::with(['users', 'orderItems.product','orderStatus'])
+                    ->where('user_id', $userId)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+        // dd($orders);
+        return view('clients.historyOrder', compact('orders'));
+    }
+    public function cancelOrder($orderId){
+        $order=Order::find($orderId);
+        if ($order && $order->status_id==1) {
+            $order->status_id = 4;
+            $order->save();
+            $orderId= $order->id;
+            // Lấy tất cả các sản phẩm trong đơn hàng
+            $orderItems = OrderItem::with('product')->where('order_id',$orderId)->get();
+            // Cập nhật số lượng cho từng sản phẩm
+            foreach ($orderItems as $item) {
+                $product = $item->product;
+                $product->quantity += $item->quantity;
+                $product->save();
+        }
+            return redirect()->back()->with('success', 'Order canceled successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Order not found.');
+        }
+
     }
 }
