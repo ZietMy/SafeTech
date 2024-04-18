@@ -23,8 +23,8 @@
                                         <th scope="col">Order ID</th>
                                         <th scope="col">User name</th>
                                         <th scope="col">Status name</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Total Price</th>
+                                        {{-- <th scope="col">Quantity</th>   --}}
+                                        <th scope="col">Total Amount</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -48,21 +48,14 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    {{ $item->quantity }}
-                                                </td>
-                                                <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->price }}
+                                                        {{ $item->total_amount }}
                                                     </a>
                                                 </td>
                                                 
                                                 <td class="text-end">
                                                     <a href="{{ route('viewOrderDetail', ['id' => $item->id]) }}" class="btn btn-sm btn-neutral">View</a>
                                                     <a href="{{ route('EditOrder', ['id' => $item->id]) }}" class="btn btn-sm btn-neutral">Edit</a>
-                                                    <a onclick="return confirm('Bạn có chắc muốn xóa')" href="{{ route('delete-Order', ['id' => $item->id]) }}">
-                                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                                            <i class="bi bi-trash"></i>
-                                                        </button>
                                                     </a>
                                                 </td>
                                             </tr>

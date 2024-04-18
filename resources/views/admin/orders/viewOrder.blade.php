@@ -26,11 +26,11 @@
                     </tr>
                     <tr>
                         <th>Quantity</th>
-                        <td>{{ $order->quantity }}</td>
-                    </tr>
+                        <td>{{ $order->orderItems->sum('quantity') }}</td>
+                    </tr>                    
                     <tr>
                         <th>Total Price</th>
-                        <td>{{ $order->price }}</td>
+                        <td>{{ $order->total_amount }}</td>
                     </tr>
                 </table>
             </div>
