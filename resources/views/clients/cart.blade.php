@@ -90,14 +90,14 @@
                                             <div class="input-group d-flex  align-items-center gap-2 ">
                                                 <form action="{{ route('cart.decrement', ['cartId' => $item->id]) }}" method="POST">
                                                     @csrf
-                                                    <button type="submit" class="input-group-text bg-danger decrement-btn col-2 pe-4 fs-4 text-center fw-bold">
+                                                    <button type="submit" class="input-group-text bg-danger col-2 pe-4 fs-4 text-center fw-bold">
                                                         -
                                                     </button>
                                                 </form>
                                                 <input type="text" style="height:35px;width:35px;" class="form-control text-center bg-white input-qty" disabled min="1" max="{{ $item->quantity_purchase }}" value="{{ $item->quantity_purchase }}">
                                                 <form action="{{ route('cart.increment', ['cartId' => $item->id]) }}" method="POST">
                                                     @csrf
-                                                    <button type="submit" class="input-group-text bg-danger increment-btn col-2 pe-4 text-center fs-4 fw-bold">
+                                                    <button type="submit" class="input-group-text bg-danger col-2 pe-4 text-center fs-4 fw-bold">
                                                         +
                                                     </button>
                                                 </form>

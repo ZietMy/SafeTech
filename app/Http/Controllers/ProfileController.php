@@ -116,5 +116,9 @@ class ProfileController extends Controller
        }
         return redirect()->route('profile.user')->with('msg', 'Cập nhật thành công');
     }
-    
+    // get history order 
+    public function historyOrder(){
+        $id = Auth::id();
+        
+    }
 }

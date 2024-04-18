@@ -46,11 +46,11 @@ class CartController extends Controller
             }  
             $cart->quantity_purchase = $quantity;
             $cart->save();
-            return redirect()->route('cart')->with('success', 'Update Added to cart successfully.');
+            return redirect()->back()->with('success', 'Update Added to cart successfully.');
             // return response()->json(['message' => 'Update Added to cart successfully'], 200);
         } else {
             Cart::create($data);
-            return redirect()->route('cart')->with('success', 'Added to cart successfully.');
+            return redirect()->back()->with('success', 'Added to cart successfully.');
             // return response()->json(['message' => 'Added to cart successfully'], 200);
         }
     }
@@ -65,7 +65,7 @@ class CartController extends Controller
         if ($quantity>=$product->quantity){
             return redirect()->route('cart')->with('error', 'Cart update failed.');
         } 
-        $cart->quantity_purchase++;
+        $cart->quantity_purchase;
         $cart->save();
         return redirect()->route('cart')->with('success', 'Cart updated successfully.');
         

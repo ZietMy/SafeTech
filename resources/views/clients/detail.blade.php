@@ -69,16 +69,26 @@
                     </form>
                 </div>
                 <div class="product-buttons">
-                    <button class="btn btn-solid hover-solid btn-animation addToCartBtn" id="liveToastBtn" value="{{ $productId->id }}">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span>Add To Cart</span>
-                    </button>
-                    
-                    <form action="{{route('checkout')}}" method="get" style="width:100%">
+                    {{-- <buttonid="liveToastBtn" value="{{ $productId->id }}">
+                        
+                    </buttonid=> --}}
+                    <form action="{{ route('cart.store') }}" method="POST">
+                        @csrf
+                        <div>
+                            <input type="hidden" name="product_id" value="{{ $productId->id }}">
+                            <input type="hidden" name="quantity_purchase" class="quantityBuy" value="1">
+                        </div>
+                        <button type="submit"  class="btn btn-solid hover-solid btn-animation addToCartBtn" >
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Add To Cart</span>
+                        </button>
+                    </form>
+
+                    <form action="{{route('checkout')}}" method="get" >
                         @csrf  
                         <input type="hidden" name="product_detail_id" value="{{$productId->id}}">
-                        <input type="hidden" name="quantity" id="quantityBuy" value="1">
-                        <button class="btn btn-danger checkoutBtn" style="width:100%">Checkout <i class="fa fa-check fz-16 me-2"></i></button>
+                        <input type="hidden" name="quantity" class="quantityBuy" value="1">
+                        <button class="btn btn-danger checkoutBtn" >Checkout <i class="fa fa-check fz-16 me-2"></i></button>
                     </form>  
                     {{-- <a href="{{route('checkout')}}" class="btn btn-solid">
                         <i class="fa fa-check fz-16 me-2"></i>

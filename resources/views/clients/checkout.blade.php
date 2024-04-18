@@ -72,6 +72,7 @@
             <div class="col-7 col order">
                 <div class="row">
                     <form action="placeolder" method="post">
+                        @csrf
                         <h3 class="topborder"><span>Your Order</span></h3>
 
                         <table class="table">
@@ -108,7 +109,7 @@
                             </span>
                         </div>   
 
-                        <button type="submit" name="submit"  class="btn btn-danger mt-5">PLACE ORDER</button>
+                        <button type="submit" class="btn btn-danger mt-5">PLACE ORDER</button>
                                    
                     </form>
                 </div>
