@@ -51,10 +51,6 @@
                 <input type="text" name="name" id="name" required disabled value="{{ old('name', $user->name) }}"> 
             </div>
             <div class="width50 padright">
-                <label for="tel">User name</label>
-                <input type="text" name="username" id="tel" required disabled value="{{ old('username', $user->username) }}">
-            </div>
-            <div class="width50 padright">
                 <label for="tel">Phone numer</label>
                 <input type="text" name="phone_number" id="tel" required disabled value="{{ old('phone_number', $user->phone_number) }}">
             </div>
@@ -62,7 +58,7 @@
                 <label for="email">Email Address</label>
                 <input type="text" name="email" id="email" required disabled value="{{ old('email', $user->email) }}">
             </div>
-            <div class=" padright">
+            <div class="width50 padright">
                 <label for="email">Address</label>
                 <input type="text" name="address" id="address" required disabled value="{{ old('address', $user->address) }}">
             </div>

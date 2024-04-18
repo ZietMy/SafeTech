@@ -16,9 +16,14 @@ class CartController extends Controller
         $userId= Auth::user()->id;
         $cartItems = Cart::with('product')->where('user_id', $userId)->get();
         $total=0;
+        
         foreach($cartItems as $item){
-            $total += $item->product->discounted_price * $item->quantity_purchase;
-            
+            if($item->quantity_purchase<$item->product->quantity){
+
+                $total += $item->product->discounted_price * $item->quantity_purchase;
+            }elseif($item->quantity_purchase>$item->product->quantity){
+                $total += $item->product->discounted_price * $item->product->quantity;
+            } 
         }
         return view('clients.cart', compact('cartItems','total'));
     }

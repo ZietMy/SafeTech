@@ -89,15 +89,16 @@
                 <div class="form__group">
                     <div class="form__text-input">
                         <input
-                            type="username"
-                            name="username"id="username" placeholder="Username" class="form__input" value="{{ old('username') }}" autofocus required
+                            type="name"
+                            name="name"id="name" placeholder="Name" class="form__input" value="{{ old('name') }}" autofocus required
                             minlength="6"
                         />
                         <i class="fas fa-user" class="form__input-icon"></i>
                     
                     </div>
-                    <x-input-error :messages="$errors->get('username')" class="messages__error" />
+                    <x-input-error :messages="$errors->get('name')" class="messages__error" />
                 </div>
+                
                 <div class="form__group">
                     <div class="form__text-input">
                         <input
@@ -109,7 +110,29 @@
                     </div>
                     <x-input-error :messages="$errors->get('email')" class="messages__error" />
                 </div>
-
+                <div class="form__group">
+                    <div class="form__text-input">
+                        <input
+                            type="text"
+                            name="phone_number"id="phone_number" placeholder="Phone Number" class="form__input" value="{{ old('phone_number') }}" autofocus required
+                            minlength="10"
+                        />
+                        <i class="fas fa-user" class="form__input-icon"></i>
+                    
+                    </div>
+                    <x-input-error :messages="$errors->get('phone_number')" class="messages__error" />
+                </div>
+                <div class="form__group">
+                    <div class="form__text-input">
+                        <input
+                            type="text"
+                            name="address"id="address" placeholder="Address" class="form__input" value="{{ old('address') }}" autofocus required
+                            minlength="6"
+                        />
+                        <i class="fas fa-user" class="form__input-icon"></i>
+                    </div>
+                    <x-input-error :messages="$errors->get('address')" class="messages__error" />
+                </div>
                 <div class="form__group">
                     <div class="form__text-input">
                         
@@ -121,7 +144,7 @@
                             class="form__input"
                             required
                             autocomplete="current-password"
-                            minlength="6"
+                            minlength="8"
                         />
                         <i class="fas fa-lock" class="form__input-icon" ></i>
                     </div>
@@ -140,13 +163,13 @@
                             class="form__input"
                             required
                             autocomplete="current-password_confirmation"
-                            minlength="6"
+                            minlength="8"
                         />
                         <i class="fas fa-lock" class="form__input-icon" ></i>
                     </div>
                     <x-input-error :messages="$errors->get('password_confirmation')" class="messages__error" />
                 </div>
-                <div class="form__group form__group--inline d-flex justify-content-between">
+                {{-- <div class="form__group form__group--inline d-flex justify-content-between">
                     <label for="remember_me" class="inline-flex items-center">
                         <input id="remember_me" type="checkbox" class="form__checkbox-input" name="remember">
                         <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
@@ -157,7 +180,7 @@
                     </a>
                     @endif
                    
-                </div>
+                </div> --}}
                 <div class="form__group auth__btn-group">
                     <button class="btn btn--primary auth__btn form__submit-btn">Sign UP</button>
                 </div>

@@ -29,19 +29,23 @@ class CheckoutController extends Controller
                 $cart = Cart::with('product')
                             ->where('id', $cartId)
                             ->first();
-                $data = [
-                    'cart_id'=>$cart->id,
-                    'product_id' =>$cart->product->id,
-                    'image' =>$cart->product->image,
-                    'name'=>$cart->product->name,
-                    'quantity' => $cart->quantity_purchase,
-                    'price'=> $cart->product->price,
-                    'discounted_price' =>$cart->product->discounted_price,
-                    'total'=>$cart->product->discounted_price*$cart->quantity_purchase,
-                ];
-                if ($cart) {
-                    $cartShopping[] = $data;
-                    session()->put('cartShopping', $cartShopping);
+                if($cart->quantity_purchase<$cart->product->quantity){
+                    $data = [
+                        'cart_id'=>$cart->id,
+                        'product_id' =>$cart->product->id,
+                        'image' =>$cart->product->image,
+                        'name'=>$cart->product->name,
+                        'quantity' => $cart->quantity_purchase,
+                        'price'=> $cart->product->price,
+                        'discounted_price' =>$cart->product->discounted_price,
+                        'total'=>$cart->product->discounted_price*$cart->quantity_purchase,
+                    ];
+                    if ($cart) {
+                        $cartShopping[] = $data;
+                        session()->put('cartShopping', $cartShopping);
+                    }
+                }else{
+                    return redirect()->back()->with('error','Checkout failed');
                 }
             }
             foreach($cartShopping as $item){
@@ -51,7 +55,9 @@ class CheckoutController extends Controller
         }elseif($request->has('product_detail_id')&&$request->has('quantity')){
             $productId = $request->product_detail_id; 
             $product = Product::where('id', $request->product_detail_id)->first();
-            // dd($product);
+            if( $request->quantity >= $product->quantity){
+                return redirect()->back()->with('error','Checkout failed');
+            }
             $data = [
                 'product_id' =>$product->id,
                 'name'=>$product->name,

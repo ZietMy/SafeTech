@@ -31,17 +31,23 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'username' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone_number' => ['required', 'string', 'regex:/^\d{10,12}$/','unique:'.User::class],
+            'address' => ['required', 'string','max:255'],
+            
         ]);
 
         $user = User::create([
-            'username' => $request->username,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id'=>$request->role_id,
             'status_id'=>$request->status_id,
+            'phone_number' => $request->phone_number,
+            'address' => $request->address,
+            'avatar' =>"https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg",
         ]);
 
         event(new Registered($user));

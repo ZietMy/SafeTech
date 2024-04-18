@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId('status_id')->constrained('status')->default(1);
             $table->string('status_name')->nullable(); // Thêm cột status_name vào bảng users
             $table->string('name')->nullable();
-            $table->string('username')->unique();
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->string('address')->nullable();

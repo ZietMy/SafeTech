@@ -86,28 +86,31 @@
                                             @if ($item->product->quantity ==0)
                                                 <span class="text-danger">out of stock</span>
                                             @else
-                                                
-                                            <div class="input-group d-flex  align-items-center gap-2 ">
-                                                <form action="{{ route('cart.decrement', ['cartId' => $item->id]) }}" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="input-group-text bg-danger col-2 pe-4 fs-4 text-center fw-bold">
-                                                        -
-                                                    </button>
-                                                </form>
-                                                <input type="text" style="height:35px;width:35px;" class="form-control text-center bg-white input-qty" disabled min="1" max="{{ $item->quantity_purchase }}" value="{{ $item->quantity_purchase }}">
-                                                <form action="{{ route('cart.increment', ['cartId' => $item->id]) }}" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="input-group-text bg-danger col-2 pe-4 text-center fs-4 fw-bold">
-                                                        +
-                                                    </button>
-                                                </form>
-                                            </div>
+                                                <div class="input-group d-flex  align-items-center gap-2 ">
+                                                    <form action="{{ route('cart.decrement', ['cartId' => $item->id]) }}" method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="input-group-text bg-danger col-2 pe-4 fs-4 text-center fw-bold">
+                                                            -
+                                                        </button>
+                                                    </form>
+                                                    <input type="text" style="height:35px;width:35px;" class="form-control text-center bg-white input-qty" disabled min="1" max="{{ $item->product->quantity }}" value="{{ $item->product->quantity<$item->quantity_purchase?$item->product->quantity:$item->quantity_purchase }}">
+                                                    <form action="{{ route('cart.increment', ['cartId' => $item->id]) }}" method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="input-group-text bg-danger col-2 pe-4 text-center fs-4 fw-bold">
+                                                            +
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             @endif
                                         </div>
                                     </div>
                                 </td>
                                 <td>
+                                    @if ($item->product->quantity ==0)
+                                                <span class="text-danger">none</span>
+                                    @else
                                     <h2 class="td-color">{{$item->total}}</h2>
+                                    @endif
                                 </td>
                                 <td>
                                     <a href="{{ route('cart.delete', ['cartId' => $item->id]) }}">

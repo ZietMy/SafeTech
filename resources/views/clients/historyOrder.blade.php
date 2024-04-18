@@ -78,7 +78,7 @@
                                 <h4>Chi tiết đơn hàng</h4>
                                 <tr>
                                     <th scope="col">Image</th>
-                                    <th scope="col">Name</th>
+                                    {{-- <th scope="col">Name</th> --}}
                                     <th scope="col">Price</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Total</th>
@@ -89,16 +89,14 @@
                                     {{-- <li>{{ $item->product_id }} - {{ $item->quantity }}</li> --}}
                                     
                                     <tr>
-                                        <td scope="row" class="text-center">
+                                        <td scope="row" class="text-start">
                                             <span style=""><img src="{{$item->product->image}}" alt="" width="100px" height="100px"></span>
-                                        </td>
-                                        <td scope="row" class="text-center">
                                             <span style="">{{$item->product->name}}</span>
                                         </td>
-                                        <td class="text-center" style="text-align: center;">
+                                        <td class="text-start">
                                             <span class="fs-5 fw-semibold">{{$item->price}}VND</span>
                                         </td>
-                                        <td class="text-align-center">{{$item->quantity}}</td>
+                                        <td class="text-start">{{$item->quantity}}</td>
                                         <td class="fw-bolder fs-5 text-align-end">{{$item->total}}VND</td>
                                     </tr>       
                                     @endforeach

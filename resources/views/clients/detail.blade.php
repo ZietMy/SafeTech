@@ -32,6 +32,11 @@
         {{ session('success') }}
     </div>
     @endif
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
     <div class="row product-data">
         @foreach ($detailId as $productId)
             <div class="col-2 mt-4">
