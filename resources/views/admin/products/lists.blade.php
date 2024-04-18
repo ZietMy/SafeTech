@@ -1,5 +1,15 @@
 @extends('layouts.admin')
 @section('content')
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+@if(session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
 <div class="card shadow border-0 mb-7">
     <div class="card-header">
         <h2 class="mt-0">Product</h2>

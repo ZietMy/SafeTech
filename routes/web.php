@@ -69,10 +69,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     ]);
     Route::get('/order', [AdminOrderController::class, 'index'])->name('order');
     Route::get('/order/{id}/view', [AdminOrderController::class, 'viewOrder'])->name('viewOrderDetail');
-    Route::get('order/add', [AdminOrderController::class, 'addOrder'])->name('addOrder');
-    Route::post('order/add', [AdminOrderController::class, 'postAddOrder'])->name('postAddOrder');
-    Route::get('edit/{id}', [AdminOrderController::class, 'getEditOrder'])->name('EditOrder');
-    Route::post('edit/{id}', [AdminOrderController::class, 'postEditOrder'])->name('postEditOrder');
+    Route::put('orders/{id}/update/',  [AdminOrderController::class, 'updateOrder'])->name('admin.update.order');
+    // Route::get('edit/{id}', [AdminOrderController::class, 'getEditOrder'])->name('EditOrder');
+    // Route::post('edit/{id}', [AdminOrderController::class, 'postEditOrder'])->name('postEditOrder');
 
     Route::get('contact', [ContactController::class, 'adminContact'])->name('contact-admin');
     Route::get('contact/edit/{id}', [ContactController::class, 'getContactId'])->name('update-contact');

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class Status extends Model
 {
     protected $table = 'status';
-
+    
     public function getAllStatus()
     {
         return Status::all();

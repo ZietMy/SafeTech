@@ -28,6 +28,7 @@ public function getEdit(Request $request, $id = 0)
         $userDetail = $this->users->getDetail($id);
         $users = Users::all();
         $status = Status::all(); 
+        // dd($status);
         if (!empty($userDetail[0])) {
             $request->session()->put('id', $id);
             $userDetail = $userDetail[0];
@@ -47,13 +48,13 @@ public function getEdit(Request $request, $id = 0)
             return back()->with('msg', 'Liên kết không tồn tại');
         }
         $request->validate([
-            'username' => 'required|string|max:255',
-            'gender' => 'required|in:male,female,other',
+            'name' => 'required|string|max:255',
+            'gender' => 'required|in:male,female',
             'email' => 'required|email|max:255|unique:users,email,' . $id,
         ], [
-            'username.required' => 'Tên là trường bắt buộc.',
-            'username.string' => 'Tên phải là chuỗi.',
-            'username.max' => 'Tên không được vượt quá 255 ký tự.',
+            'name.required' => 'Tên là trường bắt buộc.',
+            'name.string' => 'Tên phải là chuỗi.',
+            'name.max' => 'Tên không được vượt quá 255 ký tự.',
             'gender.required' => 'Giới tính là trường bắt buộc.',
             'gender.in' => 'Giới tính không hợp lệ.',
             'email.required' => 'Email là trường bắt buộc.',
@@ -63,9 +64,8 @@ public function getEdit(Request $request, $id = 0)
         ]);
 
         $dataInsert = [
-            'username' => $request->username,
+            'name' => $request->name,
             'status_id' => $request->status_id,
-            'status_name' => $request->status_name,
             'gender' => $request->gender,
             'email' => $request->email,
         ];

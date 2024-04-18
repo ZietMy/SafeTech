@@ -21,7 +21,7 @@
                                     <tr>
                                         <th scope="col">Avatar</th>
                                         <th scope="col">Role name</th>
-                                        <th scope="col">Username</th>
+                                        <th scope="col">Name</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Gender</th>
                                         <th scope="col">Email</th>
@@ -33,7 +33,7 @@
                                         @foreach ($userList as $item)
                                             <tr>
                                                 <td>
-                                                    <img alt="..." src="https://img.freepik.com/premium-photo/cute-asian-girl-kawaii-anime-avatar-ai-generative-art_225753-9233.jpg" width="40px" height="30px">
+                                                    <img alt="..." src="{{$item->avatar}}" width="40px" height="30px">
                                                 </td>
                                                 
                                                 <td>
@@ -48,7 +48,7 @@
                                                 </td>
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->username }}
+                                                        {{ $item->name }}
                                                     </a>
                                                 </td>
                                                 <td>

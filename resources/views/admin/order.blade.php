@@ -1,11 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
-    @if (session()->has('msg'))
-        <script>
-            alert("{{ session()->get('msg') }}");
-        </script>
-    @endif
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+@if(session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
     <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
         <div class="h-screen flex-grow-1 overflow-y-lg-auto">
             <main class="py-6 bg-surface-secondary">
@@ -39,7 +44,7 @@
                                                 </td>
                                                 <td>
                                                     <a class="text-heading font-semibold" href="#">
-                                                        {{ $item->users->username }}
+                                                        {{ $item->users->name }}
                                                     </a>
                                                 </td>
                                                 <td>
@@ -54,9 +59,10 @@
                                                 </td>
                                                 
                                                 <td class="text-end">
-                                                    <a href="{{ route('viewOrderDetail', ['id' => $item->id]) }}" class="btn btn-sm btn-neutral">View</a>
-                                                    <a href="{{ route('EditOrder', ['id' => $item->id]) }}" class="btn btn-sm btn-neutral">Edit</a>
-                                                    </a>
+                                                    
+                                                    <a href="{{ route('viewOrderDetail', ['id' => $item->id]) }}" class="btn btn-sm btn-neutral">Update</a>
+                                                    {{-- <a href="{{ route('EditOrder', ['id' => $item->id]) }}" class="btn btn-sm btn-neutral">Edit</a>
+                                                    </a> --}}
                                                 </td>
                                             </tr>
                                         @endforeach

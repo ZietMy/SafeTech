@@ -58,7 +58,7 @@
                     <x-input-error :messages="$errors->get('password')" class="messages__error" />
                     
                 </div>
-                <div class="form__group form__group--inline d-flex justify-content-between">
+                {{-- <div class="form__group form__group--inline d-flex justify-content-between">
                     <label for="remember_me" class="inline-flex items-center">
                         <input id="remember_me" type="checkbox" class="form__checkbox-input" name="remember">
                         <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
@@ -69,7 +69,7 @@
                     </a>
                     @endif
                    
-                </div>
+                </div> --}}
                 <div class="form__group auth__btn-group">
                     <button class="btn btn--primary auth__btn form__submit-btn">Sign In</button>
                 </div>

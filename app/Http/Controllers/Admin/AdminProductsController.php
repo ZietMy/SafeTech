@@ -152,6 +152,6 @@ class AdminProductsController extends Controller
     public function destroy($id)
     {
         $this->products->deleteProduct($id);
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success','Deleted successfully');
     }
 }
