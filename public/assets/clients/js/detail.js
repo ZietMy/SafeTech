@@ -52,21 +52,27 @@ $(document).ready(function () {
         
 });
 
+// const heartDOM = document.querySelector(".js-heart");
+// let liked = false;
+// heartDOM.onclick = (event) => {
+//     liked = !liked;
+//     const target = event.currentTarget;
+
+//     if (liked) {
+//         target.classList.remove("far");
+//         target.classList.add("fas", "pulse");
+//     } else {
+//         target.classList.remove("fas");
+//         target.classList.add("far");
+//     }
+// };
 const heartDOM = document.querySelector(".js-heart");
-let liked = false;
-heartDOM.onclick = (event) => {
-    liked = !liked;
-    const target = event.currentTarget;
 
-    if (liked) {
-        target.classList.remove("far");
-        target.classList.add("fas", "pulse");
-    } else {
-        target.classList.remove("fas");
-        target.classList.add("far");
-    }
-};
-
+heartDOM.addEventListener("click", function() {
+    // Toggle giữa 'fas' và 'far'
+    heartDOM.classList.toggle("fas");
+    heartDOM.classList.toggle("far");
+});
 heartDOM.addEventListener("animationend", (event) => {
     event.currentTarget.classList.remove("pulse");
 });

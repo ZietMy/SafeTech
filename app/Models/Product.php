@@ -15,6 +15,10 @@ class Product extends Model
     {
         return $this->belongsTo(Order::class, 'order_id'); 
     }
+    public function wishlists()
+{
+    return $this->hasMany(Wishlist::class);
+}
     public function getAllProduct()
     {
         $product = DB::table('SELECT * FROM products ');

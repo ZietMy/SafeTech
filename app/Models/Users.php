@@ -15,7 +15,10 @@ class Users extends Model
     {
         return $this->hasMany(Order::class,'user_id');
     }
-    
+    public function wishlists()
+{
+    return $this->hasMany(Wishlist::class);
+}
     public function getAllUser()
     {
         $users = DB::select('select * from users ');
