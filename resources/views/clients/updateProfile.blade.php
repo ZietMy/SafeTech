@@ -51,13 +51,6 @@
                     @enderror
                 </div>
                 <div class="width50 padright">
-                    <label for="tel">User name</label>
-                    <input type="text" name="username" id="username"  value="{{ old('username', $user->username) }}">
-                    @error('username')  
-                        <span style="color: red;">{{$message}}</span>
-                    @enderror
-                </div>
-                <div class="width50 padright">
                     <label for="tel">Phone numer</label>
                     <input type="text" name="phone_number" id="phone_number" value="{{ old('phone_number', $user->phone_number) }}">
                     @error('phone_number')  
@@ -72,7 +65,7 @@
                     @enderror
                 </div>
                 <label for="country">Address</label>
-                <select name="address" id="address" value="{{ old('address', $user->address) }}">
+                <select name="address" id="address" class="width50 padright"value="{{ old('address', $user->address) }}">
                     <option disabled>Please select a address/option>
                     <option value="Đà Nẵng ">Đà Nẵng</option>
                     <option value="Hồ Chí Minh">Hồ Chí Minh</option>

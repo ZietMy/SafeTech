@@ -29,7 +29,7 @@
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="../index.htm">
+                            <a href="{{route('home')}}">
                                 <i class="fas fa-home"></i>
                             </a>
                         </li>
@@ -119,7 +119,7 @@
                             <div class="mt-3"></div>
                             @if(session('msg'))
                             <div class="alert alert-success">
-                                Thông tin của bạn đã được gửi đi
+                                Your information has been sent
                             </div>
                         @endif
                         </form>

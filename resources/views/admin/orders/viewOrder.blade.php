@@ -46,7 +46,7 @@
                 @method('PUT')
                 <input type="hidden" name="status_id" value="2">
                 <button type="submit" class="btn btn-primary {{$order->status_id == 2 || $order->status_id == 3 || $order->status_id == 4 ? 'd-none' : ''}}">
-                    Xác nhận đang giao
+                    Confirm 
                 </button>
             </form>
         </div>
